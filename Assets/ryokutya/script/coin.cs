@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class goal : MonoBehaviour
+public class coin : MonoBehaviour
 {
     private bool isOn = false;
     private string playerTag = "Player";
