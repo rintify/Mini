@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventSystem : MonoBehaviour
 {
     public Timer False;
+    public coins True;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,11 @@ public class EventSystem : MonoBehaviour
         {
             Time.timeScale = 0;
             Debug.Log("false");
+        }
+        if(True.clear)
+        {
+            Time.timeScale = 0;
+            Debug.Log("success");
         }
     }
 }
