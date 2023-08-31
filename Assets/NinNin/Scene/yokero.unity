@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 118040087}
   - component: {fileID: 118040089}
   - component: {fileID: 118040090}
+  - component: {fileID: 118040091}
   m_Layer: 1
   m_Name: Apple (1)
   m_TagString: Apple
@@ -223,10 +224,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -418730763
-  m_SortingLayer: 0
+  m_SortingLayerID: 35332867
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8bd829857839fc47b8a0eae24b2e6f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa027ddbca9ec2d45a2a3bcafb3f6e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -234,7 +235,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &118040089
@@ -294,6 +295,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9796a0a9d0149c149a3a84779d377324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &118040091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118040085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99b36ac764ba4d4da4c44e82a785835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameClearUI: {fileID: 1989706977}
+  gameOverUI: {fileID: 165142983}
+  player: {fileID: 0}
+  isGameClear: 0
 --- !u!1 &165142983
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,8 +628,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1432989857
-  m_SortingLayer: 0
+  m_SortingLayerID: -435971035
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6415094, g: 0.4626054, b: 0.39136106, a: 1}
@@ -782,10 +799,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 547800911
-  m_SortingLayer: 0
+  m_SortingLayerID: -585913833
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb17bcfef1e306845b34312693175a77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed9d504676af53c4cbc456efea9e0c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -793,7 +810,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &993948677
@@ -909,7 +926,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 552359545
+  m_SortingLayerID: 1708927431
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1205095196
@@ -946,6 +963,7 @@ GameObject:
   - component: {fileID: 1220759817}
   - component: {fileID: 1220759819}
   - component: {fileID: 1220759820}
+  - component: {fileID: 1220759821}
   m_Layer: 1
   m_Name: Apple
   m_TagString: Apple
@@ -1033,10 +1051,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -418730763
-  m_SortingLayer: 0
+  m_SortingLayerID: 35332867
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8bd829857839fc47b8a0eae24b2e6f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa027ddbca9ec2d45a2a3bcafb3f6e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1044,7 +1062,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1220759819
@@ -1104,6 +1122,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9796a0a9d0149c149a3a84779d377324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1220759821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220759815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99b36ac764ba4d4da4c44e82a785835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameClearUI: {fileID: 1989706977}
+  gameOverUI: {fileID: 165142983}
+  player: {fileID: 0}
+  isGameClear: 0
 --- !u!1 &1487101785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1151,7 @@ GameObject:
   - component: {fileID: 1487101787}
   - component: {fileID: 1487101789}
   - component: {fileID: 1487101790}
+  - component: {fileID: 1487101791}
   m_Layer: 1
   m_Name: Apple (2)
   m_TagString: Apple
@@ -1204,10 +1239,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -418730763
-  m_SortingLayer: 0
+  m_SortingLayerID: 35332867
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8bd829857839fc47b8a0eae24b2e6f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa027ddbca9ec2d45a2a3bcafb3f6e0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1215,7 +1250,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1487101789
@@ -1275,6 +1310,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9796a0a9d0149c149a3a84779d377324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1487101791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487101785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99b36ac764ba4d4da4c44e82a785835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameClearUI: {fileID: 1989706977}
+  gameOverUI: {fileID: 165142983}
+  player: {fileID: 0}
+  isGameClear: 0
 --- !u!1 &1616247297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,10 +1383,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1194584567
-  m_SortingLayer: 0
+  m_SortingLayerID: -571798889
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d45c2f7cb70016d4c88f1d1968f42297, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49effdd27bec768479261552031d415f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1343,7 +1394,7 @@ SpriteRenderer:
   m_Size: {x: 30.33, y: 30.33}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1616247299
@@ -1415,9 +1466,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1616247297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95e54de6a22b334fa3e62a453977540, type: 3}
+  m_Script: {fileID: 11500000, guid: fcef95a61ec0fc94e9acb24aa5564320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  gameOverUI: {fileID: 165142983}
+  isGameOver: 0
 --- !u!1 &1641282977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,10 +1610,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 547800911
-  m_SortingLayer: 0
+  m_SortingLayerID: -585913833
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb17bcfef1e306845b34312693175a77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed9d504676af53c4cbc456efea9e0c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1567,7 +1621,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1989706977
@@ -1858,10 +1912,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 547800911
-  m_SortingLayer: 0
+  m_SortingLayerID: -585913833
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb17bcfef1e306845b34312693175a77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed9d504676af53c4cbc456efea9e0c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1869,7 +1923,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1660057539 &9223372036854775807

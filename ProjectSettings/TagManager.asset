@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ground
   - coin
+  - Apple
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -42,4 +44,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3858996261
+    locked: 0
+  - name: Trees
+    uniqueID: 3709053463
+    locked: 0
+  - name: Apples
+    uniqueID: 35332867
+    locked: 0
+  - name: Player
+    uniqueID: 3723168407
+    locked: 0
+  - name: UI
+    uniqueID: 1708927431
     locked: 0
