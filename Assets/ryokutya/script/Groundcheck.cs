@@ -5,6 +5,7 @@ using UnityEngine;
 public class Groundcheck : MonoBehaviour
 {
     private string groundTag = "ground";
+    private string movefloorTag = "movefloor";
     private bool isGround = false;
     private bool isGroundEnter, isGroundStay, isGroundExit;
     // Start is called before the first frame update
@@ -41,7 +42,11 @@ public class Groundcheck : MonoBehaviour
         { 
              isGroundEnter = true;
         }
-        
+        else if (collision.tag == movefloorTag)
+        {
+            isGroundEnter = true;
+        }
+
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -49,10 +54,18 @@ public class Groundcheck : MonoBehaviour
         {
             isGroundStay = true;
         }
+        else if (collision.tag == movefloorTag)
+        {
+            isGroundStay = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == groundTag)
+        {
+            isGroundExit = true;
+        }
+        else if (collision.tag == movefloorTag)
         {
             isGroundExit = true;
         }

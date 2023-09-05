@@ -8,6 +8,7 @@ TagManager:
   - coin
   - Apple
   - Ground
+  - movefloor
   layers:
   - Default
   - TransparentFX

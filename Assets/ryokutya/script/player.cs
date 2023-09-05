@@ -9,9 +9,12 @@ public class player : MonoBehaviour
     public float jumpHeight;//ジャンプの高さ
     public float gravity;//重力
     public float jumpLimitTime;//ジャンプの制限
+    public float stepOnRate;//踏みつけ判定の高さの割合
     public Groundcheck ground;//接地判定
     public Groundcheck head;//頭判定
     //プライベート変数
+    private CapsuleCollider2D capcol = null;
+    private Moveobject moveObj = null;
     private Rigidbody2D rb = null;
     private bool isGround = false;
     private bool isHead = false;
@@ -19,10 +22,12 @@ public class player : MonoBehaviour
     private bool Space = true;
     private float jumpPos = 0.0f;
     private float jumpTime = 0.0f;
+    private string movefloortag = "movefloor";
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  //Rigidbody2Dの取得
+        capcol = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -87,6 +92,37 @@ public class player : MonoBehaviour
         {
             Space = true;
         }
-        rb.velocity = new Vector2(xSpeed, ySpeed);
+        Vector2 addVelocity = Vector2.zero;
+        if (moveObj != null)
+        {
+            addVelocity = moveObj.GetVelocity();
+        }
+        rb.velocity = new Vector2(xSpeed, ySpeed) + addVelocity;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    { 
+        if (collision.collider.tag == movefloortag)
+        {
+            //踏みつけ判定になる高さ
+            float stepOnHeight = (capcol.size.y * (stepOnRate / 100f));
+            //踏みつけ判定のワールド座標
+            float judgePos = transform.position.y - (capcol.size.y / 2f) + stepOnHeight;
+            foreach (ContactPoint2D p in collision.contacts)
+            {
+                //動く床に乗っている
+                if (p.point.y < judgePos)
+                {
+                    moveObj = collision.gameObject.GetComponent<Moveobject>();
+                }
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == movefloortag)
+        {
+            //動く床から離れた
+            moveObj = null;
+        }
     }
 }
