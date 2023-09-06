@@ -22,7 +22,7 @@ public class player : MonoBehaviour
     private bool Space = true;
     private float jumpPos = 0.0f;
     private float jumpTime = 0.0f;
-    private string movefloortag = "movefloor";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,31 +98,5 @@ public class player : MonoBehaviour
             addVelocity = moveObj.GetVelocity();
         }
         rb.velocity = new Vector2(xSpeed, ySpeed) + addVelocity;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    { 
-        if (collision.collider.tag == movefloortag)
-        {
-            //“¥‚İ‚Â‚¯”»’è‚É‚È‚é‚‚³
-            float stepOnHeight = (capcol.size.y * (stepOnRate / 100f));
-            //“¥‚İ‚Â‚¯”»’è‚Ìƒ[ƒ‹ƒhÀ•W
-            float judgePos = transform.position.y - (capcol.size.y / 2f) + stepOnHeight;
-            foreach (ContactPoint2D p in collision.contacts)
-            {
-                //“®‚­°‚Éæ‚Á‚Ä‚¢‚é
-                if (p.point.y < judgePos)
-                {
-                    moveObj = collision.gameObject.GetComponent<Moveobject>();
-                }
-            }
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.tag == movefloortag)
-        {
-            //“®‚­°‚©‚ç—£‚ê‚½
-            moveObj = null;
-        }
     }
 }

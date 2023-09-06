@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Groundcheck : MonoBehaviour
 {
+    public bool playerStepOn = false;
     private string groundTag = "ground";
     private string movefloorTag = "movefloor";
+    private string fallfloortag = "FallFloor";
     private bool isGround = false;
     private bool isGroundEnter, isGroundStay, isGroundExit;
     // Start is called before the first frame update
@@ -38,34 +40,27 @@ public class Groundcheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == groundTag)
+        if(collision.tag == groundTag || collision.tag == movefloorTag || collision.tag == fallfloortag)
         { 
              isGroundEnter = true;
-        }
-        else if (collision.tag == movefloorTag)
-        {
-            isGroundEnter = true;
+            if(collision.tag == fallfloortag)
+            {
+                playerStepOn = true;
+            }
         }
 
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.tag == groundTag || collision.tag == movefloorTag || collision.tag == fallfloortag)
         {
             isGroundStay = true;
         }
-        else if (collision.tag == movefloorTag)
-        {
-            isGroundStay = true;
-        }
+       
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
-        {
-            isGroundExit = true;
-        }
-        else if (collision.tag == movefloorTag)
+        if (collision.tag == groundTag || collision.tag == movefloorTag || collision.tag == fallfloortag)
         {
             isGroundExit = true;
         }

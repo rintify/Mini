@@ -9,6 +9,7 @@ TagManager:
   - Apple
   - Ground
   - movefloor
+  - FallFloor
   layers:
   - Default
   - TransparentFX
