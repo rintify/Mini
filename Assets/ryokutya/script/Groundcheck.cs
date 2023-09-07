@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Groundcheck : MonoBehaviour
 {
-    public bool playerStepOn = false;
     private string groundTag = "ground";
     private string movefloorTag = "movefloor";
     private string fallfloortag = "FallFloor";
@@ -43,10 +42,6 @@ public class Groundcheck : MonoBehaviour
         if(collision.tag == groundTag || collision.tag == movefloorTag || collision.tag == fallfloortag)
         { 
              isGroundEnter = true;
-            if(collision.tag == fallfloortag)
-            {
-                playerStepOn = true;
-            }
         }
 
     }

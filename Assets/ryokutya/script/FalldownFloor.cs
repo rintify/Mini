@@ -10,7 +10,6 @@ public class FalldownFloor : MonoBehaviour
     public float fallTime = 1.0f; //—Ž‚¿‚éŽžŠÔ
     public float fallSpeed = 10.0f;//—Ž‚¿‚é‘¬“x
     public float returnTime = 5.0f;//–ß‚é‘¬“x
-    public Groundcheck pl;
     private bool isOn;
     private bool isFall;
     private bool isReturn;
@@ -24,6 +23,9 @@ public class FalldownFloor : MonoBehaviour
     private float fallingTimer = 0.0f;
     private float returnTimer = 0.0f;
     private float blirkTimer = 0.0f;
+    private string playertag = "Player";
+    private bool player = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,10 +45,10 @@ public class FalldownFloor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pl.playerStepOn)
+        if(player)
         {
             isOn = true;
-            pl.playerStepOn = false;
+            player = false;
         }
         if(isOn && !isFall)
         {
@@ -55,6 +57,7 @@ public class FalldownFloor : MonoBehaviour
             if(timer > fallTime)
             {
                 isFall = true;
+ 
             }
             timer += Time.deltaTime;
         }
@@ -108,6 +111,13 @@ public class FalldownFloor : MonoBehaviour
                 fallingTimer += Time.deltaTime;
                 isOn = false;
             }
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.collider.tag == playertag)
+        {
+            player = true;
         }
     }
 }
