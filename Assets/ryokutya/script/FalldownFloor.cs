@@ -23,7 +23,7 @@ public class FalldownFloor : MonoBehaviour
     private float fallingTimer = 0.0f;
     private float returnTimer = 0.0f;
     private float blirkTimer = 0.0f;
-    private string playertag = "Player";
+    private string playertag = "foot";
     private bool player = false;
 
     // Start is called before the first frame update
@@ -113,9 +113,9 @@ public class FalldownFloor : MonoBehaviour
             }
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.collider.tag == playertag)
+        if(collision.tag == playertag)
         {
             player = true;
         }
