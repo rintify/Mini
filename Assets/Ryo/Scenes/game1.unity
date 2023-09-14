@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 483672167}
   - component: {fileID: 483672171}
   - component: {fileID: 483672172}
+  - component: {fileID: 483672173}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -641,6 +642,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 260000979}
   waittime: 300
+--- !u!114 &483672173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483672166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df256efc83f1154c94b3e88fd97cd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
 --- !u!1 &1148677043
 GameObject:
   m_ObjectHideFlags: 0
