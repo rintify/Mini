@@ -18,7 +18,7 @@ public class coins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Coin.text = "Coins:" + many.ToString("0") + "/" + max.ToString("0"); 
+        Coin.text =  many.ToString("0") + "/" + max.ToString("0"); 
         if(many == max)
         {
             clear = true;
