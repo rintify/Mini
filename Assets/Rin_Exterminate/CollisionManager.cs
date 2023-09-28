@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
+    private BulletCollider bullet = null;
     [System.NonSerialized]
-    public BulletCollider bullet;
+    public List<BulletCollider> bullets = new();
     [System.NonSerialized]
     public List<WallCollider> walls = new();
     [System.NonSerialized]
@@ -26,7 +27,7 @@ public class CollisionManager : MonoBehaviour
     }
 
     public void modifyPosition(BulletCollider p){
-        CollisionM nearCollision = null;
+        CollisionM nearCollision = null; //一番近い当たり判定
 
         foreach(var ballCollider in balls){
             CollisionM c = ballCollision(p,ballCollider);
