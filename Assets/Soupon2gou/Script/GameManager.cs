@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    [Header("スコア")] public int score;
+    [Header("繧ｹ繧ｳ繧｢")] public int score;
     [HideInInspector] public bool isStageClear=false;
 
 
@@ -20,12 +20,12 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Debug.Log("thisをインスタンスに入れる");
+            Debug.Log("this繧偵う繝ｳ繧ｹ繧ｿ繝ｳ繧ｹ縺ｫ蜈･繧後ｋ");
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Debug.Log("this.gameObjectの削除");
+            Debug.Log("this.gameObject縺ｮ蜑企勁");
             Destroy(this.gameObject);
         }
     }
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SEを鳴らす
+    /// SE繧帝ｳｴ繧峨☆
     /// </summary>
     public void PlaySE(AudioClip clip)
     {
@@ -44,12 +44,12 @@ public class GameManager : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.PlayOneShot(clip);
-            Debug.Log("SEをならしました");
+            Debug.Log("SE繧偵↑繧峨＠縺ｾ縺励◆");
 
         }
         else
         {
-            Debug.Log("オーディオソースが設定されていません");
+            Debug.Log("繧ｪ繝ｼ繝�繧｣繧ｪ繧ｽ繝ｼ繧ｹ縺瑚ｨｭ螳壹＆繧後※縺�縺ｾ縺帙ｓ");
         }
     }
 }
