@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //using System.Collections.Specialized;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class player_one : MonoBehaviour
 {
     //
     [Header("")] public float speed;
@@ -46,14 +46,14 @@ public class player : MonoBehaviour
 
         //
         float horizontalKey = Input.GetAxis("Horizontal");
-        float verticalKey = Input.GetAxis("Vertical");
+        bool verticalKey = Input.GetKey(KeyCode.Space);
 
         float xSpeed = 0.0f;
         float ySpeed = -gravity;
         //Debug.Log(isGround);
         if (isGround)
         {
-            if(verticalKey > 0)
+            if(verticalKey)
             {
                 if (!isJump)
                 {
@@ -72,7 +72,7 @@ public class player : MonoBehaviour
         else if (isJump)
         {
             //
-            bool pushUpKey = verticalKey > 0;
+            bool pushUpKey = verticalKey ;
             //
             bool canHeight = jumpPos + jumpHeight > transform.position.y;
             //
