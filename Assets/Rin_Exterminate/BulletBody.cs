@@ -6,6 +6,6 @@ public class BulletBody : MonoBehaviour
 {
     void Awake(){
         var mgr = CollisionManager.This;
-        mgr.bullet = 
+        //mgr.bullet = 
     }
 }
