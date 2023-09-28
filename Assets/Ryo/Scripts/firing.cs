@@ -19,7 +19,7 @@ public class firing : MonoBehaviour
     void Update()
     {
         time+=1;
-        if(Input.GetKey(KeyCode.Space)){
+        if(Input.GetMouseButtonDown(0)){
             //Debug.Log(time);
             if(time>waittime){
             point = this.transform.position;
