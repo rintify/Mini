@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("ÉXÉRÉA")] public int score;
     [HideInInspector] public bool isStageClear=false;
 
+
     private AudioSource audioSource = null;
 
 
