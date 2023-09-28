@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ClearEffect : MonoBehaviour
 {
-    //ƒNƒŠƒA‚µ‚½‚ç‰¹(SE)‚ğ–Â‚ç‚µ‚ÄSceneˆÚ“®‚³‚¹‚éB
+    //ã‚¯ãƒªã‚¢ã—ãŸã‚‰éŸ³(SE)ã‚’é³´ã‚‰ã—ã¦Sceneç§»å‹•ã•ã›ã‚‹ã€‚
     private bool comp = false;
     private float timer;
 
@@ -19,7 +19,7 @@ public class ClearEffect : MonoBehaviour
             }
             else
             {
-                //0‚Íƒ^ƒCƒgƒ‹‚Ì‚Í‚¸
+                //0ã¯ã‚¿ã‚¤ãƒˆãƒ«ã®ã¯ãš
                 SceneManager.LoadScene("titleScene");
                 comp = true;
             }

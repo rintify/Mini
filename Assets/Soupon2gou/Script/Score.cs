@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
         }
         else
         {
-            Debug.Log("ƒQ[ƒ€ƒ}ƒl[ƒWƒƒ[’u‚«–Y‚ê‚Ä‚é‚æI");
+            Debug.Log("ã‚²ãƒ¼ãƒ ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ç½®ãå¿˜ã‚Œã¦ã‚‹ã‚ˆï¼");
             Destroy(this);
         }
     }

@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 public class TimeCounter : MonoBehaviour
 {
-    //ƒJƒEƒ“ƒgƒ_ƒEƒ“
+    //ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
     private float countdown = 8.0f;
 
-    //ŠÔ‚ğ•\¦‚·‚éTextŒ^‚Ì•Ï”
+    //æ™‚é–“ã‚’è¡¨ç¤ºã™ã‚‹Textå‹ã®å¤‰æ•°
     public Text timeText;
 
     // Update is called once per frame
     void Update()
     {
-        //ŠÔ‚ğƒJƒEƒ“ƒg‚·‚é
+        //æ™‚é–“ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹
         countdown -= Time.deltaTime;
 
-        //ŠÔ‚ğ•\¦‚·‚é
-        timeText.text = countdown.ToString("f1") + "•b";
+        //æ™‚é–“ã‚’è¡¨ç¤ºã™ã‚‹
+        timeText.text = countdown.ToString("f1") + "ç§’";
 
         if (countdown <= 0)
         {
-            timeText.text = "ŠÔ‚É‚È‚è‚Ü‚µ‚½I";
+            timeText.text = "æ™‚é–“ã«ãªã‚Šã¾ã—ãŸï¼";
         }
     }
 }

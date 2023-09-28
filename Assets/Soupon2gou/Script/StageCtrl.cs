@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StageCtrl : MonoBehaviour
 {
-    [Header("ƒvƒŒƒCƒ„[ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg")] public GameObject playerObj;
-    [Header("ƒRƒ“ƒeƒBƒjƒ…[ˆÊ’u")] public GameObject[] continuePoint;
-    [Header("ƒXƒe[ƒWƒNƒŠƒASE")] public AudioClip stageClearSE;
-    [Header("ƒXƒe[ƒWƒNƒŠƒA")] public GameObject stageClearObj;
-    [Header("ƒXƒe[ƒWƒNƒŠƒA”»’è")] public PlayerClearCheck stageClearTrigger;
+    [Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ")] public GameObject playerObj;
+    [Header("ã‚³ãƒ³ãƒ†ã‚£ãƒ‹ãƒ¥ãƒ¼ä½ç½®")] public GameObject[] continuePoint;
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¯ãƒªã‚¢SE")] public AudioClip stageClearSE;
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¯ãƒªã‚¢")] public GameObject stageClearObj;
+    [Header("ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¯ãƒªã‚¢åˆ¤å®š")] public PlayerClearCheck stageClearTrigger;
 
     private bool doClear = false;
 
@@ -18,13 +18,13 @@ public class StageCtrl : MonoBehaviour
     {
         if (playerObj != null && continuePoint != null && continuePoint.Length > 0)
         {
-            Debug.Log("ƒvƒŒƒCƒ„[‚ÍŒ´“_‚ÉˆÚ“®‚µ‚Ü‚µ‚½");
+            Debug.Log("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯åŸç‚¹ã«ç§»å‹•ã—ã¾ã—ãŸ");
             playerObj.transform.position = continuePoint[0].transform.position;
             //stageClearObj.SetActive(false);
         }
         else
         {
-            Debug.Log("İ’è‚ª‘«‚è‚Ä‚È‚¢‚æI");
+            Debug.Log("è¨­å®šãŒè¶³ã‚Šã¦ãªã„ã‚ˆï¼");
         }
     }
 
@@ -38,13 +38,13 @@ public class StageCtrl : MonoBehaviour
         }
     }
     /// <summary>
-    /// ƒXƒe[ƒW‚ğƒNƒŠƒA‚µ‚½
+    /// ã‚¹ãƒ†ãƒ¼ã‚¸ã‚’ã‚¯ãƒªã‚¢ã—ãŸ
     /// </summary>
     public void StageClear()
     {
         GameManager.instance.isStageClear = true;
         //stageClearObj.SetActive(true);
         GameManager.instance.PlaySE(stageClearSE);
-        Debug.Log("ƒXƒe[ƒWƒNƒŠƒASE‚ğ‚È‚ç‚µ‚Ü‚µ‚½");
+        Debug.Log("ã‚¹ãƒ†ãƒ¼ã‚¸ã‚¯ãƒªã‚¢SEã‚’ãªã‚‰ã—ã¾ã—ãŸ");
     }
 }
