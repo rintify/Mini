@@ -20,7 +20,7 @@ public class Groundcheck : MonoBehaviour
     {
         
     }
-    //İ’u”»’è
+    //è¨­ç½®åˆ¤å®š
     public bool IsGround()
     {
         if(isGroundEnter || isGroundStay)
