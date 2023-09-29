@@ -1817,8 +1817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 720, y: 400}
-  m_SizeDelta: {x: 150, y: 100}
+  m_AnchoredPosition: {x: 715, y: 400}
+  m_SizeDelta: {x: 302.97, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &556549119
 MonoBehaviour:
@@ -1842,10 +1842,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7c1fbc247fc2dfc4d80d8f2a89694afc, type: 3}
-    m_FontSize: 100
+    m_FontSize: 90
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2369,7 +2369,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Limit:0
+  m_Text: "\u3058\u304B\u3093\uFF1A0.00"
 --- !u!222 &890310533
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2391,7 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limit: 0
-  CountDownTime: 10.02
+  CountDownTime: 8.02
   Texttime: {fileID: 890310532}
 --- !u!1 &918127990
 GameObject:
@@ -2871,7 +2871,7 @@ Transform:
   m_GameObject: {fileID: 987907254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7698708, y: -1.0394549, z: -10}
+  m_LocalPosition: {x: -1.7644634, y: -1.0394549, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3434,7 +3434,7 @@ Transform:
   m_GameObject: {fileID: 1184626306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -120, y: 0, z: 0}
+  m_LocalPosition: {x: -187, y: 10, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 33.26718}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3857,8 +3857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 756.37, y: 186.74}
+  m_AnchoredPosition: {x: -0.0000076294, y: -0.0000019073}
+  m_SizeDelta: {x: 811.21, y: 115.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655614947
 MonoBehaviour:
@@ -3893,7 +3893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: collect coins!
+  m_text: "\u30B3\u30A4\u30F3\u3092\u3042\u3064\u3081\u308D!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c678f982bb410524bae247bcfe4e74e1, type: 2}
   m_sharedMaterial: {fileID: -4120704118437240707, guid: c678f982bb410524bae247bcfe4e74e1, type: 2}
@@ -3920,8 +3920,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4139,6 +4139,7 @@ MonoBehaviour:
   gravity: 5
   jumpLimitTime: 4
   stepOnRate: 10
+  size: 0.5
   ground: {fileID: 1142461234}
   head: {fileID: 1921707773}
 --- !u!1 &1804894897

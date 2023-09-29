@@ -10,11 +10,13 @@ public class player : MonoBehaviour
     public float gravity;//重力
     public float jumpLimitTime;//ジャンプの制限
     public float stepOnRate;//踏みつけ判定の高さの割合
+    public float size;//playerの大きさ
     public Groundcheck ground;//接地判定
     public Groundcheck head;//頭判定
     //プライベート変数
     private CapsuleCollider2D capcol = null;
     private Moveobject moveObj = null;
+    //private Animator anim = null;
     private Rigidbody2D rb = null;
     private bool isGround = false;
     private bool isHead = false;
@@ -26,6 +28,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //anim = GetComponent<Animator>();//Animaterの取得
         rb = GetComponent<Rigidbody2D>();  //Rigidbody2Dの取得
         capcol = GetComponent<CapsuleCollider2D>();
     }
@@ -42,14 +45,19 @@ public class player : MonoBehaviour
         float ySpeed = -gravity;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            transform.localScale = new Vector3(-size, size, 1);
+            //anim.SetBool("run", true);
             xSpeed = -speed;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
+            //anim.SetBool("run", true);
+            transform.localScale = new Vector3(size, size, 1);
             xSpeed = speed;
         }
         else
         {
+            //anim.SetBool("run", false);
             xSpeed = 0.0f;
         }
 
@@ -97,6 +105,7 @@ public class player : MonoBehaviour
         {
             addVelocity = moveObj.GetVelocity();
         }
+        //anim.SetBool("jump", isJump);
         rb.velocity = new Vector2(xSpeed, ySpeed) + addVelocity;
     }
 }
