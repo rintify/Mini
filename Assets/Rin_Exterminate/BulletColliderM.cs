@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletCollider : ColliderM
+public class BulletColliderM : ColliderM
 {
     public Vector2 pos,pre,dir;
     public float delta;
     public float r;
 
-    public BulletCollider(Action<CollisionM> onCollision) : base(onCollision)
+    public BulletColliderM(Action<CollisionM> onCollision,float r) : base(onCollision)
     {
+        manager.bullets.Add(this);
+        this.r = r;
     }
 
     public void jump(Vector2 pos){
-        this.pos = pos;
-        pre = pos;
+        this.pos = pre = pos;
         this.delta = 0;
     }
 
@@ -23,6 +24,11 @@ public class BulletCollider : ColliderM
         pre = pos;
         pos += delta*dir;
         this.delta = delta;
+        manager.modifyBulletDelta(this);
+    }
+
+    public void rotate(float rad){
+        this.dir = new(MathF.Cos(rad),Math.Sign(rad));
     }
 
     public void flip(bool axisX,bool axisY){
