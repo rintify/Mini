@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
         }
         else
         {
-            Debug.Log("ゲームマネージャー置き忘れてるよ！");
+            Debug.Log("繧ｲ繝ｼ繝繝槭ロ繝ｼ繧ｸ繝｣繝ｼ鄂ｮ縺榊ｿ倥ｌ縺ｦ繧九ｈ");
             Destroy(this);
         }
     }
