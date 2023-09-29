@@ -8,7 +8,7 @@ public class title : MonoBehaviour
 {
     private bool firstPush=false;
 
-    //ƒXƒ^[ƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚³‚ê‚½‚çŒÄ‚Î‚ê‚é
+    //ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã‚’æŠ¼ã•ã‚ŒãŸã‚‰å‘¼ã°ã‚Œã‚‹
     public void PressStart()
     {
         Debug.Log("Press Start");
@@ -16,7 +16,7 @@ public class title : MonoBehaviour
         if (!firstPush)
         {
             Debug.Log("Go Next Scene!");
-            //‚±‚±‚ÉŸ‚ÌƒV[ƒ“‚És‚­–½—ß‚ğ‘‚­
+            //ã“ã“ã«æ¬¡ã®ã‚·ãƒ¼ãƒ³ã«è¡Œãå‘½ä»¤ã‚’æ›¸ã
             SceneManager.LoadScene("game1");
             firstPush = true;
         }

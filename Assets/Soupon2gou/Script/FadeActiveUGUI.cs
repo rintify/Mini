@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class FadeActiveUGUI : MonoBehaviour
 {
-    [Header("ƒtƒF[ƒhƒXƒs[ƒh")] public float speed = 1.0f;
-    [Header("ã¸—Ê")] public float moveDis = 10.0f;
-    [Header("ã¸ŠÔ")] public float moveTime = 1.0f;
-    [Header("ƒLƒƒƒ“ƒoƒXƒOƒ‹[ƒv")] public CanvasGroup cg;
-    [Header("ƒvƒŒƒCƒ„[”»’è")] public PlayerTriggerCheck trigger;
+    [Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¹ãƒ”ãƒ¼ãƒ‰")] public float speed = 1.0f;
+    [Header("ä¸Šæ˜‡é‡")] public float moveDis = 10.0f;
+    [Header("ä¸Šæ˜‡æ™‚é–“")] public float moveTime = 1.0f;
+    [Header("ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚°ãƒ«ãƒ¼ãƒ—")] public CanvasGroup cg;
+    [Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åˆ¤å®š")] public PlayerTriggerCheck trigger;
 
     private Vector3 defaltPos;
     private float timer = 0.0f;
 
     private void Start()
     {
-        //‰Šú‰»
+        //åˆæœŸåŒ–
         if (cg == null && trigger == null)
         {
-            Debug.Log("ƒCƒ“ƒXƒyƒNƒ^[‚Ìİ’è‚ª‘«‚è‚Ü‚¹‚ñ");
+            Debug.Log("ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã®è¨­å®šãŒè¶³ã‚Šã¾ã›ã‚“");
             Destroy(this);
         }
         else
@@ -31,34 +31,34 @@ public class FadeActiveUGUI : MonoBehaviour
 
     private void Update()
     {
-        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ“à‚É“ü‚Á‚½
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç¯„å›²å†…ã«å…¥ã£ãŸ
         if (trigger.isOn)
         {
-            //ã¸‚µ‚È‚ª‚çƒtƒF[ƒhƒCƒ“‚·‚é
+            //ä¸Šæ˜‡ã—ãªãŒã‚‰ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã™ã‚‹
             if (cg.transform.position.y < defaltPos.y || cg.alpha < 1.0f)
             {
                 cg.alpha = timer / moveTime;
                 cg.transform.position += Vector3.up * (moveDis / moveTime) * speed * Time.deltaTime;
                 timer += speed * Time.deltaTime;
             }
-            //ƒtƒF[ƒhƒCƒ“Š®—¹
+            //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³å®Œäº†
             else
             {
                 cg.alpha = 1.0f;
                 cg.transform.position = defaltPos;
             }
         }
-        //ƒvƒŒƒCƒ„[‚ª”ÍˆÍ“à‚É‚¢‚È‚¢
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç¯„å›²å†…ã«ã„ãªã„
         else
         {
-            //‰º~‚µ‚È‚ª‚çƒtƒF[ƒhƒAƒEƒg‚·‚é
+            //ä¸‹é™ã—ãªãŒã‚‰ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã™ã‚‹
             if (cg.transform.position.y > defaltPos.y - moveDis || cg.alpha > 0.0f)
             {
                 cg.alpha = timer / moveTime;
                 cg.transform.position -= Vector3.up * (moveDis / moveTime) * speed * Time.deltaTime;
                 timer -= speed * Time.deltaTime;
             }
-            //ƒtƒF[ƒhƒAƒEƒgŠ®—¹
+            //ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆå®Œäº†
             else
             {
                 timer = 0.0f;

@@ -18,7 +18,7 @@ public class Headcheck : MonoBehaviour
     {
 
     }
-    //Ú’n”»’è
+    //æ¥åœ°åˆ¤å®š
     public bool IsGround()
     {
         if (isGroundEnter || isGroundStay)

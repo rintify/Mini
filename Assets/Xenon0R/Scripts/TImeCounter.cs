@@ -6,52 +6,52 @@ using TMPro;
  
 public class SampleScene : MonoBehaviour
 {
-    //�J�E���g�_�E��
+    //カウントダウン
     public float countdown = 7.00f;
  
-    //���Ԃ�\������Text�^�̕ϐ�
+    //時間を表示するText型の変数
     public TMP_Text timeText;
  
-    //�|�[�Y���Ă��邩�ǂ���
+    //ポーズしているかどうか
     private bool isPose = false;
  
     // Update is called once per frame
     void Update()
     {
-        //�N���b�N���ꂽ�Ƃ�
+        //クリックされたとき
         if(Input.GetMouseButtonDown(0))
         {
-            //countdown��0��؂��Ă��Ȃ��Ƃ�
+            //countdownが0を切っていないとき
             if(countdown >= 0)
             {
-                //�|�[�Y���ɃN���b�N���ꂽ�Ƃ�
+                //ポーズ中にクリックされたとき
                 if(isPose)
                 {
-                     //�|�[�Y��Ԃ���������
+                     //ポーズ状態を解除する
                      isPose = false;
                  }
-                //�i�s���ɃN���b�N���ꂽ�Ƃ�
+                //進行中にクリックされたとき
                 else    {
-                     //�|�[�Y��Ԃɂ���
+                     //ポーズ状態にする
                      isPose = true;
                 }
             }
         }
  
-        //�|�[�Y�����ǂ���
+        //ポーズ中かどうか
         if (isPose)
         {
-            //�J�E���g�_�E�����Ȃ�
+            //カウントダウンしない
             return;
         }
  
-        //���Ԃ��J�E���g����
+        //時間をカウントする
         countdown -= Time.deltaTime;
  
-        //���Ԃ�\������
+        //時間を表示する
         timeText.text = countdown.ToString("f2") + " sec";
  
-        //countdown��0�ȉ��ɂȂ����Ƃ�
+        //countdownが0以下になったとき
         if (countdown <= 0)
         {
             timeText.text = "Time Over";

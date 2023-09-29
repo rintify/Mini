@@ -5,11 +5,11 @@ using UnityEngine;
 public class FalldownFloor : MonoBehaviour
 {
     public GameObject spriteObj;
-    public float vibrationWidt = 0.05f; //U“®•
-    public float vibrationSpeed = 30.0f;//U“®‘¬“x
-    public float fallTime = 1.0f; //—‚¿‚éŠÔ
-    public float fallSpeed = 10.0f;//—‚¿‚é‘¬“x
-    public float returnTime = 5.0f;//–ß‚é‘¬“x
+    public float vibrationWidt = 0.05f; //æŒ¯å‹•å¹…
+    public float vibrationSpeed = 30.0f;//æŒ¯å‹•é€Ÿåº¦
+    public float fallTime = 1.0f; //è½ã¡ã‚‹æ™‚é–“
+    public float fallSpeed = 10.0f;//è½ã¡ã‚‹é€Ÿåº¦
+    public float returnTime = 5.0f;//æˆ»ã‚‹é€Ÿåº¦
     private bool isOn;
     private bool isFall;
     private bool isReturn;
@@ -29,7 +29,7 @@ public class FalldownFloor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //‰Šú‰»
+        //åˆæœŸåŒ–
         col = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         
@@ -92,11 +92,11 @@ public class FalldownFloor : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //—‰º’†
+        //è½ä¸‹ä¸­
         if(isFall)
         {
             rb.velocity = fallVelocity;
-            //Œ³‚ÌˆÊ’u‚É–ß‚é
+            //å…ƒã®ä½ç½®ã«æˆ»ã‚‹
             if(fallingTimer > fallTime)
             {
                 isReturn = true;

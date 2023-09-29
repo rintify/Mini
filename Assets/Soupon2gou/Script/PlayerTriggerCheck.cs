@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerTriggerCheck : MonoBehaviour
 {
     /// <summary>
-    /// ”»’è“à‚ÉƒvƒŒƒCƒ„[‚ª‚¢‚é
+    /// åˆ¤å®šå†…ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã„ã‚‹
     /// </summary>
     [HideInInspector] public bool isOn = false;
 
     private string playerTag = "Player";
 
-    #region//ÚG”»’è
+    #region//æ¥è§¦åˆ¤å®š
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == playerTag)

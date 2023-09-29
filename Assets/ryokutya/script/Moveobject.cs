@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Moveobject : MonoBehaviour
 {
-    public GameObject[] movePoint; //ˆÚ“®Œo˜H
-    public float speed = 1.0f; //ˆÚ“®‘¬“x
+    public GameObject[] movePoint; //ç§»å‹•çµŒè·¯
+    public float speed = 1.0f; //ç§»å‹•é€Ÿåº¦
     private Rigidbody2D rb = null;
     private int nowPoint = 0;
     private bool returnPoint = false;

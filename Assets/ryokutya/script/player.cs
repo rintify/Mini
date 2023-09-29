@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    public float speed;//‘¬“x
-    public float jumpSpeed;//ƒWƒƒƒ“ƒv‘¬“x
-    public float jumpHeight;//ƒWƒƒƒ“ƒv‚Ì‚‚³
-    public float gravity;//d—Í
-    public float jumpLimitTime;//ƒWƒƒƒ“ƒv‚Ì§ŒÀ
-    public float stepOnRate;//“¥‚İ‚Â‚¯”»’è‚Ì‚‚³‚ÌŠ„‡
-    public Groundcheck ground;//Ú’n”»’è
-    public Groundcheck head;//“ª”»’è
-    //ƒvƒ‰ƒCƒx[ƒg•Ï”
+    public float speed;//é€Ÿåº¦
+    public float jumpSpeed;//ã‚¸ãƒ£ãƒ³ãƒ—é€Ÿåº¦
+    public float jumpHeight;//ã‚¸ãƒ£ãƒ³ãƒ—ã®é«˜ã•
+    public float gravity;//é‡åŠ›
+    public float jumpLimitTime;//ã‚¸ãƒ£ãƒ³ãƒ—ã®åˆ¶é™
+    public float stepOnRate;//è¸ã¿ã¤ã‘åˆ¤å®šã®é«˜ã•ã®å‰²åˆ
+    public Groundcheck ground;//æ¥åœ°åˆ¤å®š
+    public Groundcheck head;//é ­åˆ¤å®š
+    //ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆå¤‰æ•°
     private CapsuleCollider2D capcol = null;
     private Moveobject moveObj = null;
     private Rigidbody2D rb = null;
@@ -26,18 +26,18 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  //Rigidbody2D‚Ìæ“¾
+        rb = GetComponent<Rigidbody2D>();  //Rigidbody2Dã®å–å¾—
         capcol = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Ú’n”»’è‚ğ“¾‚é
+        //æ¥åœ°åˆ¤å®šã‚’å¾—ã‚‹
         isGround = ground.IsGround();
         isHead = head.IsGround();
 
-        //ƒL[ˆÚ“®
+        //ã‚­ãƒ¼ç§»å‹•
         float xSpeed = 0.0f;
         float ySpeed = -gravity;
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -53,7 +53,7 @@ public class player : MonoBehaviour
             xSpeed = 0.0f;
         }
 
-        //ƒWƒƒƒ“ƒv
+        //ã‚¸ãƒ£ãƒ³ãƒ—
         if (isGround)
         {
           if (Input.GetKey(KeyCode.Space) && Space)
