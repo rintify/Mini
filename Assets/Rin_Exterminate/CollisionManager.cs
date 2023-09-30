@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
 {
-    private BulletColliderM bullet = null;
     [System.NonSerialized]
     public List<BulletColliderM> bullets = new();
     [System.NonSerialized]
@@ -26,18 +25,18 @@ public class CollisionManager : MonoBehaviour
         return dir.y > 0 ? -2 - dir.x : dir.x;
     }
 
-    public void modifyBulletDelta(BulletColliderM p){
+    public void modifyBulletDelta(BulletColliderM bullet){
         CollisionM nearCollision = null; //一番近い当たり判定
 
         foreach(var ballCollider in circles){
-            CollisionM c = ballCollision(p,ballCollider);
+            CollisionM c = ballCollision(bullet,ballCollider);
             if(c!=null){
                 if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
             }
         }
 
         foreach(var wallCollider in lines){
-            CollisionM c = wallCollision(p,wallCollider);
+            CollisionM c = wallCollision(bullet,wallCollider);
             if(c!=null){
                 if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
             }
@@ -57,10 +56,11 @@ public class CollisionManager : MonoBehaviour
         if(Dir_dot_PB < 0) return null; //逆方向の球を排除
         float minBP = p.r + b.r;
         float sqrtArg = Dir_dot_PB*Dir_dot_PB - BP.sqrMagnitude + minBP*minBP;
-        if(sqrtArg < 0) return null; //外れる球を排除
+        if(sqrtArg < 0.5) return null; //外れる球を排除
         float modified = Dir_dot_PB - Mathf.Sqrt(sqrtArg);
         if(modified < 0 || modified > p.delta) return null; //移動範囲にないものを排除
         Vector2 n = (modified*p.dir - BP)/minBP;
+        if(Vector2.Dot(n,p.dir) >= 0f) return null;
 
         /*if(b.){
            float anArgLevel =  dArglevel(b.aArgLevel,argLevel(nx,ny));
@@ -76,8 +76,8 @@ public class CollisionManager : MonoBehaviour
         float Dir_x_Wdelta = p.dir.Cross(w.delta);
         if(Dir_x_Wdelta <= 0) return null; //逆方向の壁を排除
         Vector2 WP = w.pos + p.r*w.n - p.pre;
-        float Dir_x_WP = p.dir.Cross(WP);
-        if(Dir_x_WP < 0 || Dir_x_WP > Dir_x_Wdelta) return null; //外れる壁を排除
+        float WP_x_Wdelta = WP.Cross(w.delta);
+        if(WP_x_Wdelta < 0 || WP_x_Wdelta > Dir_x_Wdelta) return null; //外れる壁を排除
         float modified = WP.Cross(w.delta)/Dir_x_Wdelta;
         if(modified < 0 || modified > p.delta) return null; //移動範囲にないものを排除
         return new CollisionM(modified,w,p,w.n);

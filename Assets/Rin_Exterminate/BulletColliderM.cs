@@ -28,11 +28,11 @@ public class BulletColliderM : ColliderM
     }
 
     public void rotate(float rad){
-        this.dir = new(MathF.Cos(rad),Math.Sign(rad));
+        this.dir = new(Mathf.Cos(rad),Mathf.Sin(rad));
     }
 
     public void flip(bool axisX,bool axisY){
-        if(axisX) pos.y = -pos.y;
-        if(axisY) pos.x = -pos.x;
+        if(axisX) dir.y = -dir.y;
+        if(axisY) dir.x = -dir.x;
     }
 }

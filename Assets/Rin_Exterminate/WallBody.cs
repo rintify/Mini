@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class WallBody : MonoBehaviour{
-    void Satart(){
+    void Start(){
         Vector2 center = this.transform.position;
         Vector2 size = this.transform.localScale*0.5f;
         var p = new Vector2[]{
