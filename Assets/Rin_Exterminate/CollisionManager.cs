@@ -28,15 +28,17 @@ public class CollisionManager : MonoBehaviour
     public void modifyBulletDelta(BulletColliderM bullet){
         CollisionM nearCollision = null; //一番近い当たり判定
 
-        foreach(var ballCollider in circles){
-            CollisionM c = ballCollision(bullet,ballCollider);
+        foreach(var collider in circles){
+            if(!collider.exitst) continue;
+            CollisionM c = ballCollision(bullet,collider);
             if(c!=null){
                 if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
             }
         }
 
-        foreach(var wallCollider in lines){
-            CollisionM c = wallCollision(bullet,wallCollider);
+        foreach(var collider in lines){
+            if(!collider.exitst) continue;
+            CollisionM c = wallCollision(bullet,collider);
             if(c!=null){
                 if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
             }
@@ -75,9 +77,9 @@ public class CollisionManager : MonoBehaviour
         if(Vector2.Dot(w.n,p.dir) >= 0f) return null; //裏面に当たる壁を排除
         float Dir_x_Wdelta = p.dir.Cross(w.delta);
         if(Dir_x_Wdelta <= 0) return null; //逆方向の壁を排除
-        Vector2 WP = w.pos + p.r*w.n - p.pre;
-        float WP_x_Wdelta = WP.Cross(w.delta);
-        if(WP_x_Wdelta < 0 || WP_x_Wdelta > Dir_x_Wdelta) return null; //外れる壁を排除
+        Vector2 WP = w.pos + w.delta + p.r*w.n - p.pre;
+        float Dir_x_WP = p.dir.Cross(WP);
+        if(Dir_x_WP < 0 || Dir_x_WP > Dir_x_Wdelta) return null; //外れる壁を排除
         float modified = WP.Cross(w.delta)/Dir_x_Wdelta;
         if(modified < 0 || modified > p.delta) return null; //移動範囲にないものを排除
         return new CollisionM(modified,w,p,w.n);

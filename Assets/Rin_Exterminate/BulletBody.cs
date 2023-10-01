@@ -11,7 +11,7 @@ public class BulletBody : MonoBehaviour
     private float t;
 
     void Awake(){
-        collider = new BulletColliderM(onCollision,base.transform.localScale.x*0.5f);
+        collider = new BulletColliderM(c => BulletColliderM.onCollision_Monst(collider,c),base.transform.localScale.x*0.5f);
     }
 
     public void set(Vector2 pos,float rad, float speed){
@@ -29,14 +29,7 @@ public class BulletBody : MonoBehaviour
         collider.move(v);
         float a = t/sqrt_speed;
         v -= 1f*v*a*a*a*a;
-        t += 0.05f;
-        if(v < 0) v = 0;
-    }
-
-    void onCollision(CollisionM c){
-        float absDirX = Mathf.Abs(collider.dir.x);
-        if(c.normal.y > absDirX && collider.dir.y < 0) collider.flip(true,false);
-        else if(c.normal.y < -absDirX && collider.dir.y > 0) collider.flip(true,false);
-        else if(c.normal.x*collider.dir.x < 0) collider.flip(false,true);
+        t += 0.1f;
+        if(v < 0.001) v = 0;
     }
 }

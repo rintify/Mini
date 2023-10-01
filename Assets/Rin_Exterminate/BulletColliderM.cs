@@ -35,4 +35,11 @@ public class BulletColliderM : ColliderM
         if(axisX) dir.y = -dir.y;
         if(axisY) dir.x = -dir.x;
     }
+
+    public static void onCollision_Monst(BulletColliderM b,CollisionM c){
+        float absDirX = Mathf.Abs(b.dir.x);
+        if(c.normal.y > absDirX && b.dir.y < 0) b.flip(true,false);
+        else if(c.normal.y < -absDirX && b.dir.y > 0) b.flip(true,false);
+        else if(c.normal.x*b.dir.x < 0) b.flip(false,true);
+    }
 }
