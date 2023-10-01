@@ -21,12 +21,12 @@ public class Timer : MonoBehaviour
         if (CountDownTime > 0)
         {
             CountDownTime -= Time.deltaTime;
-            Texttime.text = "じかん:" + CountDownTime.ToString("0.00");
+            Texttime.text = "制限時間:" + CountDownTime.ToString("0.00");
         }
         else
         {
             limit = true;
-            Texttime.text = "じかん:" + CountDownTime.ToString("0.00");
+            Texttime.text = "制限時間:" + CountDownTime.ToString("0.00");
         }
     }
 }
