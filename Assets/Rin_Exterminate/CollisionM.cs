@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class CollisionM{
     public float modified;
-    public ColliderM bullet,collider;
+    public BulletColliderM bullet;
+    public ColliderM collider;
     public Vector2 normal;
 
-    public CollisionM(float modified,ColliderM bullet, ColliderM collider, Vector2 normal)
+    public CollisionM(float modified,BulletColliderM bullet, ColliderM collider, Vector2 normal)
     {
         this.modified = modified;
         this.bullet = bullet;

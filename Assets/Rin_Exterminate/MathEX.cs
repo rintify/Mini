@@ -3,6 +3,10 @@ using UnityEngine;
 
 public static class MathEX
 {
+    public static float Cross(this Vector2 self,Vector2 v){
+        return self.x*v.y - self.y*v.x;
+    }
+    
     public static Vector2 Deg2Direction(this float degree){
         float rad = degree*Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(rad),Mathf.Sin(rad));

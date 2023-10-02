@@ -48,7 +48,7 @@ public class CollisionManager : MonoBehaviour
             bullet.delta = nearCollision.modified;
             bullet.pos = bullet.pre + bullet.delta*bullet.dir;
             nearCollision.bullet.onCollision(nearCollision);
-            nearCollision.collider.onCollision(nearCollision);
+            if(bullet.exitst) nearCollision.collider.onCollision(nearCollision);
         }
     }
 
@@ -70,7 +70,7 @@ public class CollisionManager : MonoBehaviour
            if(anArgLevel > abArgLevel) return null;
         }*/
 
-        return new CollisionM(modified,b,p,n);
+        return new CollisionM(modified,p,b,n);
     }
 
     private static CollisionM wallCollision(BulletColliderM p,LineColliderM w){
@@ -82,12 +82,6 @@ public class CollisionManager : MonoBehaviour
         if(Dir_x_WP < 0 || Dir_x_WP > Dir_x_Wdelta) return null; //外れる壁を排除
         float modified = WP.Cross(w.delta)/Dir_x_Wdelta;
         if(modified < 0 || modified > p.delta) return null; //移動範囲にないものを排除
-        return new CollisionM(modified,w,p,w.n);
-    }
-}
-
-static class Fen{
-    public static float Cross(this Vector2 self,Vector2 v){
-        return self.x*v.y - self.y*v.x;
+        return new CollisionM(modified,p,w,w.n);
     }
 }

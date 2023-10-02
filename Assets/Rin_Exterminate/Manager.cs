@@ -26,7 +26,7 @@ namespace RinExterminate{
             points.Add(guidCollider.pos);
             guidCollider.move(100f);
             points.Add(guidCollider.pos);
-            guidCollider.move(2f);
+            guidCollider.move(100f);
             points.Add(guidCollider.pos);
             l1.set(points[0],points[1]);
             l2.set(points[1],points[2]);
