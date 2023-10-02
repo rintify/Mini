@@ -6,6 +6,7 @@ public class player : MonoBehaviour
 {
     public float speed;//速度
     public float jumpSpeed;//ジャンプ速度
+    public float jumpacc;//ジャンプ加速度
     public float jumpHeight;//ジャンプの高さ
     public float gravity;//重力
     public float jumpLimitTime;//ジャンプの制限
@@ -83,7 +84,7 @@ public class player : MonoBehaviour
             bool canTime = jumpLimitTime > jumpTime;
             if (Input.GetKey(KeyCode.Space) && canHeight && canTime && !isHead && !Space)
             {
-                ySpeed = jumpSpeed;
+                ySpeed = -jumpacc * jumpTime + jumpSpeed;
                 jumpTime += Time.deltaTime;
             }
             else if (!Input.GetKey(KeyCode.Space))
