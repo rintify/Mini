@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RinExterminate;
 using UnityEngine;
 
 public class EnermyBody : MonoBehaviour
@@ -15,5 +16,6 @@ public class EnermyBody : MonoBehaviour
         Debug.Log("fa");
         col.exitst = false;
         Destroy(this.gameObject);
+        Manager.This.kan();
     }
 }

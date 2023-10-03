@@ -1,4 +1,6 @@
-
+using System;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public static class MathEX
@@ -36,6 +38,18 @@ public static class MathEX
 
     public static Vector2 Abs(this Vector2 vector){
         return new Vector2(Mathf.Abs(vector.x),Mathf.Abs(vector.y));
+    }
+
+    public static void Shuffle<T>(this List<T> list)
+    {
+        var rand = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            (list[n], list[k]) = (list[k], list[n]);
+        }
     }
 }
 
