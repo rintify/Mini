@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -50,6 +51,17 @@ public static class MathEX
             int k = rand.Next(n + 1);
             (list[n], list[k]) = (list[k], list[n]);
         }
+    }
+
+    public static Coroutine StartCoroutine(this MonoBehaviour monoBehaviour, System.Action action, float delay)
+    {
+        return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
+    }
+
+    private static IEnumerator CoroutineAction(System.Action action, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        action?.Invoke();
     }
 }
 

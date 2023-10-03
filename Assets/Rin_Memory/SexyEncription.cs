@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,9 +8,11 @@ using UnityEngine.UI;
 public class SexyEncription : MonoBehaviour
 {
     public Text cardText;
-    private bool omote = false;
-    private Sprite sexyprite;
+    [NonSerialized]
+    public Sprite sexyprite;
     private Sprite defaultSp;
+    private Discord_Math math;
+    private bool virgin;
 
     private void Awake(){
         defaultSp = this.GetComponent<Image>().sprite;
@@ -20,25 +23,24 @@ public class SexyEncription : MonoBehaviour
         cardText.text = "Initial Text";
     }
 
-    public void set(Sprite sprite){
+    public void set(Sprite sprite,Discord_Math math){
         this.sexyprite = sprite;
         this.GetComponent<Image>().sprite = sexyprite;
-        omote = true;
+        this.math = math;
+    }
+
+    public void open(){
+        cardText.text = "Initial Text";
+        this.GetComponent<Image>().sprite = defaultSp;
+        virgin = true;
     }
 
     public void flip(){
-        if (omote)
-        {
-            cardText.text = "Initial Text";
-            omote = false;
-            this.GetComponent<Image>().sprite = defaultSp;
-        }
-        else
-        {
-            cardText.text = "Clicked Text";
-            omote = true;
-            this.GetComponent<Image>().sprite = sexyprite;
-        }
+        if(!virgin || !math.listen) return;
+        cardText.text = "Clicked Text";
+        this.GetComponent<Image>().sprite = sexyprite;
+        math.notifyFliped(this);
+        virgin = false;
     }
 
     public void OnCardClick()

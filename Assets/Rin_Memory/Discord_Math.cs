@@ -13,6 +13,11 @@ public class Discord_Math : MonoBehaviour
     private List<SexyEncription> sexys = new();
     int n,m;
     public Text title;
+    private SexyEncription current = null;
+    public GameObject batsuPrefab;
+    public AudioClip bu,pinpon;
+    private AudioSource source;
+    public bool listen = false;
 
     void Awake(){
         var cards = new Sprite[sprites.Length*2];
@@ -28,6 +33,7 @@ public class Discord_Math : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         for(int i = 0; i < n; i ++){
             for(int j = 0; j < m; j ++){
                 if(cards.Count < 1) continue;
@@ -36,7 +42,7 @@ public class Discord_Math : MonoBehaviour
                 var sex = sexy.gameObject.GetComponent<RectTransform>();
                 var card = cards[0];
                 cards.RemoveAt(0);
-                sexy.set(card);
+                sexy.set(card,this);
                 var size = sex.sizeDelta;
                 sex.anchoredPosition = new(-size.x*m/2 + (size.x + 10)*j, -size.y*n/2 + (size.y+10)*i);
             }
@@ -46,10 +52,31 @@ public class Discord_Math : MonoBehaviour
         
     }
 
+    public void notifyFliped(SexyEncription sexy){
+        if(current == null) current = sexy;
+        else{
+            if(current.sexyprite == sexy.sexyprite){
+                source.PlayOneShot(pinpon);
+                
+                var fin = current;
+                current = null;
+                this.StartCoroutine(()=>{
+                    Destroy(fin.gameObject);
+                    Destroy(sexy.gameObject);
+                },0.3f);
+            }
+            else{
+                source.PlayOneShot(bu);
+                Instantiate(batsuPrefab,sexy.transform);
+            }
+        }
+    }
+
     IEnumerator DelayedAction()
     {
         yield return new WaitForSeconds(2f); // 3秒の遅延
-        foreach(var s in sexys) s.flip();
+        foreach(var s in sexys) s.open();
         title.text = "";
+        listen = true;
     }
 }
