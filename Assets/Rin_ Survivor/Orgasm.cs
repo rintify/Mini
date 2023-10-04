@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class Orgasm : MonoBehaviour
 {
-    public float rotationSpeed = 20f;
-    public GameObject center;
+    private Hub parent;
     // Start is called before the first frame update
     void Start()
     {
-        
+        parent = transform.parent.GetComponent<Hub>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.RotateAround(
-            center.transform.position, 
+            parent.transform.position, 
             Vector3.forward, 
-            rotationSpeed*Time.deltaTime
+            parent.rotationSpeed*Time.deltaTime
         );
 
-        transform.LookAt(center.transform.position);
+        transform.LookAt(parent.transform.position);
         transform.Rotate(0, 90, 0);
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        rotationSpeed *= -1;
+        if(other.GetComponent<PlayHub>() != null){
+            Debug.Log("player");
+            Destroy(other.gameObject);
+        }
+        else if(other.GetComponent<EnemyHub>() != null){
+            Debug.Log("enemy");
+            Destroy(other.gameObject);
+        }
+        else parent.rotationSpeed *= -1;
     }
 }
