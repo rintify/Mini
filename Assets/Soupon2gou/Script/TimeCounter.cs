@@ -8,21 +8,30 @@ public class TimeCounter : MonoBehaviour
     //カウントダウン
     private float countdown = 8.0f;
 
+    //終わったら止める
+    private float stop =1.0f;
+
     //時間を表示するText型の変数
     public Text timeText;
 
     // Update is called once per frame
     void Update()
     {
-        //時間をカウントする
-        countdown -= Time.deltaTime;
 
-        //時間を表示する
-        timeText.text = countdown.ToString("f1") + "秒";
+        //時間をカウントする
+        countdown -= Time.deltaTime * stop;
+
+        
 
         if (countdown <= 0)
         {
             timeText.text = "時間になりました！";
+            stop = 0;
+        }
+        else
+        {
+            //時間を表示する
+            timeText.text = countdown.ToString("F1") + "秒";
         }
     }
 }
