@@ -5,10 +5,12 @@ using UnityEngine;
 public class Orgasm : MonoBehaviour
 {
     private Hub parent;
+    private PlayHub play;
     // Start is called before the first frame update
     void Start()
     {
         parent = transform.parent.GetComponent<Hub>();
+        play = transform.parent.GetComponent<PlayHub>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,9 @@ public class Orgasm : MonoBehaviour
             Debug.Log("enemy");
             Destroy(other.gameObject);
         }
-        else parent.rotationSpeed *= -1;
+        else{
+            parent.rotationSpeed *= -1;
+            if(play) play.kan();
+        }
     }
 }
