@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class subtitle : MonoBehaviour
 {
     public float time;
+    public AudioSource music;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,14 @@ public class subtitle : MonoBehaviour
         {
             Destroy(this.gameObject);
             Time.timeScale = 1;
+            music.pitch = 1;
+
         }
         else
         {
             Time.timeScale = 0;
+            music.pitch = 0;
+
         }
     }
 }

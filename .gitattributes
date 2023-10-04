@@ -4,3 +4,4 @@
 GN-KILLGOTHIC-U-KANANB[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
 Assets/Soupon2gou/BayatGames/** filter=lfs diff=lfs merge=lfs -text
 UDDIGIKYOKASHON-B[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text

@@ -6,6 +6,7 @@ public class EventSystem : MonoBehaviour
 {
     public Timer False;
     public coins True;
+    public AudioSource music;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,13 @@ public class EventSystem : MonoBehaviour
         if(False.limit)
         {
             Time.timeScale = 0;
+            music.pitch = 0;
             Debug.Log("false");
         }
         if(True.clear)
         {
             Time.timeScale = 0;
+            music.pitch = 0;
             Debug.Log("success");
         }
     }
