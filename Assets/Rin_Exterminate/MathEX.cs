@@ -61,7 +61,7 @@ public static class MathEX
         }
     }
 
-    public static Coroutine StartCoroutine(this MonoBehaviour monoBehaviour, System.Action action, float delay)
+    public static Coroutine Delay(this MonoBehaviour monoBehaviour, System.Action action, float delay)
     {
         return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
     }

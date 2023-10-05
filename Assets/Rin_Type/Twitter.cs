@@ -5,14 +5,25 @@ using UnityEngine.UI;
 
 public class Twitter : MonoBehaviour
 {
-    public Text test;
-    public string question;
+    public Text texual;
+    public Text japanese;
+    public TextAsset data;
+    private string question;
     private int current;
+    string[] lines;
     // Start is called before the first frame update
     void Start()
     {
+        lines = data.text.Split("\n");
+        next();
+    }
+
+    void next(){
         current = 0;
-        test.text = question;
+        texual.text = question;
+        var selected = lines[Random.Range(0,lines.Length)].Split(" ");
+        japanese.text = selected[0];
+        question = texual.text = selected[1];
     }
 
     // Update is called once per frame
@@ -28,10 +39,16 @@ public class Twitter : MonoBehaviour
         }
 
         if(pressed != 0){
-            if(question[current] == pressed){
-                Debug.Log("ok");
+            if(current < question.Length && question[current] == pressed){
+                texual.text = $"<color=#00ff00>{question.Substring(0,current+1)}</color>{question.Substring(current+1,question.Length-current-1)}";
                 current ++;
-                test.text = $"<color=#00ff00>{question.Substring(0,current)}</color>{question.Substring(current,question.Length-current)}";
+                if(current == question.Length)
+                this.Delay(()=>{
+                    next();
+                },0.5f);
+            }
+            else{
+                texual.text = $"<color=#00ff00>{question.Substring(0,current)}</color><color=#ff0033>{pressed}</color>{question.Substring(current+1,question.Length-current-1)}";
             }
         }
         
