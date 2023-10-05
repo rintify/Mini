@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RinExterminate;
 using UnityEngine;
 
 public class EnermyBody : MonoBehaviour
@@ -11,9 +12,14 @@ public class EnermyBody : MonoBehaviour
         col = new CircleColliderM(base.transform.position,base.transform.localScale.x*0.5f,0,Mathf.PI*2,onCollision);
     }
 
+    void Update(){
+
+    }
+
     void onCollision(CollisionM c){
         Debug.Log("fa");
         col.exitst = false;
         Destroy(this.gameObject);
+        Manager.This.kan();
     }
 }

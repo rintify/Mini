@@ -1,9 +1,16 @@
-
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public static class MathEX
 {
     public static float Cross(this Vector2 self,Vector2 v){
+        return self.x*v.y - self.y*v.x;
+    }
+
+    public static float Cross2(this Vector3 self,Vector3 v){
         return self.x*v.y - self.y*v.x;
     }
     
@@ -36,6 +43,33 @@ public static class MathEX
 
     public static Vector2 Abs(this Vector2 vector){
         return new Vector2(Mathf.Abs(vector.x),Mathf.Abs(vector.y));
+    }
+
+    public static Vector3 Right(this Vector3 v){
+        return new(v.y,-v.x,v.z);
+    }
+
+    public static void Shuffle<T>(this List<T> list)
+    {
+        var rand = new System.Random();
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            (list[n], list[k]) = (list[k], list[n]);
+        }
+    }
+
+    public static Coroutine StartCoroutine(this MonoBehaviour monoBehaviour, System.Action action, float delay)
+    {
+        return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
+    }
+
+    private static IEnumerator CoroutineAction(System.Action action, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        action?.Invoke();
     }
 }
 

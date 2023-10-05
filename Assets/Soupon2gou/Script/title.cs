@@ -7,18 +7,30 @@ using UnityEngine.SceneManagement;
 public class title : MonoBehaviour
 {
     private bool firstPush=false;
+    private bool can_do = false;
+
+    private void Start()
+    {
+        //allow_startを3.5秒後に呼び出す
+        Invoke(nameof(allow_start), 4.5f);
+    }
 
     //スタートボタンを押されたら呼ばれる
     public void PressStart()
     {
         Debug.Log("Press Start");
        
-        if (!firstPush)
+        if (!firstPush && can_do)
         {
             Debug.Log("Go Next Scene!");
             //ここに次のシーンに行く命令を書く
             SceneManager.LoadScene("game1");
             firstPush = true;
         }
+    }
+
+    public void allow_start()
+    {
+        can_do = true;
     }
 }

@@ -11,11 +11,20 @@ namespace RinExterminate{
         public float speed = 300;
         public Line l1,l2;
         BulletColliderM guidCollider;
+        public AudioClip sound1;
+        public AudioSource source;
         // Start is called before the first frame update
         void Start()
         {
             this.guidCollider = new BulletColliderM(c => BulletColliderM.onCollision_Monst(guidCollider,c),1f);
             guidCollider.exitst = false;
+        }
+
+        public static Manager This{
+            get{
+                var manager = GameObject.Find("GameManager");
+                return manager.GetComponent<Manager>();
+            }
         }
 
         void guid(){
@@ -30,6 +39,10 @@ namespace RinExterminate{
             points.Add(guidCollider.pos);
             l1.set(points[0],points[1]);
             l2.set(points[1],points[2]);
+        }
+
+        public void kan(){
+            source.PlayOneShot(sound1);
         }
 
         // Update is called once per frame
