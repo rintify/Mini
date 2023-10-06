@@ -34,7 +34,7 @@ public static class MathEX
     public static Vector3 Z(this Vector3 self,float v){
         return new Vector3(self.x,self.y,v);
     }
-    public static Vector2 ZX(this Vector2 self,float v){
+    public static Vector2 X(this Vector2 self,float v){
         return new Vector2(v,self.y);
     }
     public static Vector2 Y(this Vector2 self,float v){

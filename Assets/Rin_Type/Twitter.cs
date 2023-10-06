@@ -11,6 +11,9 @@ public class Twitter : MonoBehaviour
     private string question;
     private int current;
     string[] lines;
+    public AudioSource source;
+    public AudioClip clip,bu;
+    bool canPress;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,7 @@ public class Twitter : MonoBehaviour
     }
 
     void next(){
+        canPress = true;
         current = 0;
         texual.text = question;
         var selected = lines[Random.Range(0,lines.Length)].Split(" ");
@@ -29,6 +33,7 @@ public class Twitter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!canPress) return;
         char pressed = (char)0;
         for(int kcode = (int)KeyCode.A; kcode <= (int)KeyCode.Z; kcode ++)
         {
@@ -39,6 +44,7 @@ public class Twitter : MonoBehaviour
         }
 
         if(pressed != 0){
+            source.PlayOneShot(clip);
             if(current < question.Length && question[current] == pressed){
                 texual.text = $"<color=#00ff00>{question.Substring(0,current+1)}</color>{question.Substring(current+1,question.Length-current-1)}";
                 current ++;
@@ -49,6 +55,13 @@ public class Twitter : MonoBehaviour
             }
             else{
                 texual.text = $"<color=#00ff00>{question.Substring(0,current)}</color><color=#ff0033>{pressed}</color>{question.Substring(current+1,question.Length-current-1)}";
+                canPress = false;
+                source.PlayOneShot(bu);
+                this.Delay(()=>{
+                    current = 0;
+                    canPress = true;
+                    texual.text = question;
+                },0.2f);
             }
         }
         
