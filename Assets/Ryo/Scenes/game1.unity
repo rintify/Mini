@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c1227244f40b64bbf3c97c6fddcf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: 5
+  enemy: 8
   target: {fileID: 7559150151551314937}
   speed: 7
 --- !u!50 &483672168
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 260000979}
-  waittime: 30
+  waittime: 200
 --- !u!114 &483672173
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public int enemy = 6;
+    public int enemy = 8;
     //new Vector3 point;
     public GameObject target;
     public float speed = 3f;
@@ -25,10 +25,12 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow)){
+        if(Input.GetKey(KeyCode.LeftArrow)|| Input.GetKey(KeyCode.A))
+        {
             player = -speed;
 
-        } else if(Input.GetKey(KeyCode.RightArrow)){
+        } else if(Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.D))
+        {
             player = speed;
         }else {
             player = 0;
