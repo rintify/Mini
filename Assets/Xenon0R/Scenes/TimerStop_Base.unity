@@ -513,8 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8588f3f07efc6b49a97f6b35b53ec2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 10
-  timeText: {fileID: 1131009450}
 --- !u!4 &1279727767
 Transform:
   m_ObjectHideFlags: 0

@@ -17,8 +17,9 @@ public class player : MonoBehaviour
     //プライベート変数
     private CapsuleCollider2D capcol = null;
     private Moveobject moveObj = null;
-    //private Animator anim = null;
+    private Animator anim = null;
     private Rigidbody2D rb = null;
+    private AudioSource audioSource = null;
     private bool isGround = false;
     private bool isHead = false;
     private bool isJump = false;
@@ -29,8 +30,9 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //anim = GetComponent<Animator>();//Animaterの取得
+        anim = GetComponent<Animator>();//Animaterの取得
         rb = GetComponent<Rigidbody2D>();  //Rigidbody2Dの取得
+        audioSource = GetComponent<AudioSource>();//AudioSourceの取得
         capcol = GetComponent<CapsuleCollider2D>();
     }
 
@@ -47,18 +49,18 @@ public class player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.localScale = new Vector3(-size, size, 1);
-            //anim.SetBool("run", true);
+            anim.SetBool("run", true);
             xSpeed = -speed;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            //anim.SetBool("run", true);
+            anim.SetBool("run", true);
             transform.localScale = new Vector3(size, size, 1);
             xSpeed = speed;
         }
         else
         {
-            //anim.SetBool("run", false);
+            anim.SetBool("run", false);
             xSpeed = 0.0f;
         }
 
@@ -67,6 +69,7 @@ public class player : MonoBehaviour
         {
           if (Input.GetKey(KeyCode.Space) && Space)
            {
+                audioSource.Play();
                 Space = false;
                ySpeed = jumpSpeed;
                jumpPos = transform.position.y;

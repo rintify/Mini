@@ -14,6 +14,6 @@ public class count : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(number);
+        //Debug.Log(number);
     }
 }

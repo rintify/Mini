@@ -9,6 +9,10 @@ public static class MathEX
     public static float Cross(this Vector2 self,Vector2 v){
         return self.x*v.y - self.y*v.x;
     }
+
+    public static float Cross2(this Vector3 self,Vector3 v){
+        return self.x*v.y - self.y*v.x;
+    }
     
     public static Vector2 Deg2Direction(this float degree){
         float rad = degree*Mathf.Deg2Rad;
@@ -30,7 +34,7 @@ public static class MathEX
     public static Vector3 Z(this Vector3 self,float v){
         return new Vector3(self.x,self.y,v);
     }
-    public static Vector2 ZX(this Vector2 self,float v){
+    public static Vector2 X(this Vector2 self,float v){
         return new Vector2(v,self.y);
     }
     public static Vector2 Y(this Vector2 self,float v){
@@ -39,6 +43,10 @@ public static class MathEX
 
     public static Vector2 Abs(this Vector2 vector){
         return new Vector2(Mathf.Abs(vector.x),Mathf.Abs(vector.y));
+    }
+
+    public static Vector3 Right(this Vector3 v){
+        return new(v.y,-v.x,v.z);
     }
 
     public static void Shuffle<T>(this List<T> list)
@@ -53,7 +61,7 @@ public static class MathEX
         }
     }
 
-    public static Coroutine StartCoroutine(this MonoBehaviour monoBehaviour, System.Action action, float delay)
+    public static Coroutine Delay(this MonoBehaviour monoBehaviour, System.Action action, float delay)
     {
         return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
     }
