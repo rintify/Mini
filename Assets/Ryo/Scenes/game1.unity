@@ -355,7 +355,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 278873452}
   - component: {fileID: 278873451}
   - component: {fileID: 278873450}
+  - component: {fileID: 278873453}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -453,6 +454,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &278873453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278873449}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc9618b6bc4e4d448d57ddf6671d705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: 7
+  target: {fileID: 0}
 --- !u!1 &483672166
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c1227244f40b64bbf3c97c6fddcf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: 5
+  target: {fileID: 7559150151551314937}
   speed: 7
 --- !u!50 &483672168
 Rigidbody2D:
@@ -641,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 260000979}
-  waittime: 300
+  waittime: 30
 --- !u!114 &483672173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132083859115555350, guid: 18b8e00522cdb29418ce7d926075a463, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.71
+      value: 7.31
       objectReference: {fileID: 0}
     - target: {fileID: 9132083859115555350, guid: 18b8e00522cdb29418ce7d926075a463, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1015,6 +1032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8298538606369170335, guid: 85b11da3e55de8e4fb557568b12c2242, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c1ef6650ba858e40887295e221de8ad, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1025,6 +1046,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8019684889124756635, guid: 85b11da3e55de8e4fb557568b12c2242, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7559150151551314938}
+    - targetCorrespondingSourceObject: {fileID: 8019684889124756635, guid: 85b11da3e55de8e4fb557568b12c2242, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7559150151551314942}
   m_SourcePrefab: {fileID: 100100000, guid: 85b11da3e55de8e4fb557568b12c2242, type: 3}
 --- !u!1 &7559150151551314937 stripped
 GameObject:
@@ -1103,6 +1127,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7559150151551314942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559150151551314937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1cef8a461179747a4b04f51af4c01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
