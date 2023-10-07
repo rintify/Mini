@@ -46,13 +46,13 @@ public class player : MonoBehaviour
         //キー移動
         float xSpeed = 0.0f;
         float ySpeed = -gravity;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             transform.localScale = new Vector3(-size, size, 1);
             anim.SetBool("run", true);
             xSpeed = -speed;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
             anim.SetBool("run", true);
             transform.localScale = new Vector3(size, size, 1);
@@ -65,9 +65,9 @@ public class player : MonoBehaviour
         }
 
         //ジャンプ
-        if (isGround)
+        if (isGround && Space)
         {
-          if (Input.GetKey(KeyCode.Space) && Space)
+          if (Input.GetKey(KeyCode.Space))
            {
                 audioSource.Play();
                 Space = false;
@@ -90,17 +90,13 @@ public class player : MonoBehaviour
                 ySpeed = -jumpacc * jumpTime + jumpSpeed;
                 jumpTime += Time.deltaTime;
             }
-            else if (!Input.GetKey(KeyCode.Space))
-            {
-                Space = true;
-            }
             else
             {
                 isJump = false;
                 jumpTime = 0.0f;
             }
         }
-        if (!Input.GetKey(KeyCode.Space))
+        if (!Input.GetKey(KeyCode.Space) && isGround)
         {
             Space = true;
         }
@@ -109,7 +105,8 @@ public class player : MonoBehaviour
         {
             addVelocity = moveObj.GetVelocity();
         }
-        //anim.SetBool("jump", isJump);
+        anim.SetBool("jump", isJump);
+        anim.SetBool("ground", isGround);
         rb.velocity = new Vector2(xSpeed, ySpeed) + addVelocity;
     }
 }
