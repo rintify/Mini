@@ -11,6 +11,7 @@ TagManager:
   - movefloor
   - FallFloor
   - foot
+  - wall
   layers:
   - Default
   - TransparentFX
