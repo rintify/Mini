@@ -12,6 +12,7 @@ TagManager:
   - FallFloor
   - foot
   - wall
+  - rain
   layers:
   - Default
   - TransparentFX
