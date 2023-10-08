@@ -19,7 +19,10 @@ public class Apples : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isGameClear == true)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
       void OnCollisionEnter2D(Collision2D collision)
@@ -28,7 +31,6 @@ public class Apples : MonoBehaviour
         {
             gameClearUI.SetActive(true);
             isGameClear = true;
-
         }
     }
 }

@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
   {
-        if(collision.gameObject.CompareTag("Apple"))
-        {
+            if(collision.gameObject.CompareTag("Apple"))
+            { 
                 gameOverUI.SetActive(true);
                 isGameOver = true;
-        }
+            }
   }
 }
