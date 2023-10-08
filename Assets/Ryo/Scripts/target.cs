@@ -5,13 +5,13 @@ using UnityEngine;
 public class target : MonoBehaviour
 {
    
-    GameObject squere;
-    count count;
+    //public GameObject squere;
+    //count count;
     // Start is called before the first frame update
     void Start()
     {
-        squere = GameObject.Find("Squere");
-        count = squere.GetComponent<count>();
+        //squere = GameObject.Find("Squere");
+        //count = squere.GetComponent<count>();
     }
     // Update is called once per frame
     void Update()
@@ -19,7 +19,9 @@ public class target : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other){
-        count.number +=1;
+        //count.number++;
+        Debug.Log("Hit"); // ログを表示する
         GameObject.Destroy(this.gameObject);
     }
+    
 }

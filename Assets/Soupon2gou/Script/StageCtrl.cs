@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +9,13 @@ public class StageCtrl : MonoBehaviour
     [Header("プレイヤーゲームオブジェクト")] public GameObject playerObj;
     [Header("コンティニュー位置")] public GameObject[] continuePoint;
     [Header("ステージクリアSE")] public AudioClip stageClearSE;
+    [Header("落下SE")] public AudioClip fallSE;
     [Header("ステージクリア")] public GameObject stageClearObj;
     [Header("ステージクリア判定")] public PlayerClearCheck stageClearTrigger;
+    [Header("落下判定")] public PlayerfallCheck PlayerfallTrigger;
 
     private bool doClear = false;
+    private bool isfall = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +34,20 @@ public class StageCtrl : MonoBehaviour
 
     void Update()
     {
+        if(PlayerfallTrigger != null && PlayerfallTrigger.isOn && !isfall)
+        {
+            Debug.Log("fallしました");
+            playerfall();
+            isfall = true;
+        }
    
         if(stageClearTrigger != null && stageClearTrigger.isOn2 && !doClear) {
-            Debug.Log("ok");
+            Debug.Log("clearしました");
             StageClear();
             doClear = true;
         }
+
+       
     }
     /// <summary>
     /// ステージをクリアした
@@ -46,5 +58,13 @@ public class StageCtrl : MonoBehaviour
         //stageClearObj.SetActive(true);
         GameManager.instance.PlaySE(stageClearSE);
         Debug.Log("ステージクリアSEをならしました");
+    }
+    /// <summary>
+    /// 落下した
+    /// </summary>
+    public void playerfall()
+    {
+        GameManager.instance.PlaySE(fallSE);
+        Debug.Log("fallSEをならしました");
     }
 }

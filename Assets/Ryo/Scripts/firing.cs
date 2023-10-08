@@ -7,7 +7,7 @@ public class firing : MonoBehaviour
 {
     public GameObject bullet;
     new Vector3 point;
-    public int waittime = 500;
+    public int waittime = 50;
     int time =0;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,8 @@ public class firing : MonoBehaviour
     void Update()
     {
         time+=1;
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0)|| Input.GetKeyDown("space"))
+        {
             //Debug.Log(time);
             if(time>waittime){
             point = this.transform.position;

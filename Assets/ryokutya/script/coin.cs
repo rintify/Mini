@@ -5,13 +5,16 @@ using UnityEngine;
 public class coin : MonoBehaviour
 {
     public coins Many;
+    public bool SE = false;
     private bool isOn = false;
     private string playerTag = "Player";
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+
+     }
 
     // Update is called once per frame
     void Update()
@@ -27,6 +30,7 @@ public class coin : MonoBehaviour
         if (collision.tag == playerTag)
         {
             isOn = true;
+            SE = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

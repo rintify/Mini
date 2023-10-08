@@ -60,7 +60,7 @@ public class Discord_Math : MonoBehaviour
                 
                 var fin = current;
                 current = null;
-                this.StartCoroutine(()=>{
+                this.Delay(()=>{
                     Destroy(fin.gameObject);
                     Destroy(sexy.gameObject);
                 },0.3f);
