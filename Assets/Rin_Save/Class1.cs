@@ -10,7 +10,7 @@ public class Class1 : MonoBehaviour
     private EdgeCollider2D edgeCollider;
     private List<Vector2> points;
     Rigidbody2D rb;
-    bool drawable = true;
+    public bool drawable = true;
 
     private void Awake()
     {
