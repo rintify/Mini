@@ -9,13 +9,19 @@ public class Class1 : MonoBehaviour
     private LineRenderer lineRenderer;
     private EdgeCollider2D edgeCollider;
     private List<Vector2> points;
+    Rigidbody2D rb;
     bool drawable = true;
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
         points = new List<Vector2>();
+
+        edgeCollider.enabled = false;
+        rb.isKinematic = true;
+
     }
 
     private void Update()
@@ -23,10 +29,13 @@ public class Class1 : MonoBehaviour
         if(!drawable) return;
         if (Input.GetMouseButton(0))
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var mouseWP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePosition = transform.InverseTransformPoint(mouseWP);
 
-            if (points.Count == 0 || (mousePosition - points.Last()).SqrMagnitude() > 0.25)
-            {
+            if (points.Count == 0 || 
+                (mousePosition - points.Last()).SqrMagnitude() > 0.25 &&
+                !Physics2D.Linecast(transform.TransformPoint(points.Last()), mouseWP)
+            ){
                 points.Add(mousePosition);
                 lineRenderer.positionCount = points.Count;
                 lineRenderer.SetPosition(points.Count - 1, mousePosition);
@@ -35,6 +44,8 @@ public class Class1 : MonoBehaviour
         if(Input.GetMouseButtonUp(0)){
             edgeCollider.points = points.ToArray();
             drawable = false;
+            edgeCollider.enabled = true;
+            rb.isKinematic = false;
         }
     }
 
