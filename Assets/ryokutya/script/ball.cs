@@ -7,6 +7,7 @@ public class ball : MonoBehaviour
     public float speed;
     public bool On = false;
     private Rigidbody2D rb = null;
+    private AudioSource audioSource = null;
     private float xforce;
     private float yforce;
     
@@ -17,6 +18,7 @@ public class ball : MonoBehaviour
         xforce = Random.Range(-1, 1);
         yforce = Random.Range(6, 10);
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         Vector3 force = new Vector3(xforce, yforce, 0);
         Vector3 Force = force.normalized * speed;
         rb.AddForce(Force,ForceMode2D.Impulse);
@@ -32,7 +34,13 @@ public class ball : MonoBehaviour
         if(collision.collider.tag == "ground")
         {
             On = true;
+            Destroy(this.gameObject);
             //Debug.Log("衝突");
+        }
+        else if(collision.collider.tag == "wall" || collision.collider.tag == "Player")
+        {
+            audioSource.Play();
+            //Debug.Log("音");
         }
     }
 }
