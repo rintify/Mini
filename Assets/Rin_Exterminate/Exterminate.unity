@@ -836,8 +836,9 @@ MonoBehaviour:
   speed: 300
   l1: {fileID: 1631632825}
   l2: {fileID: 1178569773}
-  sound1: {fileID: 8300000, guid: e9b13f8a9bad34188be218bce44ddc2f, type: 3}
+  sound1: {fileID: 8300000, guid: 5997dadc00d1044938277f2e916dcd6c, type: 3}
   source: {fileID: 1539416146}
+  sound2: {fileID: 8300000, guid: 6b311680e144540b287e786a4c147da5, type: 3}
 --- !u!82 &1539416145
 AudioSource:
   m_ObjectHideFlags: 0
