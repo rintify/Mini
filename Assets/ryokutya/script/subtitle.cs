@@ -8,6 +8,7 @@ public class subtitle : MonoBehaviour
 {
     public float time;
     public AudioSource music;
+    public bool apper = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class subtitle : MonoBehaviour
         time -= Time.unscaledDeltaTime;
         if(time <= 0)
         {
+            apper = true;
             Destroy(this.gameObject);
             Time.timeScale = 1;
             music.pitch = 1;

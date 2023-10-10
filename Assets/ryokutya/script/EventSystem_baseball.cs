@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class EventSystem_baseball : MonoBehaviour
 {
+    public GameObject ball;
     public bat True1;
     public Timer False1;
     public AudioSource music;
+    public subtitle sub;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+  
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(sub.apper)
+        {
+            ball.SetActive(true);
+            sub.apper = false;
+        }
         if (False1.limit)
         {
             if(True1.ball)
