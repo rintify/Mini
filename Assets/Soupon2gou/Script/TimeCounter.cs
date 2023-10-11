@@ -27,6 +27,7 @@ public class TimeCounter : MonoBehaviour
         {
             timeText.text = "時間になりました！";
             stop = 0;
+            countdown = 8.0f;
         }
         else
         {
