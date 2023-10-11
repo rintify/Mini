@@ -9,6 +9,7 @@ public class bat : MonoBehaviour
     public float impulseTorque;
     public bool ball = false;
     private Rigidbody2D rb = null;
+    private AudioSource audioSource = null;
     private float time = 0;
     private float speed;
     private bool space = true;
@@ -18,6 +19,7 @@ public class bat : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.centerOfMass = new Vector3(-position, 0, 0);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class bat : MonoBehaviour
         if (collision.collider.tag == "ball")
         {
             rb.angularVelocity = speed;
+            audioSource.Play();
             ball = true;
             //Debug.Log("衝突");
         }
