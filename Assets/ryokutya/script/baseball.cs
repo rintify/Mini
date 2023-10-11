@@ -6,13 +6,17 @@ public class baseball : MonoBehaviour
 {
     public float force;
     private Rigidbody2D rb = null;
+    private AudioSource audioSource = null;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         Vector3 Force = new Vector3(0, force, 0);
         rb.AddForce(Force, ForceMode2D.Impulse);
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -20,4 +24,12 @@ public class baseball : MonoBehaviour
     {
         
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "bat")
+        {
+            audioSource.Stop();
+        }
+    }
+
 }
