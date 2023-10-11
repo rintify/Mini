@@ -6,6 +6,12 @@ using UnityEngine;
 
 public static class MathEX
 {
+    public static void FlipX(this Transform self){
+        var a = self.transform.localScale;
+        a.x *= -1;
+        self.transform.localScale = a;
+    }
+
     public static float Cross(this Vector2 self,Vector2 v){
         return self.x*v.y - self.y*v.x;
     }

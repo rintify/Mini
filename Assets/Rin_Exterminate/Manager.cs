@@ -13,6 +13,7 @@ namespace RinExterminate{
         BulletColliderM guidCollider;
         public AudioClip sound1;
         public AudioSource source;
+        public AudioClip sound2;
         // Start is called before the first frame update
         void Start()
         {
@@ -43,6 +44,10 @@ namespace RinExterminate{
 
         public void kan(){
             source.PlayOneShot(sound1);
+        }
+
+        public void wally(){
+            source.PlayOneShot(sound2);
         }
 
         // Update is called once per frame

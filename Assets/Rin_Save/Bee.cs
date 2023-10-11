@@ -23,6 +23,7 @@ public class Bee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(dir.x > 0 == transform.localScale.x > 0) transform.FlipX();
         if(sex.drawable) return;
         var dogDir = (dog.transform.position - transform.position).normalized;
         transform.position += (Vector3)(speed * Time.deltaTime * dir);
