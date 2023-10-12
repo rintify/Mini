@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 478256454}
   - component: {fileID: 478256456}
   - component: {fileID: 478256455}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: "\u5236\u9650\u6642\u9593"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934220619}
   - component: {fileID: 934220620}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ClearEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1097,7 +1097,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 349419859
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1172,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 1113546653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -958.5, y: -551.05, z: 0}
+  m_LocalPosition: {x: -312.7, y: -185.9, z: 0}
   m_LocalScale: {x: 58.1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 1447806307}
   - component: {fileID: 1447806309}
   - component: {fileID: 1447806308}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TimeCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,7 +2046,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -435971035
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 1777288047}
   - component: {fileID: 1777288050}
   - component: {fileID: 1777288049}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2981,7 +2981,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -571798889
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: baa58b45c6b4575498fee2430bdd5228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3197,7 +3197,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -585913833
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 46adff1557d697646956acc334861a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 1901303252}
   - component: {fileID: 1901303251}
   - component: {fileID: 1901303250}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3304,7 +3304,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1603556429
+  m_SortingLayerID: 1708927431
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1901303253
@@ -3382,6 +3382,10 @@ PrefabInstance:
       propertyPath: timeText
       value: 
       objectReference: {fileID: 1447806308}
+    - target: {fileID: 2999766033290923259, guid: c4defddfc6824184faf4886c1195bf0b, type: 3}
+      propertyPath: countdown
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5899098602529462660, guid: c4defddfc6824184faf4886c1195bf0b, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -3550,7 +3554,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -585913833
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
@@ -3682,7 +3686,7 @@ Transform:
   m_GameObject: {fileID: 5777461911813785193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -950.71, y: -538.2, z: 0}
+  m_LocalPosition: {x: -300.73, y: -172.7, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

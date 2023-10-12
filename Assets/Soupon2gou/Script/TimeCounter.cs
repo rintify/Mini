@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeCounter : MonoBehaviour
 {
     //カウントダウン
-    private float countdown = 8.0f;
+    public float countdown ;
 
     //終わったら止める
     private float stop =1.0f;
