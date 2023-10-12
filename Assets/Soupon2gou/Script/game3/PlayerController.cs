@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(new Vector3(0, 0.5f, 0));
 
         //少しずつ下へ
-        transform.Translate(0, -0.005f, 0);
+        //transform.Translate(0, -0.005f, 0);
 
         //下まで行ったら上に戻る
         if (1 > transform.position.y)

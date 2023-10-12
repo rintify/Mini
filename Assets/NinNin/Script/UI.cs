@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace NinNin{
 public class UI : MonoBehaviour
 {
     public Block[] blocks;
@@ -34,7 +35,7 @@ public class UI : MonoBehaviour
     //ブロック全部消えた？ 
     private bool DestroyAllblocks()
     {
-        foreach( Block b in blocks)
+         foreach(Block b in blocks)
         {
             if( b != null )
             {
@@ -45,4 +46,5 @@ public class UI : MonoBehaviour
     }
 
 
+}
 }
