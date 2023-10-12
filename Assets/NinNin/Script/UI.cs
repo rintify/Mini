@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class UI : MonoBehaviour
 {
     public Block[] blocks;
     public GameObject gameOverUI;
@@ -13,29 +13,28 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if( isGameClear != true)
+          if( isGameClear != true)
         {
             if( DestroyAllblocks())
             {
                 //ゲームクリア
                 Debug.Log("ゲームクリア");
-                gameClearUI.SetActive(true);
                 isGameClear = true;
                 Destroy(destroy_ball);
             }
         }
     }
 
-     //ブロック全部消えた？ 
+    //ブロック全部消えた？ 
     private bool DestroyAllblocks()
     {
-        foreach( block b in blocks)
+        foreach( Block b in blocks)
         {
             if( b != null )
             {
@@ -45,10 +44,5 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public void GameOver()
-    {
-        Debug.Log("ゲームオーバー");
-        gameOverUI.SetActive(true);
-    }
 
 }

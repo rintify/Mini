@@ -17,13 +17,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKey(KeyCode.LeftArrow))
+       if (Input.GetKey(KeyCode.A))
         {
             if (this.transform.position.x > -8)
                 this.transform.position += Vector3.left * speed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             if (this.transform.position.x < 8)
                 this.transform.position += Vector3.right * speed * Time.deltaTime;
