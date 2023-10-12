@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Twitter : MonoBehaviour
 {
+    public RectTransform sexy;
     public Text texual;
     public Text japanese;
     public TextAsset data;

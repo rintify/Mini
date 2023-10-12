@@ -72,10 +72,24 @@ public static class MathEX
         return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
     }
 
+    public static Coroutine Interval(this MonoBehaviour monoBehaviour, System.Func<bool> action, float interval)
+    {
+        return monoBehaviour.StartCoroutine(CoroutineAction_Loop(action, interval));
+    }
+
     private static IEnumerator CoroutineAction(System.Action action, float delay)
     {
         yield return new WaitForSeconds(delay);
         action?.Invoke();
+    }
+
+    private static IEnumerator CoroutineAction_Loop(System.Func<bool> action, float interval)
+    {
+        while (true)
+        {
+            if(action?.Invoke()??true) break;
+            yield return new WaitForSeconds(interval);
+        }
     }
 }
 
