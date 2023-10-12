@@ -15,10 +15,6 @@ public class Counter : MonoBehaviour
     {
         text = GetComponent<Text>();
         current = count;
-        /*this.Interval(()=>{
-            text.text = count--.ToString();
-            return count < 0;
-        },1);*/
     }
 
     // Update is called once per frame
