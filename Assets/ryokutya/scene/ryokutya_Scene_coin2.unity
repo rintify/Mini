@@ -7286,6 +7286,7 @@ MonoBehaviour:
   CountDownTime: 8.02
   Texttime: {fileID: 878160889}
   im: {fileID: 1957804407}
+  flashspeed: 1.17
 --- !u!114 &1957804407
 MonoBehaviour:
   m_ObjectHideFlags: 0

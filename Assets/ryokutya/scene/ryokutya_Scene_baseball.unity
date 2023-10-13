@@ -215,6 +215,7 @@ MonoBehaviour:
   CountDownTime: 4.02
   Texttime: {fileID: 981241958}
   im: {fileID: 55156595}
+  flashspeed: 1.17
 --- !u!1 &319259352
 GameObject:
   m_ObjectHideFlags: 0

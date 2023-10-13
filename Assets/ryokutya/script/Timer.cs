@@ -9,7 +9,10 @@ public class Timer : MonoBehaviour
     public float CountDownTime;
     public Text Texttime;
     public Image im;
+    public float flashspeed;
     private float time;
+    private float speed = 2;
+    private float frequent = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,8 @@ public class Timer : MonoBehaviour
             im.fillAmount = CountDownTime / time;
             if (CountDownTime < 4)
             {
-                Texttime.color = Color.red;
+                Texttime.color = GetAlphaColor(Texttime.color);
+                //Texttime.color = Color.red;
                 Texttime.text = Mathf.CeilToInt(CountDownTime - 1).ToString();
             }
         }
@@ -35,6 +39,14 @@ public class Timer : MonoBehaviour
             Texttime.text = "0";
             this.gameObject.SetActive(false);
             limit = true;
+        }
+        Color GetAlphaColor(Color color)
+        {
+            frequent += Time.deltaTime * 5.0f * flashspeed;
+            color = Color.red;
+            color.a = Mathf.Sin(frequent) * 0.5f + 0.5f;
+
+            return color;
         }
     }
 }

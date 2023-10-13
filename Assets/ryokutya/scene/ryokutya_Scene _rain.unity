@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 151856305}
   - component: {fileID: 151856307}
-  - component: {fileID: 151856306}
   m_Layer: 0
   m_Name: timer
   m_TagString: Untagged
@@ -158,22 +157,6 @@ Transform:
   - {fileID: 1757615983}
   m_Father: {fileID: 1004818745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &151856306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151856304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75e630002320c84392e656d6c903f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limit: 0
-  CountDownTime: 8.02
-  Texttime: {fileID: 0}
-  im: {fileID: 0}
 --- !u!212 &151856307
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1460,6 +1443,7 @@ MonoBehaviour:
   CountDownTime: 8.02
   Texttime: {fileID: 1757615985}
   im: {fileID: 703133089}
+  flashspeed: 1.17
 --- !u!114 &703133089
 MonoBehaviour:
   m_ObjectHideFlags: 0
