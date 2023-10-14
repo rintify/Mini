@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -90,6 +92,18 @@ public static class MathEX
             if(action?.Invoke()??true) break;
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    public static T ElementAtRandom<T>(this IEnumerable<T> self){
+        return self.ElementAt(UnityEngine.Random.Range(0,self.Count()));
+    }
+
+    public static T ElementAtRandom<T>(this T[] self){
+        return self[UnityEngine.Random.Range(0,self.Count())];
+    }
+
+    public static T ElementAtRandom<T>(this List<T> self){
+        return self[UnityEngine.Random.Range(0,self.Count())];
     }
 }
 
