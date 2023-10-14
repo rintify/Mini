@@ -5,7 +5,7 @@ using UnityEngine;
 public class target : MonoBehaviour
 {
    
-    //public GameObject squere;
+    public GameObject bullet;
     //count count;
     // Start is called before the first frame update
     void Start()
@@ -19,9 +19,11 @@ public class target : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other){
-        //count.number++;
-        Debug.Log("Hit"); // ログを表示する
+        
+        if(other.gameObject.name == "bullet(Clone)"){
+            count.number++;
         GameObject.Destroy(this.gameObject);
+        }
     }
     
 }
