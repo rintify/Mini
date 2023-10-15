@@ -14,11 +14,13 @@ public class Common : MonoBehaviour
 
     ///<summary>ゲームに要求される難易度</summary>
     public static int RequiredLevel {get{
+        if(!instance) return 1;
         return instance.level;
     }}
 
     ///<summary>ゲームを開始する時に実行する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
+        if(!instance) return;
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
         instance.OnStartGame();
@@ -27,6 +29,7 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを終了し次のゲームを開始する</summary>
     ///<param name="isCleared">ゲームをクリアできたか</param>
     public static void EndGame(bool isCleared){
+        if(!instance) return;
         //クリアしたらスコア+1
         if(isCleared){
             instance.score ++;
@@ -57,15 +60,14 @@ public class Common : MonoBehaviour
 
     ///<summary>スタート画面からゲームを開始する</summary>
     public static void StartGames(string playerName,string langage){
+        if(!instance){
+            Debug.Log("Start!");
+            return;
+        }
         instance.playerName = playerName;
         instance.langage = langage;
         instance.Next();
     }
-
-    public static void StartGames(){
-        StartGames("aaa","japanese");
-    }
-
 
 
 
@@ -74,14 +76,21 @@ public class Common : MonoBehaviour
 
     ///<summary>プレイヤーの名前</summary>
     public static string PlayerName {get{
+        if(!instance) return "Alice";
         return instance.playerName;
     }}
 
     ///<summary>ライフ</summary>
-    public static int Life {get{return instance.life;}}
+    public static int Life {get{
+        if(!instance) return 1;
+        return instance.life;
+    }}
 
     ///<summary>スコア</summary>
-    public static int Score {get{return instance.score;}}
+    public static int Score {get{
+        if(!instance) return 1;
+        return instance.score;
+    }}
 
 
 
@@ -90,6 +99,7 @@ public class Common : MonoBehaviour
 
     ///<summary>タイトル</summary>
     public static string Title {get{
+        if(!instance) return "Test!";
         return instance.langage == "Japanese" ?
             instance.currentScene.game.title : 
             instance.currentScene.game.titleEng;
@@ -97,6 +107,7 @@ public class Common : MonoBehaviour
 
     ///<summary>操作方法</summary>
     public static string Instruction {get{
+        if(!instance) return "A: Left B: Right";
         return instance.langage == "Japanese" ? 
             instance.currentScene.game.instruction : 
             instance.currentScene.game.instructionEng;
@@ -108,12 +119,16 @@ public class Common : MonoBehaviour
 
     ///<summary>制限時間</summary>
     public static int TimeLimit {get{
+        if(!instance) return 10;
         return instance.timeLimit;
     }}
 
     ///<summary>制限時間が切れたら実行</summary>
     public static void TimeUp(){
-        Debug.Log("timepu");
+        if(!instance){
+            Debug.Log("TimeUp!");
+            return;
+        }
         instance.onTimeUp?.Invoke();
     }
 
@@ -178,9 +193,7 @@ public class Common : MonoBehaviour
     //今の難易度に対応したゲームリストを作成
     void SelectGamesAtLevel(){
         scenesAtLevel = games.Select(game => {
-            var s = game.scenes.Where(s =>
-                s.level <= level && level <= s.level
-            );
+            var s = game.scenes.Where(s => s.level == level);
             if(s.Count() == 0) return (null,game);
             return (s.ElementAtRandom(),game);
         }).Where(g => g.Item1 != null).ToList();
@@ -217,7 +230,7 @@ public class Common : MonoBehaviour
         // Canvasが存在しない場合は新たに作成
         if (!canvas)
         {
-            GameObject canvasGameObject = new GameObject("Canvas");
+            var canvasGameObject = new GameObject("Canvas");
             canvas = canvasGameObject.AddComponent<Canvas>();
             canvasGameObject.AddComponent<CanvasScaler>();
             canvasGameObject.AddComponent<GraphicRaycaster>();
