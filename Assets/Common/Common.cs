@@ -1,24 +1,162 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Common : MonoBehaviour
 {
+
+//*** 各ゲームが実行してほしい ***
+
+    ///<summary>ゲームに要求される難易度</summary>
+    public static int RequiredLevel {get{
+        return instance.level;
+    }}
+
+    ///<summary>ゲームを開始する時に実行する</summary>
+    public static void StartGame(int timeLimit,Action onTimeUp){
+        instance.timeLimit = timeLimit;
+        instance.onTimeUp = onTimeUp;
+        instance.OnStartGame();
+    }
+
+    ///<summary>ゲームを終了し次のゲームを開始する</summary>
+    ///<param name="isCleared">ゲームをクリアできたか</param>
+    public static void EndGame(bool isCleared){
+        //クリアしたらスコア+1
+        if(isCleared){
+            instance.score ++;
+            //スコアに応じてレベルアップ
+            if(
+                instance.score == 10 ||
+                instance.score == 15 ||
+                instance.score == 20 ||
+                instance.score == 25
+            ){
+                instance.level ++;
+                //レベルに応じてゲームリストを選びなおす
+                instance.SelectGamesAtLevel();
+            }
+        }
+        //クリアしなかったらライフを-1
+        else instance.life--;
+        //次のゲームorリザルト画面へ遷移
+        instance.Next();
+    }
+
+
+
+
+
+
+//*** スタート画面が実行してほしい ***
+
+    ///<summary>スタート画面からゲームを開始する</summary>
+    public static void StartGames(string playerName,string langage){
+        instance.playerName = playerName;
+        instance.langage = langage;
+        instance.Next();
+    }
+
+    public static void StartGames(){
+        StartGames("aaa","japanese");
+    }
+
+
+
+
+
+//*** 共通の情報 ***
+
+    ///<summary>プレイヤーの名前</summary>
+    public static string PlayerName {get{
+        return instance.playerName;
+    }}
+
+    ///<summary>ライフ</summary>
+    public static int Life {get{return instance.life;}}
+
+    ///<summary>スコア</summary>
+    public static int Score {get{return instance.score;}}
+
+
+
+
+//*** 各ゲームの情報 ***
+
+    ///<summary>タイトル</summary>
+    public static string Title {get{
+        return instance.langage == "Japanese" ?
+            instance.currentScene.game.title : 
+            instance.currentScene.game.titleEng;
+    }}
+
+    ///<summary>操作方法</summary>
+    public static string Instruction {get{
+        return instance.langage == "Japanese" ? 
+            instance.currentScene.game.instruction : 
+            instance.currentScene.game.instructionEng;
+    }}
+
+
+
+//*** タイマーが実行してほしい ***
+
+    ///<summary>制限時間</summary>
+    public static int TimeLimit {get{
+        return instance.timeLimit;
+    }}
+
+    ///<summary>制限時間が切れたら実行</summary>
+    public static void TimeUp(){
+        Debug.Log("timepu");
+        instance.onTimeUp?.Invoke();
+    }
+
+
+
+
+
+
+
+
+
+
+
     static Common instance;
     [SerializeField]
     TextAsset gamesData;
     Game[] games;
-    List<(Scene scene,Game game)> scenesAtLevel;
-    (Scene scene,Game game) currentScene;
+    [SerializeField]
+    GameObject timerPrefab;
+    [SerializeField]
+    Vector2 timerPosition = new(0.5f,0.5f);
+    [SerializeField]
+    float timerSize = 0.1f;
+    [SerializeField]
+    string resultScene;
+
+
+    //共通パラメータ
     [SerializeField]
     int life = 3;
     int score = 0;
-    int level = 1;
     string langage;
     string playerName;
+
+    //今のレベル
+    int level = 1;
+    List<(Scene scene,Game game)> scenesAtLevel;
+
+    //今のゲーム
+    (Scene scene,Game game) currentScene;
+    int timeLimit;
+    Action onTimeUp;
+
 
     void Awake() {
         //唯一無二
@@ -36,77 +174,8 @@ public class Common : MonoBehaviour
         SelectGamesAtLevel();
     }
 
-    ///<summary>ライフ</summary>
-    public static int Life {get{return instance.life;}}
 
-    ///<summary>スコア</summary>
-    public static int Score {get{return instance.score;}}
-
-    ///<summary>タイトル</summary>
-    public static string Title {get{
-        return instance.langage == "Japanese" ?
-            instance.currentScene.game.title : 
-            instance.currentScene.game.titleEng;
-    }}
-
-    ///<summary>プレイヤーの名前</summary>
-    public static string PlayerName {get{
-        return instance.playerName;
-    }}
-
-    ///<summary>タイムリミット</summary>
-    public static float TimeLimit {get{
-        return instance.currentScene.scene.timeLimit;
-    }}
-
-    ///<summary>操作方法</summary>
-    public static string Instruction {get{
-        return instance.langage == "Japanese" ? 
-            instance.currentScene.game.instruction : 
-            instance.currentScene.game.instructionEng;
-    }}
-
-    ///<summary>ゲームに要求される難易度</summary>
-    public static int RequiredLevel {get{
-        return instance.level;
-    }}
-
-    ///<summary>タイトル画面からゲームを開始する</summary>
-    public static void StartGames(string playerName,string langage){
-        instance.playerName = playerName;
-        instance.langage = langage;
-        instance.Next();
-    }
-
-    public static void StartGames(){
-        StartGames("aaa","japanese");
-    }
-
-    ///<summary>ゲームを終了し次のゲームを開始する</summary>
-    ///<param name="isCleared">ゲームをクリアできたか</param>
-    public static void EndGame(bool isCleared){
-        //クリアしたらスコア+1
-        if(isCleared){
-            instance.score ++;
-            //スコアに応じてレベルアップ
-            if(
-                instance.score == 5 ||
-                instance.score == 10 ||
-                instance.score == 15 ||
-                instance.score == 20
-            ){
-                instance.level ++;
-                //レベルに応じてゲームリストを選びなおす
-                instance.SelectGamesAtLevel();
-            }
-        }
-        //クリアしなかったらライフを-1
-        else instance.life--;
-        //次のゲームorリザルト画面へ遷移
-        instance.Next();
-    }
-
-    //今の難易度にあったゲームリストを作成
+    //今の難易度に対応したゲームリストを作成
     void SelectGamesAtLevel(){
         scenesAtLevel = games.Select(game => {
             var s = game.scenes.Where(s =>
@@ -121,24 +190,52 @@ public class Common : MonoBehaviour
     void Next(){
         //ライフが0になったらリザルト画面へ遷移
         if(instance.life <= 0){
-            SceneManager.LoadScene("testResult");
+            SceneManager.LoadScene(resultScene);
         }
         //次のゲームへ遷移
         else{
             //ゲームリストが空なら補充
             if(scenesAtLevel.Count == 0) SelectGamesAtLevel();
             if(scenesAtLevel.Count == 0){
-                SceneManager.LoadScene("testResult");
+                Debug.Log("No Game");
+                SceneManager.LoadScene(resultScene);
                 return;
             }
             //ランダムにゲームを選んで抜く
             currentScene = scenesAtLevel.ElementAtRandom();
             scenesAtLevel.Remove(currentScene);
+            onTimeUp = null;
+            timeLimit = 10;
             
-            SceneManager.LoadScene(
-                currentScene.scene.name
-            );
+            SceneManager.LoadScene(currentScene.scene.name);
         } 
+    }
+
+    void OnStartGame(){
+        Canvas canvas = FindObjectOfType<Canvas>();
+
+        // Canvasが存在しない場合は新たに作成
+        if (!canvas)
+        {
+            GameObject canvasGameObject = new GameObject("Canvas");
+            canvas = canvasGameObject.AddComponent<Canvas>();
+            canvasGameObject.AddComponent<CanvasScaler>();
+            canvasGameObject.AddComponent<GraphicRaycaster>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        }
+        //タイマーの場所大きさを決定
+        var timer = Instantiate(timerPrefab, canvas.transform);
+        timer.transform.SetAsLastSibling();
+        var rectTransform = timer.GetComponent<RectTransform>();
+        rectTransform.anchorMin = timerPosition;
+        rectTransform.anchorMax = rectTransform.anchorMin;
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.anchoredPosition = Vector2.zero;
+
+        float referenceSize = canvas.pixelRect.width;
+        float targetSize = referenceSize * timerSize;
+        float scaleFactor = targetSize / rectTransform.rect.width;
+        rectTransform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
     }
 }
 
@@ -153,5 +250,4 @@ class Game{
 class Scene{
     public string name; //シーン名
     public int level; //難易度 1~4
-    public float timeLimit; //制限時間
 }

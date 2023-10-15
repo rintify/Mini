@@ -99,11 +99,11 @@ public static class MathEX
     }
 
     public static T ElementAtRandom<T>(this T[] self){
-        return self[UnityEngine.Random.Range(0,self.Count())];
+        return self[UnityEngine.Random.Range(0,self.Length)];
     }
 
     public static T ElementAtRandom<T>(this List<T> self){
-        return self[UnityEngine.Random.Range(0,self.Count())];
+        return self[UnityEngine.Random.Range(0,self.Count)];
     }
 }
 

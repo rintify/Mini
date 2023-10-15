@@ -10,6 +10,9 @@ public class PlayHub : Hub
     // Start is called before the first frame update
     void Start()
     {
+        Common.StartGame(13,()=>{
+            Common.EndGame(true);
+        });
         source = GetComponent<AudioSource>();
     }
 
@@ -28,5 +31,9 @@ public class PlayHub : Hub
         else if(transform.position.x < -10) transform.position = transform.position.X(-10);
         if(transform.position.y > 5) transform.position = transform.position.Y(5);
         else if(transform.position.y < -5) transform.position = transform.position.Y(-5);*/
+    }
+
+    private void OnDestroy() {
+        Common.EndGame(false);
     }
 }

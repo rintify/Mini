@@ -18,6 +18,9 @@ public class Twitter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Common.StartGame(9,()=>{
+            Common.EndGame(false);
+        });
         lines = data.text.Split("\n");
         next();
     }
@@ -51,7 +54,7 @@ public class Twitter : MonoBehaviour
                 current ++;
                 if(current == question.Length)
                 this.Delay(()=>{
-                    next();
+                    Common.EndGame(true);
                 },0.5f);
             }
             else{

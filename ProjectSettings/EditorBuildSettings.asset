@@ -18,15 +18,18 @@ EditorBuildSettings:
     path: Assets/Soupon2gou/Scenes/game3.unity
     guid: 9e8c9912d32d1fd4aa6b3f6839a6fdc4
   - enabled: 1
-    path: Assets/Common/testTitle.unity
-    guid: 0c6ffe4d6547a4bbeb63b33f037d02c4
+    path: Assets/Rin_Exterminate/Exterminate.unity
+    guid: 1fc4ed4f845e343609720d4c2f605dd7
   - enabled: 1
-    path: Assets/Common/testGame2.unity
-    guid: 99500ad9c95ba4a6da50c515635f2d4b
+    path: Assets/Rin_Memory/Memory.unity
+    guid: 1dc4e0cb5f53f4f2586229a92f076b20
   - enabled: 1
-    path: Assets/Common/testGame1.unity
-    guid: 064cc79df9987459aaaf8cffe37e27f7
+    path: Assets/Rin_Survivor/Survivor.unity
+    guid: caff6b8aad3514492896442314868b2f
   - enabled: 1
-    path: Assets/Common/testResult.unity
+    path: Assets/Rin_Type/Type.unity
+    guid: 7ec26e5f9f17d4b98b39e75b59a3fe01
+  - enabled: 1
+    path: Assets/Common/TestResult.unity
     guid: 4ba07a9b9f26f48f39f83bbee06e23c1
   m_configObjects: {}
