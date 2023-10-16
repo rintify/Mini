@@ -60,6 +60,30 @@
         ]
     },
     {
+        "title": "傘から出るな！",
+        "titleEng": "Don't get wet!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "rain",
+                "level": 1
+            }
+        ]
+    },
+    {
+        "title": "ボールを落とすな！",
+        "titleEng": "Don't drop ball!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "ball",
+                "level": 1
+            }
+        ]
+    },
+    {
         "title": "ゴールしろ！",
         "titleEng": "Go to the goal!",
         "instruction": "A: 左 D: 右 スペース:ジャンプ",

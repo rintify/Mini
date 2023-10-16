@@ -5,13 +5,17 @@ using UnityEngine;
 public class EventSystem_rain : MonoBehaviour
 {
     public playerCheck player;
-    public Timer True;
     public AudioSource music;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Common.StartGame(8, () => {
+            {
+                Debug.Log("success");
+                Common.EndGame(true);
+            }
+        });
     }
 
     // Update is called once per frame
@@ -19,16 +23,8 @@ public class EventSystem_rain : MonoBehaviour
     {
         if (player.outPlayer)
         {
-            Time.timeScale = 0;
-            music.pitch = 0;
             Debug.Log("false");
+            Common.EndGame(false);
         }
-        if (True.limit)
-        {
-            Time.timeScale = 0;
-            music.pitch = 0;
-            Debug.Log("success");
-        }
-
     }
 }

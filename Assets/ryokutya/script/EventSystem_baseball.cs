@@ -6,7 +6,6 @@ public class EventSystem_baseball : MonoBehaviour
 {
     public GameObject ball;
     public bat True1;
-    public Timer False1;
     public AudioSource music;
     public subtitle sub;
     private bool baseball;
@@ -18,15 +17,11 @@ public class EventSystem_baseball : MonoBehaviour
             if (True1.ball)
             {
                 baseball = true;
-                Time.timeScale = 0;
-                music.pitch = 0;
                 Debug.Log("success");
             }
             else
             {
                 baseball = false;
-                Time.timeScale = 0;
-                music.pitch = 0;
                 Debug.Log("false");
             }
             Common.EndGame(baseball);

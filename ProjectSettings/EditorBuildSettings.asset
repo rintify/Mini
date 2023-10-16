@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ryokutya/scene/baseball.unity
     guid: cd9f086ef92ba414f8672c89e6f00dc4
+  - enabled: 1
+    path: Assets/ryokutya/scene/rain.unity
+    guid: db96591d6600ff34c8baa400c5c82a2c
+  - enabled: 1
+    path: Assets/ryokutya/scene/ball.unity
+    guid: 8b7a462a157d0bd4f80bdda0228ca2c6
   m_configObjects: {}
