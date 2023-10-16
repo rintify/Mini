@@ -14,7 +14,25 @@ public class EventSystem_baseball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Common.StartGame(4, () => {Common.EndGame(baseball);});
+        Common.StartGame(5, () => {
+            if (True1.ball)
+            {
+                baseball = true;
+                Time.timeScale = 0;
+                music.pitch = 0;
+                Debug.Log("success");
+                Common.EndGame(true);
+            }
+            else
+            {
+                baseball = false;
+                Time.timeScale = 0;
+                music.pitch = 0;
+                Debug.Log("false");
+                Common.EndGame(false);
+            }
+            Common.EndGame(baseball);
+        });
     }
 
     // Update is called once per frame
@@ -25,26 +43,6 @@ public class EventSystem_baseball : MonoBehaviour
             ball.SetActive(true);
             sub.apper = false;
         }
-        if (False1.limit)
-        {
-            if(True1.ball)
-            {
-                baseball = true;
-                Time.timeScale = 0;
-                music.pitch = 0;
-                Common.EndGame(true);
-                Debug.Log("success");
-            }
-            else
-            {
-                baseball = false;
-                Time.timeScale = 0;
-                music.pitch = 0;
-                Common.EndGame(false);
-                Debug.Log("false");
-            }
-        }
     }
-
 }
 
