@@ -1827,7 +1827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09b1a0b8b592ae4598efcd4142ffa95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xposition: 0.5
+  xposition: 0
   yposition: -2
   target_xposition: -5.5
   target_yposition: 4
@@ -2207,7 +2207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ball: {fileID: 2013212198}
-  True: {fileID: 312462859}
   music: {fileID: 528410462}
 --- !u!1 &779014341
 GameObject:
@@ -3302,8 +3301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -0.0000019073}
-  m_SizeDelta: {x: 650, y: 70}
+  m_AnchoredPosition: {x: 2.1, y: -0.0000019073}
+  m_SizeDelta: {x: 570, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655614947
 MonoBehaviour:
@@ -3403,7 +3402,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -9.641907, y: 0, z: 85.67894, w: 0}
+  m_margin: {x: -9.641907, y: 0, z: -0.63952637, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
