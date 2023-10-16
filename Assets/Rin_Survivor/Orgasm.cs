@@ -29,7 +29,8 @@ public class Orgasm : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.GetComponent<PlayHub>() != null){
             Debug.Log("player");
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            Common.EndGame(false);
         }
         else if(other.GetComponent<EnemyHub>() != null){
             Debug.Log("enemy");
