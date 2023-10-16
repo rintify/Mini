@@ -46,5 +46,17 @@
                 "level": 1
             }
         ]
+    },
+    {
+        "title": "打ち返せ！",
+        "titleEng": "returned a ball!",
+        "instruction": "スペースキー：打つ",
+        "instructionEng": "Space:hit",
+        "scenes": [
+            {
+                "name": "baseball",
+                "level": 1
+            }
+        ]
     }
 ]
