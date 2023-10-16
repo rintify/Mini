@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -9,6 +10,9 @@ using UnityEngine.UI;
 
 public class Common : MonoBehaviour
 {
+
+    //TransitonAnimaton
+    [SerializeField] Animator TransitionAnim1;
 
 //*** 各ゲームが実行してほしい ***
 
@@ -204,9 +208,9 @@ public class Common : MonoBehaviour
 
     //ライフに応じて次のゲームorリザルト画面
     void Next(){
-        //ライフが0になったらリザルト画面へ遷移
+        //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
-            SceneManager.LoadScene(resultScene);
+            StartCoroutine(Fin());
         }
         //次のゲームへ遷移
         else{
@@ -225,6 +229,14 @@ public class Common : MonoBehaviour
             
             SceneManager.LoadScene(currentScene.scene.name);
         } 
+    }
+
+    IEnumerator Fin()
+    {
+        TransitionAnim1.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(resultScene);
+        TransitionAnim1.SetTrigger("Start");
     }
 
     void OnStartGame(){
