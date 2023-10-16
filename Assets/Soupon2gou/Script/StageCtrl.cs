@@ -17,9 +17,14 @@ public class StageCtrl : MonoBehaviour
     private bool doClear = false;
     private bool isfall = false;
 
+    //クリア判定
+    public bool clear = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        Common.StartGame(8, () => { Common.EndGame(clear); });
+
         if (playerObj != null && continuePoint != null && continuePoint.Length > 0)
         {
             Debug.Log("プレイヤーは原点に移動しました");
@@ -58,6 +63,8 @@ public class StageCtrl : MonoBehaviour
         //stageClearObj.SetActive(true);
         GameManager.instance.PlaySE(stageClearSE);
         Debug.Log("ステージクリアSEをならしました");
+
+        //Common.EndGame(true);
     }
     /// <summary>
     /// 落下した

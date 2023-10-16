@@ -29,6 +29,8 @@ public class player_one : MonoBehaviour
     private float dashTime = 0.0f;
     private float beforeKey = 0.0f;
 
+    
+
     // Start is called before the first frame update 
     void Start()
     {
