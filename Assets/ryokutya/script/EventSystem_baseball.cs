@@ -21,7 +21,6 @@ public class EventSystem_baseball : MonoBehaviour
                 Time.timeScale = 0;
                 music.pitch = 0;
                 Debug.Log("success");
-                Common.EndGame(true);
             }
             else
             {
@@ -29,7 +28,6 @@ public class EventSystem_baseball : MonoBehaviour
                 Time.timeScale = 0;
                 music.pitch = 0;
                 Debug.Log("false");
-                Common.EndGame(false);
             }
             Common.EndGame(baseball);
         });
