@@ -32,8 +32,4 @@ public class PlayHub : Hub
         if(transform.position.y > 5) transform.position = transform.position.Y(5);
         else if(transform.position.y < -5) transform.position = transform.position.Y(-5);*/
     }
-
-    private void OnDestroy() {
-        Common.EndGame(false);
-    }
 }

@@ -29,7 +29,10 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを終了し次のゲームを開始する</summary>
     ///<param name="isCleared">ゲームをクリアできたか</param>
     public static void EndGame(bool isCleared){
-        if(!instance) return;
+        Debug.Log(isCleared ? "GameClear" : "GameOver");
+        if(!instance){
+            return;
+        }
         //クリアしたらスコア+1
         if(isCleared){
             instance.score ++;
