@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             Debug.Log("thisをインスタンスに入れる");
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {

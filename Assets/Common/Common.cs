@@ -11,9 +11,6 @@ using UnityEngine.UI;
 public class Common : MonoBehaviour
 {
 
-    //TransitonAnimaton
-    [SerializeField] Animator TransitionAnim1;
-
 //*** 各ゲームが実行してほしい ***
 
     ///<summary>ゲームに要求される難易度</summary>
@@ -54,6 +51,12 @@ public class Common : MonoBehaviour
         }
         //クリアしなかったらライフを-1
         else instance.life--;
+
+        //リセット
+        instance.onTimeUp = null;
+        instance.timeLimit = 10;
+        Destroy(instance.timer);
+
         //次のゲームorリザルト画面へ遷移
         instance.Next();
     }
@@ -153,12 +156,21 @@ public class Common : MonoBehaviour
     [SerializeField]
     TextAsset gamesData;
     Game[] games;
+
+    [SerializeField]
+    Canvas canvas;
+
+    GameObject timer;
     [SerializeField]
     GameObject timerPrefab;
     [SerializeField]
     Vector2 timerPosition = new(0.5f,0.5f);
     [SerializeField]
     float timerSize = 0.1f;
+
+    [SerializeField]
+    GameObject img;
+
     [SerializeField]
     string resultScene;
 
@@ -194,6 +206,8 @@ public class Common : MonoBehaviour
 
         //初期レベルのゲームリストを作成
         SelectGamesAtLevel();
+
+        img.GetComponent<Image>().color = Color.clear;
     }
 
 
@@ -224,8 +238,6 @@ public class Common : MonoBehaviour
             //ランダムにゲームを選んで抜く
             currentScene = scenesAtLevel.ElementAtRandom();
             scenesAtLevel.Remove(currentScene);
-            onTimeUp = null;
-            timeLimit = 10;
             
             SceneManager.LoadScene(currentScene.scene.name);
         } 
@@ -233,26 +245,17 @@ public class Common : MonoBehaviour
 
     IEnumerator Fin()
     {
-        TransitionAnim1.SetTrigger("End");
+        Debug.Log("aaa");
+        var tansitionAnim1 = img.GetComponent<Animator>();
+        tansitionAnim1.SetTrigger("End");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(resultScene);
-        TransitionAnim1.SetTrigger("Start");
+        tansitionAnim1.SetTrigger("Start");
     }
 
     void OnStartGame(){
-        Canvas canvas = FindObjectOfType<Canvas>();
-
-        // Canvasが存在しない場合は新たに作成
-        if (!canvas)
-        {
-            var canvasGameObject = new GameObject("Canvas");
-            canvas = canvasGameObject.AddComponent<Canvas>();
-            canvasGameObject.AddComponent<CanvasScaler>();
-            canvasGameObject.AddComponent<GraphicRaycaster>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        }
         //タイマーの場所大きさを決定
-        var timer = Instantiate(timerPrefab, canvas.transform);
+        timer = Instantiate(timerPrefab, canvas.transform);
         timer.transform.SetAsLastSibling();
         var rectTransform = timer.GetComponent<RectTransform>();
         rectTransform.anchorMin = timerPosition;
