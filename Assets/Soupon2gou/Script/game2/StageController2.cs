@@ -9,10 +9,13 @@ public class StageController2 : MonoBehaviour
 
     ClearController script1, script2, script3;
 
-    bool f1=false,f2=false,f3=false,ClearStage2=false;
+    bool f1 = false, f2 = false, f3 = false;
+    public bool ClearStage2=false;
 
     private void Start()
     {
+        Common.StartGame(8, () => { Common.EndGame(ClearStage2); });
+
         Ob1 = GameObject.Find("Cylinder");
         Ob2 = GameObject.Find("Sphere");
         Ob3 = GameObject.Find("Cube");

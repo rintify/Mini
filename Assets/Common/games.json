@@ -61,12 +61,36 @@
     },
     {
         "title": "ゴールしろ！",
-        "titleEng": "Go to the goal",
+        "titleEng": "Go to the goal!",
         "instruction": "A: 左 D: 右 スペース:ジャンプ",
         "instructionEng": "A: left D: right Space:jump",
         "scenes": [
             {
                 "name": "game1",
+                "level": 1
+            }
+        ]
+    },
+    {
+        "title": "落とせ！",
+        "titleEng": "Drop!",
+        "instruction": "左クリック:ボール発射",
+        "instructionEng": "left click:shoot a ball",
+        "scenes": [
+            {
+                "name": "game2",
+                "level": 1
+            }
+        ]
+    },
+    {
+        "title": "入れろ！",
+        "titleEng": "insert!",
+        "instruction": "スペース:剣を落とす",
+        "instructionEng": "Space:Drop the sword",
+        "scenes": [
+            {
+                "name": "game3",
                 "level": 1
             }
         ]
