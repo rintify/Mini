@@ -5,6 +5,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,16 +25,25 @@ public class Common : MonoBehaviour
         if(!instance) return;
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
-        instance.OnStartGame();
+        instance.ui = Instantiate(instance.uiPrefab, instance.canvas.transform);
+        instance.ui.transform.SetAsLastSibling();
     }
 
     ///<summary>ゲームを終了し次のゲームを開始する</summary>
     ///<param name="isCleared">ゲームをクリアできたか</param>
     public static void EndGame(bool isCleared){
         Debug.Log(isCleared ? "GameClear" : "GameOver");
+
         if(!instance){
             return;
         }
+        //シーンが切り替わるまでの間連続呼び出しを避ける
+        if(instance.onTimeUp == null) return;
+        //リセット
+        instance.onTimeUp = null;
+        instance.timeLimit = 10;
+        Destroy(instance.ui);
+
         //クリアしたらスコア+1
         if(isCleared){
             instance.score ++;
@@ -51,11 +61,6 @@ public class Common : MonoBehaviour
         }
         //クリアしなかったらライフを-1
         else instance.life--;
-
-        //リセット
-        instance.onTimeUp = null;
-        instance.timeLimit = 10;
-        Destroy(instance.timer);
 
         //次のゲームorリザルト画面へ遷移
         instance.Next();
@@ -160,16 +165,12 @@ public class Common : MonoBehaviour
     [SerializeField]
     Canvas canvas;
 
-    GameObject timer;
-    [SerializeField]
-    GameObject timerPrefab;
-    [SerializeField]
-    Vector2 timerPosition = new(0.5f,0.5f);
-    [SerializeField]
-    float timerSize = 0.1f;
-
     [SerializeField]
     GameObject img;
+
+    GameObject ui;
+    [SerializeField]
+    GameObject uiPrefab;
 
     [SerializeField]
     string resultScene;
@@ -206,10 +207,14 @@ public class Common : MonoBehaviour
 
         //初期レベルのゲームリストを作成
         SelectGamesAtLevel();
-
-        img.GetComponent<Image>().color = Color.clear;
     }
 
+    private float initialScreenWidth;  // 初期の画面の幅
+
+    private void Start()
+    {
+        initialScreenWidth = Screen.width;  // ゲームの開始時の画面の幅を取得
+    }
 
     //今の難易度に対応したゲームリストを作成
     void SelectGamesAtLevel(){
@@ -245,28 +250,11 @@ public class Common : MonoBehaviour
 
     IEnumerator Fin()
     {
-        Debug.Log("aaa");
         var tansitionAnim1 = img.GetComponent<Animator>();
         tansitionAnim1.SetTrigger("End");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(resultScene);
         tansitionAnim1.SetTrigger("Start");
-    }
-
-    void OnStartGame(){
-        //タイマーの場所大きさを決定
-        timer = Instantiate(timerPrefab, canvas.transform);
-        timer.transform.SetAsLastSibling();
-        var rectTransform = timer.GetComponent<RectTransform>();
-        rectTransform.anchorMin = timerPosition;
-        rectTransform.anchorMax = rectTransform.anchorMin;
-        rectTransform.pivot = new Vector2(0.5f, 0.5f);
-        rectTransform.anchoredPosition = Vector2.zero;
-
-        float referenceSize = canvas.pixelRect.width;
-        float targetSize = referenceSize * timerSize;
-        float scaleFactor = targetSize / rectTransform.rect.width;
-        rectTransform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
     }
 }
 

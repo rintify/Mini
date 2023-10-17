@@ -42,11 +42,18 @@ public class TestTimer : MonoBehaviour
             limit = true;
         }
 
-        Color GetAlphaColor(Color color)
+        Color GetAlphaColor_(Color color)
         {
             frequent += Time.deltaTime * 5.0f * flashspeed;
             color = Color.red;
             color.a = Mathf.Sin(frequent) * 0.5f + 0.5f;
+
+            return color;
+        }
+        Color GetAlphaColor(Color color)
+        {
+            color = Color.red;
+            color.a = -Mathf.Cos((time-CountDownTime)*Mathf.PI*2) * 0.5f + 0.5f;
 
             return color;
         }
