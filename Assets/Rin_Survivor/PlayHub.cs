@@ -10,6 +10,9 @@ public class PlayHub : Hub
     // Start is called before the first frame update
     void Start()
     {
+        Common.StartGame(13,()=>{
+            Common.EndGame(true);
+        });
         source = GetComponent<AudioSource>();
     }
 

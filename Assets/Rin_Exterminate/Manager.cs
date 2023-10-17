@@ -17,6 +17,9 @@ namespace RinExterminate{
         // Start is called before the first frame update
         void Start()
         {
+            Common.StartGame(13,()=>{
+                Common.EndGame(false);
+            });
             this.guidCollider = new BulletColliderM(c => BulletColliderM.onCollision_Monst(guidCollider,c),1f);
             guidCollider.exitst = false;
         }

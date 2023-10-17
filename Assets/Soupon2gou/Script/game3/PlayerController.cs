@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
 {
     bool isStop=false;
     float startY;
+
+    public bool StageClear=false;
     // Start is called before the first frame update
     void Start()
     {
         startY = transform.position.y;
+        Common.StartGame(8, () => { Common.EndGame(StageClear); });
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
         if (isStop) return ;
         //毎フレーム回転させる
-        transform.Rotate(new Vector3(0, 0.5f, 0));
+        transform.Rotate(new Vector3(0, 2.0f, 0));
 
         //少しずつ下へ
         //transform.Translate(0, -0.005f, 0);
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         if (obj.name.Equals("Clear"))
         {
+            StageClear = true;
             Debug.Log("game3クリア!");
         }
     }

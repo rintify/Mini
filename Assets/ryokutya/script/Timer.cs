@@ -8,11 +8,15 @@ public class Timer : MonoBehaviour
     public bool limit = false;
     public float CountDownTime;
     public Text Texttime;
+    public Image im;
+    public float flashspeed;
+    private float time;
+    private float frequent = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        time = CountDownTime;
     }
 
     // Update is called once per frame
@@ -21,12 +25,27 @@ public class Timer : MonoBehaviour
         if (CountDownTime > 0)
         {
             CountDownTime -= Time.deltaTime;
-            Texttime.text = "制限時間:" + CountDownTime.ToString("0.00");
+            im.fillAmount = CountDownTime / time;
+            if (CountDownTime < 4)
+            {
+                Texttime.color = GetAlphaColor(Texttime.color);
+                //Texttime.color = Color.red;
+                Texttime.text = Mathf.CeilToInt(CountDownTime - 1).ToString();
+            }
         }
         else
         {
+            Texttime.text = "0";
+            this.gameObject.SetActive(false);
             limit = true;
-            Texttime.text = "制限時間:" + CountDownTime.ToString("0.00");
+        }
+        Color GetAlphaColor(Color color)
+        {
+            frequent += Time.deltaTime * 5.0f * flashspeed;
+            color = Color.red;
+            color.a = Mathf.Sin(frequent) * 0.5f + 0.5f;
+
+            return color;
         }
     }
 }

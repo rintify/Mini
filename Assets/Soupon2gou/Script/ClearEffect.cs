@@ -20,7 +20,7 @@ public class ClearEffect : MonoBehaviour
             else
             {
                 //0はタイトルのはず
-                SceneManager.LoadScene("titleScene");
+                //SceneManager.LoadScene("titleScene");
                 comp = true;
             }
         }

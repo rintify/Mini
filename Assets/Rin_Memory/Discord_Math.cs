@@ -29,6 +29,9 @@ public class Discord_Math : MonoBehaviour
         m = Mathf.CeilToInt((float)cards.Length/n);
         this.cards = cards.ToList();
         this.cards.Shuffle();
+        Common.StartGame(13,()=>{
+            Common.EndGame(true);
+        });
     }
     // Start is called before the first frame update
     void Start()
