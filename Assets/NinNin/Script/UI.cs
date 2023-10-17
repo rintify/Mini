@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject gameClearUI;
     public GameObject destroy_ball;
-    private bool isGameClear = false;
+    public bool isGameClear = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          if( isGameClear != true)
+        if( isGameClear != true)
         {
             if( DestroyAllblocks())
             {
@@ -44,7 +44,6 @@ public class UI : MonoBehaviour
         }
         return true;
     }
-
 
 }
 }
