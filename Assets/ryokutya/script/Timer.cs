@@ -11,7 +11,6 @@ public class Timer : MonoBehaviour
     public Image im;
     public float flashspeed;
     private float time;
-    private float speed = 2;
     private float frequent = 0;
 
     // Start is called before the first frame update

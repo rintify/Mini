@@ -10,7 +10,7 @@ public class subtitle : MonoBehaviour
     public AudioSource music;
     public bool apper = false;
     // Start is called before the first frame update
-    void Start()
+    void Awaked()
     {
         Time.timeScale = 0;
     }

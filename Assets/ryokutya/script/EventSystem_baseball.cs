@@ -31,11 +31,7 @@ public class EventSystem_baseball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(sub.apper)
-        {
-            ball.SetActive(true);
-            sub.apper = false;
-        }
+        ball.SetActive(true);
     }
 }
 

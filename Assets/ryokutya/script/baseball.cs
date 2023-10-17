@@ -40,5 +40,4 @@ public class baseball : MonoBehaviour
             audioSource.Stop();
         }
     }
-
 }

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EventSystem_paperplane : MonoBehaviour
 {
-    public Timer True;
     public paperplane False;
     public AudioSource music;
     // Start is called before the first frame update
     void Start()
     {
-
+        Common.StartGame(8, () =>
+        {
+            Debug.Log("success");
+            Common.EndGame(true);
+        });
     }
 
     // Update is called once per frame
@@ -18,15 +21,8 @@ public class EventSystem_paperplane : MonoBehaviour
     {
         if (False.touch)
         {
-            Time.timeScale = 0;
-            music.pitch = 0;
             Debug.Log("false");
-        }
-        if (True.limit)
-        {
-            Time.timeScale = 0;
-            music.pitch = 0;
-            Debug.Log("success");
+            Common.EndGame(false);
         }
     }
 

@@ -1226,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &512089480
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1540,7 +1540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1246100482}
-  True: {fileID: 703133088}
   music: {fileID: 528410462}
 --- !u!1 &703133086
 GameObject:
@@ -7767,7 +7766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1655614946
 RectTransform:
   m_ObjectHideFlags: 0
