@@ -7,8 +7,7 @@ public class baseball : MonoBehaviour
     public float force;
     private Rigidbody2D rb = null;
     private AudioSource audioSource = null;
-    private float time = 1; 
-
+    private float time = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,7 @@ public class baseball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
     }
     void Ball()
     {
