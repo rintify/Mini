@@ -166,5 +166,17 @@
                 "level": 1
             }
         ]
+    },
+    {
+        "title": "敵を倒せ！",
+        "titleEng": "Shoot enemy!",
+        "instruction": "A：左　D：右　スペース:発射",
+        "instructionEng": "A: left D:right Space:Shooting",
+        "scenes": [
+            {
+                "name": "game1",
+                "level": 1
+            }
+        ]
     }
 ]

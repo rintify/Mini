@@ -570,7 +570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c1227244f40b64bbf3c97c6fddcf7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: 7
   target: {fileID: 7559150151551314937}
   speed: 7
 --- !u!50 &483672168
@@ -858,8 +857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 456.96, y: 136.66}
-  m_SizeDelta: {x: 477.86, y: 278.99}
+  m_AnchoredPosition: {x: 404.03, y: 83.749}
+  m_SizeDelta: {x: 583.73, y: 173.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542583379
 MonoBehaviour:
@@ -908,8 +907,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

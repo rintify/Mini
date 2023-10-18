@@ -14,6 +14,6 @@ public class text : MonoBehaviour
     void Update()
     {
         
-        textframe.text="SCORE "+" " + count.number;
+        textframe.text="SCORE "+" " + count.number + "/" + movement.enemy;
     }
 }

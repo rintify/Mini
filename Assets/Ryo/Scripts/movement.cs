@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public int enemy = 8;
+    public static int enemy = 8;
     //new Vector3 point;
     public GameObject target;
     public float speed = 3f;
@@ -13,6 +13,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rb= GetComponent<Rigidbody2D>();
         for (int i = 0; i < enemy; i++)
         {
