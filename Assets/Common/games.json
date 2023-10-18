@@ -186,7 +186,8 @@
         "instructionEng": "A: left D:right Space:Shooting",
         "scenes": [
             {
-                "name": "shooting",
+              "name": "shooting",
+               
                 "level": 2
             }
         ]
