@@ -186,8 +186,8 @@
         "instructionEng": "A: left D:right Space:Shooting",
         "scenes": [
             {
-                "name": "game1",
-                "level": 1
+                "name": "shooting",
+                "level": 2
             }
         ]
     }
