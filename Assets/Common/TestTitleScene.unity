@@ -771,7 +771,7 @@ MonoBehaviour:
   img: {fileID: 1117012457}
   uiPrefab: {fileID: 7837889393997385455, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
   resultScene: TestResult
-  life: 1
+  life: 20
 --- !u!4 &1761531241
 Transform:
   m_ObjectHideFlags: 0

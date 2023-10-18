@@ -57,6 +57,21 @@ public static class MathEX
         return new(v.y,-v.x,v.z);
     }
 
+    public static Vector2 Right(this Vector2 v){
+        return new(v.y,-v.x);
+    }
+
+    public static Vector2 Rotate(this Vector2 v, float rad)
+    {
+        float sin = Mathf.Sin(rad);
+        float cos = Mathf.Cos(rad);
+
+        float tx = v.x;
+        float ty = v.y;
+
+        return new Vector2(cos * tx - sin * ty, sin * tx + cos * ty);
+    }
+
     public static void Shuffle<T>(this List<T> list)
     {
         var rand = new System.Random();

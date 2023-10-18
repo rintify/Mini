@@ -20,31 +20,47 @@ public class EnemyHub : Hub
     // Update is called once per frame
     void Update()
     {
-        Vector3 d = target.transform.position - transform.position;
-        Vector3 sd = playerSword.transform.position - transform.position;
-        var s = sword.transform.position - transform.position;
+        Vector2 pos = transform.position;
+
+        Vector2 toTarget = target.transform.position - transform.position;
+        var toTarget_ = toTarget.magnitude;
+        Vector2 toPSword = playerSword.transform.position - transform.position;
+
+        Vector2 pSword = (playerSword.transform.position - target.transform.position).normalized;
+        Vector2 sword = (this.sword.transform.position - transform.position).normalized;
+
+        var T_o_PS= Vector2.Dot(toTarget,pSword);
+        var T_x_PS = toTarget.Cross(pSword);
         
-        if(s.Cross2(d)*rotationSpeed < 0 && d.sqrMagnitude < 18){
-            transform.position -= speed*Time.deltaTime*d.normalized;
-        }
-        else if(d.sqrMagnitude < 10){
-            if(sd.sqrMagnitude < 5){
-                transform.position -= speed*Time.deltaTime*(
-                    (-Vector3.Cross(d,sd).z*d.Right()).normalized
+        if(toTarget_ < 3.16){
+            pos -= speed*Time.deltaTime * toTarget.normalized;
+        }  
+        else if(
+            toTarget.Cross(sword) * rotationSpeed > 0 || 
+            T_o_PS < 0.7 &&
+            T_x_PS * -target.rotationSpeed < 0
+        ){
+            if(toTarget_ < 4.2){
+                pos -= speed*Time.deltaTime * toTarget.normalized.Rotate(
+                    Mathf.Sign(target.rotationSpeed)*0.3f
                 );
             }
-            else{
-                transform.position -= speed*Time.deltaTime*d.normalized;
+            else if(toTarget_ < 4.3){
+                pos += speed*Time.deltaTime * 
+                    Mathf.Sign(target.rotationSpeed) * toTarget.normalized.Right()*0.1f;
             }
-        }  
-        else if(sd.sqrMagnitude < 3){
-            transform.position -= speed*Time.deltaTime*d.normalized;
+            else{
+                pos += speed*Time.deltaTime * toTarget.normalized;
+            }
         }
-        else if(d.sqrMagnitude > 12){
-            transform.position += speed*Time.deltaTime*d.normalized;
+        else if(toTarget_ < 3.46){
+            pos += speed*Time.deltaTime * 
+                    Mathf.Sign(target.rotationSpeed) * toTarget.normalized.Right();
         }
         else{
-            transform.position += speed*Time.deltaTime*d.normalized.Right();
+            pos += speed*Time.deltaTime * toTarget.normalized;
         }
+
+        transform.position = pos;
     }
 }

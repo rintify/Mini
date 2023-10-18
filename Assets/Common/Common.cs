@@ -209,13 +209,6 @@ public class Common : MonoBehaviour
         SelectGamesAtLevel();
     }
 
-    private float initialScreenWidth;  // 初期の画面の幅
-
-    private void Start()
-    {
-        initialScreenWidth = Screen.width;  // ゲームの開始時の画面の幅を取得
-    }
-
     //今の難易度に対応したゲームリストを作成
     void SelectGamesAtLevel(){
         scenesAtLevel = games.Select(game => {
