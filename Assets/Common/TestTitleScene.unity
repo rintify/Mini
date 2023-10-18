@@ -772,6 +772,8 @@ MonoBehaviour:
   uiPrefab: {fileID: 7837889393997385455, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
   resultScene: TestResult
   life: 20
+  score: 0
+  level: 1
 --- !u!4 &1761531241
 Transform:
   m_ObjectHideFlags: 0

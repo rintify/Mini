@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Rin_Memory/Memory.unity
     guid: 1dc4e0cb5f53f4f2586229a92f076b20
   - enabled: 1
-    path: Assets/Rin_Survivor/Survivor.unity
+    path: Assets/Rin_Survivor/Survivor3-1.unity
     guid: caff6b8aad3514492896442314868b2f
   - enabled: 1
     path: Assets/Rin_Type/Type.unity
@@ -59,4 +59,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ryokutya/scene/baseball2.unity
     guid: 19cd82c4912425b43b92528dedb0b8d2
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor1-1.unity
+    guid: 57e68a95b770840049ce2b7bd908636d
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor2-1.unity
+    guid: 9794023c7f011453db40ae46c6067671
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor3-2.unity
+    guid: a2afa94832f6f4153b663244cbfb1154
   m_configObjects: {}

@@ -47,15 +47,16 @@ public class Common : MonoBehaviour
         //クリアしたらスコア+1
         if(isCleared){
             instance.score ++;
-            //スコアに応じてレベルアップ
-            if(
-                instance.score == 10 ||
-                instance.score == 15 ||
-                instance.score == 20 ||
-                instance.score == 25
-            ){
-                instance.level ++;
-                //レベルに応じてゲームリストを選びなおす
+            int preLevel = instance.level;
+            //スコアに応じてレベルを決める
+            instance.level = 
+                instance.score >= 20 ? 4 :
+                instance.score >= 15 ? 3 :
+                instance.score >= 10 ? 2 :
+                1;
+
+            if(instance.level != preLevel){
+                //レベルが変わっていればゲームリストを選びなおす
                 instance.SelectGamesAtLevel();
             }
         }
@@ -179,11 +180,13 @@ public class Common : MonoBehaviour
     //共通パラメータ
     [SerializeField]
     int life = 3;
+    [SerializeField]
     int score = 0;
     string langage;
     string playerName;
 
     //今のレベル
+    [SerializeField]
     int level = 1;
     List<(Scene scene,Game game)> scenesAtLevel;
 
@@ -215,7 +218,7 @@ public class Common : MonoBehaviour
             var s = game.scenes.Where(s => s.level == level);
             if(s.Count() == 0) return (null,game);
             return (s.ElementAtRandom(),game);
-        }).Where(g => g.Item1 != null).ToList();
+        }).Where(g => g.Item1 != null && g.game != currentScene.game).ToList();
     }
 
     //ライフに応じて次のゲームorリザルト画面

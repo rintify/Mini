@@ -1,32 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Orgasm : MonoBehaviour
+public class DisasterBullet : MonoBehaviour
 {
-    [NonSerialized]
-    public Hub parent;
-    private PlayHub play;
+    MathEX.Delayer a;
+    public float speed;
+    Vector2 dir;
+    public Disaster parent;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.GetComponent<Hub>();
-        play = transform.parent.GetComponent<PlayHub>();
+        a = new(() => {Destroy(this.gameObject);}, 2f);
+        dir = transform.localEulerAngles.z.Deg2Direction();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(
-            parent.transform.position, 
-            Vector3.forward, 
-            parent.rotationSpeed*Time.deltaTime
-        );
+        a.Update();
+        transform.position += (Vector3)(speed*Time.deltaTime*dir);
+    }
 
-        transform.LookAt(parent.transform.position);
-        transform.Rotate(0, 90, 0);
+    private void OnDestroy() {
+        parent.refrectedBullets.Remove(this);
     }
 
     void OnTriggerEnter2D(Collider2D other){
@@ -47,11 +44,12 @@ public class Orgasm : MonoBehaviour
             Debug.Log("enemy");
             Destroy(other.gameObject);
         }
-        else{
-            parent.rotationSpeed *= -1;
-            if(play) play.kan();
+        else if(other.GetComponent<Orgasm>() != null){
+            var a = other.GetComponent<Orgasm>();
+            dir = a.Dir.Right();
+            dir *= -Mathf.Sign(a.parent.rotationSpeed);
+            this.transform.rotation = dir.Quaternion();
+            parent.refrectedBullets.Add(this);
         }
     }
-
-    public Vector2 Dir {get {return (transform.position - parent.transform.position).normalized;}}
 }

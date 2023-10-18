@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Burst.Intrinsics;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -25,6 +26,14 @@ public static class MathEX
     public static Vector2 Deg2Direction(this float degree){
         float rad = degree*Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(rad),Mathf.Sin(rad));
+    }
+
+    public static float Deg(this Vector2 v){
+        return Mathf.Atan2(v.y,v.x)*Mathf.Rad2Deg;
+    }
+
+    public static Quaternion Quaternion(this Vector2 v){
+        return UnityEngine.Quaternion.Euler(0,0,Deg(v));
     }
 
     public static Vector3 XY(this Vector3 self,Vector2 v){
@@ -120,5 +129,37 @@ public static class MathEX
     public static T ElementAtRandom<T>(this List<T> self){
         return self[UnityEngine.Random.Range(0,self.Count)];
     }
-}
 
+    public class Intervalist{
+        float t = 0;
+        public float interval;
+        Action action;
+        public Intervalist(Action action,float interval){
+            this.interval = interval;
+            this.action = action;
+        }
+        public void Update(){
+            t += Time.deltaTime;
+            if(t > interval){
+                action.Invoke();
+                t -= interval;
+            }
+        }
+    }
+
+    public class Delayer{
+        float t = 0;
+        float interval;
+        Action action;
+        public Delayer(Action action,float interval){
+            this.interval = interval;
+            this.action = action;
+        }
+        public void Update(){
+            t += Time.deltaTime;
+            if(t > interval){
+                action.Invoke();
+            }
+        }
+    }
+}
