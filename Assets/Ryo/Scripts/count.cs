@@ -8,7 +8,7 @@ public class count : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    //Common.StartGame(8,Common.EndGame(false));
+     //Common.StartGame(8,Common.EndGame(false));
      number=0;
     }
 
@@ -21,9 +21,9 @@ public class count : MonoBehaviour
             Common.EndGame(true);
 
         }
-        /*if(Common.TimeLimit==0)
+        if(Common.TimeLimit==0)
         {
             Common.TimeUp();
-        }*/
+        }
     }
 }
