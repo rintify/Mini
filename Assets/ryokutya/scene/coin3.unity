@@ -2097,7 +2097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68412a373adffbc41ac49806e0466206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  False: {fileID: 1796680619}
   True: {fileID: 556549121}
   music: {fileID: 528410462}
 --- !u!82 &528410462
@@ -3430,10 +3429,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteObj: {fileID: 933228444}
   vibrationWidt: 0.05
-  vibrationSpeed: 30
+  vibrationSpeed: 50
   fallTime: 1
+  fallingTime: 2.5
   fallSpeed: 4
-  returnTime: 5
+  returnTime: 3
 --- !u!4 &965461221
 Transform:
   m_ObjectHideFlags: 0

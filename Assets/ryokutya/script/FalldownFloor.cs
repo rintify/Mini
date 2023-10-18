@@ -8,6 +8,7 @@ public class FalldownFloor : MonoBehaviour
     public float vibrationWidt = 0.05f; //振動幅
     public float vibrationSpeed = 30.0f;//振動速度
     public float fallTime = 1.0f; //落ちる時間
+    public float fallingTime;
     public float fallSpeed = 10.0f;//落ちる速度
     public float returnTime = 5.0f;//戻る速度
     private bool isOn;
@@ -97,7 +98,7 @@ public class FalldownFloor : MonoBehaviour
         {
             rb.velocity = fallVelocity;
             //元の位置に戻る
-            if(fallingTimer > fallTime)
+            if(fallingTimer > fallingTime)
             {
                 isReturn = true;
                 transform.position = floorDefaultPos;

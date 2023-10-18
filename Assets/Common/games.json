@@ -91,7 +91,7 @@
         "scenes": [
             {
                 "name": "ball",
-                "level": 1
+                "level": 2
             }
         ]
     },
@@ -139,7 +139,7 @@
         "scenes": [
             {
                 "name": "paperplane",
-                "level": 1
+                "level": 2
             }
         ]
     },

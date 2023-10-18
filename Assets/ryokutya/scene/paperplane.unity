@@ -4158,7 +4158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2efed98d94a18649a7d85e69bc1208b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  True: {fileID: 2127031606}
   False: {fileID: 1191628193}
   music: {fileID: 528410462}
 --- !u!1 &679278475
@@ -4179,7 +4178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &679278476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4228,7 +4227,7 @@ Transform:
   m_GameObject: {fileID: 679278475}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.2474895, y: 4.3321867, z: -10}
+  m_LocalPosition: {x: 6.3, y: 4.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4442,6 +4441,8 @@ GameObject:
   - component: {fileID: 987907256}
   - component: {fileID: 987907255}
   - component: {fileID: 987907258}
+  - component: {fileID: 987907260}
+  - component: {fileID: 987907259}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4456,7 +4457,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987907254}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &987907256
 Camera:
   m_ObjectHideFlags: 0
@@ -4517,7 +4518,7 @@ Transform:
   m_GameObject: {fileID: 987907254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0000014305115, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4557,6 +4558,46 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!50 &987907259
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987907254}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
+--- !u!114 &987907260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987907254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be81354b49abd94d9d741af02ff8aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yspeed: -0.9
 --- !u!1 &1004818741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &1076753084
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4970,7 +5011,7 @@ Transform:
   m_GameObject: {fileID: 1191628192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.2474895, y: 4.3321867, z: 0}
+  m_LocalPosition: {x: 6.3, y: 4.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
