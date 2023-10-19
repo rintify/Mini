@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RinExterminate;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -30,6 +31,9 @@ public class BulletBody : MonoBehaviour
         float a = t/sqrt_speed;
         v -= 1f*v*a*a*a*a;
         t += 0.1f;
-        if(v < 0.001) v = 0;
+        if(v < 0.001){
+            v = 0;
+            Manager.This.ending.Break();
+        };
     }
 }

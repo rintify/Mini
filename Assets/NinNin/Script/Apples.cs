@@ -14,23 +14,36 @@ public class Apples : MonoBehaviour
     {
         player = GameObject.Find("Player");
         isGameClear = false;
+
+        Common.StartGame(4, () =>
+        {
+            Debug.Log("false");
+            Common.EndGame(false);
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ゲームクリア
         if(isGameClear == true)
         {
+            Debug.Log("success");
+            Common.EndGame(true);
             Destroy(this.gameObject);
         }
     }
 
+      //犬がリンゴを避けた
       void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ground") && player.GetComponent<Player>().isGameOver != true)
+        if(collision.gameObject.CompareTag("Ground"))
         {
-            gameClearUI.SetActive(true);
-            isGameClear = true;
+            if(player.GetComponent<Player>().isGameOver != true)
+            {
+                gameClearUI.SetActive(true);
+                isGameClear = true;
+            }
         }
     }
 }

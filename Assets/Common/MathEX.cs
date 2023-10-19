@@ -171,4 +171,18 @@ public static class MathEX
             }
         }
     }
+
+    public class Virgin{
+        bool virgin = true;
+        Action action;
+        public Virgin(Action action){
+            this.action = action;
+        }
+        public void Break(){
+            if(virgin){
+                virgin = false;
+                action.Invoke();
+            }
+        }
+    }
 }

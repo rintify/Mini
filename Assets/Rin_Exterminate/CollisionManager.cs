@@ -30,6 +30,14 @@ public class CollisionManager : MonoBehaviour
 
         foreach(var collider in circles){
             if(!collider.exitst) continue;
+            CollisionM c = ballInCollision(bullet,collider);
+            if(c!=null){
+                if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
+            }
+        }
+
+        foreach(var collider in circles){
+            if(!collider.exitst) continue;
             CollisionM c = ballCollision(bullet,collider);
             if(c!=null){
                 if(nearCollision == null || nearCollision.modified > c.modified) nearCollision = c;
@@ -50,6 +58,14 @@ public class CollisionManager : MonoBehaviour
             nearCollision.bullet.onCollision(nearCollision);
             if(bullet.exitst) nearCollision.collider.onCollision(nearCollision);
         }
+    }
+
+    private static CollisionM ballInCollision(BulletColliderM p,CircleColliderM b){
+        Vector2 BP = b.pos - p.pre;
+        float minBP = p.r + b.r;
+        if(BP.sqrMagnitude >= minBP*minBP) return null;
+        Vector2 n = -b.pos.normalized;
+        return new CollisionM(0,p,b,n);
     }
 
     private static CollisionM ballCollision(BulletColliderM p,CircleColliderM b){

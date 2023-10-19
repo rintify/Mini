@@ -203,5 +203,19 @@
                 "level": 2
             }
         ]
+    },
+
+    {
+        "title": "リンゴを避けろ！",
+        "titleEng": "Avoid apples!",
+        "instruction": "A：左D：右",
+        "instructionEng": "A: left D:right",
+        "scenes": [
+            {
+              "name": "yokero",
+
+                "level": 1
+            }
+    ]
     }
 ]
