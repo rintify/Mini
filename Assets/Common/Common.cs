@@ -57,7 +57,7 @@ public class Common : MonoBehaviour
 
             if(instance.level != preLevel){
                 //レベルが変わっていればゲームリストを選びなおす
-                instance.SelectGamesAtLevel();
+                instance.Reselect();
             }
         }
         //クリアしなかったらライフを-1
@@ -209,16 +209,53 @@ public class Common : MonoBehaviour
         currentScene = (games[0].scenes.ElementAtRandom(),games[0]);
 
         //初期レベルのゲームリストを作成
-        SelectGamesAtLevel();
+        Reselect();
     }
 
     //今の難易度に対応したゲームリストを作成
-    void SelectGamesAtLevel(){
-        scenesAtLevel = games.Select(game => {
+    void Reselect(){
+        scenesAtLevel = SelectGamesLevel(level,-1);
+        int c = scenesAtLevel.Count;
+        if(level == 1){
+        }
+        else if(level == 2){
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(1,Mathf.CeilToInt(0.7f*c))
+            );
+        }else if(level == 3){
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(2,Mathf.CeilToInt(0.5f*c))
+            );
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(1,Mathf.CeilToInt(0.2f*c))
+            );
+        }
+        else{
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(3,Mathf.CeilToInt(0.4f*c))
+            );
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(2,Mathf.CeilToInt(0.2f*c))
+            );
+            scenesAtLevel.AddRange(
+                SelectGamesLevel(1,Mathf.CeilToInt(0.1f*c))
+            );
+        }
+
+        Debug.Log("select" + scenesAtLevel.Count + "/" + c);
+    }
+
+    List<(Scene,Game)> SelectGamesLevel(int level, int max){
+        var a = games.Select(game => {
             var s = game.scenes.Where(s => s.level == level);
             if(s.Count() == 0) return (null,game);
             return (s.ElementAtRandom(),game);
         }).Where(g => g.Item1 != null && g.game != currentScene.game).ToList();
+        if(max != -1){
+            a.Shuffle();
+            if(a.Count > max) a.RemoveRange(max,a.Count - max);
+        }
+        return a;
     }
 
     //ライフに応じて次のゲームorリザルト画面
@@ -230,7 +267,7 @@ public class Common : MonoBehaviour
         //次のゲームへ遷移
         else{
             //ゲームリストが空なら補充
-            if(scenesAtLevel.Count == 0) SelectGamesAtLevel();
+            if(scenesAtLevel.Count == 0) Reselect();
             if(scenesAtLevel.Count == 0){
                 Debug.Log("No Game");
                 SceneManager.LoadScene(resultScene);
