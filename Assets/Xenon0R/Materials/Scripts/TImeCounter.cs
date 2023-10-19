@@ -4,57 +4,59 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
  
-public class SampleScene : MonoBehaviour
+namespace XenonAnd{
+    public class SampleScene : MonoBehaviour
 {
-    //ƒJƒEƒ“ƒgƒ_ƒEƒ“
+    //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½
     public float countdown = 7.00f;
  
-    //ŽžŠÔ‚ð•\Ž¦‚·‚éTextŒ^‚Ì•Ï”
+    //ï¿½ï¿½ï¿½Ô‚ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Textï¿½^ï¿½Ì•Ïï¿½
     public TMP_Text timeText;
  
-    //ƒ|[ƒY‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+    //ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½
     private bool isPose = false;
  
     // Update is called once per frame
     void Update()
     {
-        //ƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«
+        //ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
         if(Input.GetMouseButtonDown(0))
         {
-            //countdown‚ª0‚ðØ‚Á‚Ä‚¢‚È‚¢‚Æ‚«
+            //countdownï¿½ï¿½0ï¿½ï¿½Ø‚ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½Æ‚ï¿½
             if(countdown >= 0)
             {
-                //ƒ|[ƒY’†‚ÉƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«
+                //ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½ÉƒNï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
                 if(isPose)
                 {
-                     //ƒ|[ƒYó‘Ô‚ð‰ðœ‚·‚é
+                     //ï¿½|ï¿½[ï¿½Yï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                      isPose = false;
                  }
-                //is’†‚ÉƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«
+                //ï¿½iï¿½sï¿½ï¿½ï¿½ÉƒNï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
                 else    {
-                     //ƒ|[ƒYó‘Ô‚É‚·‚é
+                     //ï¿½|ï¿½[ï¿½Yï¿½ï¿½Ô‚É‚ï¿½ï¿½ï¿½
                      isPose = true;
                 }
             }
         }
  
-        //ƒ|[ƒY’†‚©‚Ç‚¤‚©
+        //ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
         if (isPose)
         {
-            //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚µ‚È‚¢
+            //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
             return;
         }
  
-        //ŽžŠÔ‚ðƒJƒEƒ“ƒg‚·‚é
+        //ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
         countdown -= Time.deltaTime;
  
-        //ŽžŠÔ‚ð•\Ž¦‚·‚é
+        //ï¿½ï¿½ï¿½Ô‚ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         timeText.text = countdown.ToString("f2");
  
-        //countdown‚ª0ˆÈ‰º‚É‚È‚Á‚½‚Æ‚«
+        //countdownï¿½ï¿½0ï¿½È‰ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½
         if (countdown <= 0)
         {
             timeText.text = "Time Over";
         }
     }
+}
 }
