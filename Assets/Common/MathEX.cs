@@ -19,6 +19,10 @@ public static class MathEX
         return self.x*v.y - self.y*v.x;
     }
 
+    public static float Dot(this Vector2 self,Vector2 v){
+        return self.x*v.x + self.y*v.y;
+    }
+
     public static float Cross2(this Vector3 self,Vector3 v){
         return self.x*v.y - self.y*v.x;
     }

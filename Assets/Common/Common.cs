@@ -166,15 +166,14 @@ public class Common : MonoBehaviour
     [SerializeField]
     Canvas canvas;
 
-    [SerializeField]
-    GameObject img;
-
     GameObject ui;
     [SerializeField]
     GameObject uiPrefab;
 
     [SerializeField]
     string resultScene;
+
+    GameTransition transition;
 
 
     //共通パラメータ
@@ -210,6 +209,8 @@ public class Common : MonoBehaviour
 
         //初期レベルのゲームリストを作成
         Reselect();
+
+        transition = GetComponent<GameTransition>();
     }
 
     //今の難易度に対応したゲームリストを作成
@@ -262,7 +263,7 @@ public class Common : MonoBehaviour
     void Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
-            StartCoroutine(Fin());
+            transition.GameToResult(resultScene);
         }
         //次のゲームへ遷移
         else{
@@ -270,25 +271,18 @@ public class Common : MonoBehaviour
             if(scenesAtLevel.Count == 0) Reselect();
             if(scenesAtLevel.Count == 0){
                 Debug.Log("No Game");
-                SceneManager.LoadScene(resultScene);
+                //SceneManager.LoadScene(resultScene);
                 return;
             }
             //ランダムにゲームを選んで抜く
             currentScene = scenesAtLevel.ElementAtRandom();
             scenesAtLevel.Remove(currentScene);
             
-            SceneManager.LoadScene(currentScene.scene.name);
+            transition.GameToGame(currentScene.scene.name);
         } 
     }
 
-    IEnumerator Fin()
-    {
-        var tansitionAnim1 = img.GetComponent<Animator>();
-        tansitionAnim1.SetTrigger("End");
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(resultScene);
-        tansitionAnim1.SetTrigger("Start");
-    }
+    
 }
 
 class Game{
