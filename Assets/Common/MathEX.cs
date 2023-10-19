@@ -130,6 +130,11 @@ public static class MathEX
         return self[UnityEngine.Random.Range(0,self.Count)];
     }
 
+    public static List<T> Concat<T>(this List<T> self, List<T> list){
+        self.AddRange(list);
+        return self;
+    }
+
     public class Intervalist{
         float t = 0;
         public float interval;
