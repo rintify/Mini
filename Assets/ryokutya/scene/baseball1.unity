@@ -1443,7 +1443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5ffbec188db8a4791d71b0785a090e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound1: {fileID: 8300000, guid: fbac54c96b50d8645a849ccb8b3b2097, type: 3}
+  sound2: {fileID: 8300000, guid: 9443075fc07b41346b02a67de94e7863, type: 3}
   force: -1.2
+  disapper: 0
 --- !u!50 &1144912648
 Rigidbody2D:
   serializedVersion: 4

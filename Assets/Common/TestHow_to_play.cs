@@ -15,6 +15,7 @@ public class TestHow_to_play : MonoBehaviour
     public float font_speed_rate;
     private float xspeed;
     private float yspeed;
+    private bool pivot = false;
 
     //public  Timer sub;
     RectTransform RectTransform_get;
@@ -33,6 +34,7 @@ public class TestHow_to_play : MonoBehaviour
         RectTransform_get.localScale = scale;
         xspeed = -xposition + target_xposition;
         yspeed = -yposition + target_yposition;
+        pivot = true;
     }
 
     // Update is called once per frame
@@ -65,6 +67,12 @@ public class TestHow_to_play : MonoBehaviour
             }
             else
             {
+                if (pivot)
+                {
+                    Vector2 target_pivot = new Vector2(0.0f, 0.0f);
+                    RectTransform_get.pivot = target_pivot;
+                    pivot = false;
+                }
                 pos.x = target_xposition;
                 pos.y = target_yposition;
                 scale.x = font_size;
@@ -74,7 +82,6 @@ public class TestHow_to_play : MonoBehaviour
                 //scale.x -= font_size/speed_rate;
                 //scale.y -= font_size/speed_rate;
             }
-
             RectTransform_get.anchoredPosition = pos;
             RectTransform_get.localScale = scale;
         }
