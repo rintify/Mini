@@ -747,6 +747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1761531241}
   - component: {fileID: 1761531240}
+  - component: {fileID: 1761531242}
   m_Layer: 0
   m_Name: Common
   m_TagString: Untagged
@@ -768,10 +769,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamesData: {fileID: 4900000, guid: d7e9f9f5855ba4c11b61b2d29078195d, type: 3}
   canvas: {fileID: 1847344287}
-  img: {fileID: 1117012457}
   uiPrefab: {fileID: 7837889393997385455, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
   resultScene: TestResult
-  life: 20
+  life: 5
   score: 0
   level: 1
 --- !u!4 &1761531241
@@ -790,6 +790,19 @@ Transform:
   - {fileID: 1847344284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1761531242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761531239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d653d161c72e44c1befca7e6ddd1a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 1117012457}
 --- !u!1 &1847344283
 GameObject:
   m_ObjectHideFlags: 0
