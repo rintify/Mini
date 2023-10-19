@@ -16,8 +16,8 @@ public class StageController2 : MonoBehaviour
     {
         Common.StartGame(8, () => { Common.EndGame(ClearStage2); });
 
-        Ob1 = GameObject.Find("Cylinder");
-        Ob2 = GameObject.Find("Sphere");
+        Ob1 = GameObject.Find("Rocket");
+        Ob2 = GameObject.Find("Apple");
         Ob3 = GameObject.Find("Cube");
         script1 = Ob1.GetComponent<ClearController>();
         

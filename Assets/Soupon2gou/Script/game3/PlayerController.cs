@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour
     float startY;
 
     public bool StageClear=false;
+    public float rotate_speed =1f;
+    private AudioSource audioSource = null;
+    [Header("クリアSE")] public AudioClip SwordSE;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         startY = transform.position.y;
         Common.StartGame(8, () => { Common.EndGame(StageClear); });
     }
@@ -26,9 +31,10 @@ public class PlayerController : MonoBehaviour
             Stop();
         }
 
+        
         if (isStop) return ;
         //毎フレーム回転させる
-        transform.Rotate(new Vector3(0, 2.0f, 0));
+        transform.Rotate(new Vector3(0, rotate_speed, 0));
 
         //少しずつ下へ
         //transform.Translate(0, -0.005f, 0);
@@ -51,6 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             StageClear = true;
             Debug.Log("game3クリア!");
+            audioSource.PlayOneShot(SwordSE);
         }
     }
 

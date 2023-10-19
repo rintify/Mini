@@ -64,7 +64,7 @@ public class StageCtrl : MonoBehaviour
         GameManager.instance.PlaySE(stageClearSE);
         Debug.Log("ステージクリアSEをならしました");
 
-        //Common.EndGame(true);
+        clear = true;
     }
     /// <summary>
     /// 落下した
