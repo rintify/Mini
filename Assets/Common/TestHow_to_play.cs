@@ -67,8 +67,8 @@ public class TestHow_to_play : MonoBehaviour
             {
                 pos.x = target_xposition;
                 pos.y = target_yposition;
-                //scale.x = font_size;
-                //scale.y = font_size;
+                scale.x = font_size;
+                scale.y = font_size;
                 //pos.x += xspeed / speed_rate;
                 //pos.y += yspeed / speed_rate;
                 //scale.x -= font_size/speed_rate;

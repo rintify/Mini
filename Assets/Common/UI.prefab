@@ -52,12 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xposition: 0
-  yposition: -166
+  yposition: -165
   target_xposition: -400
   target_yposition: 347
-  font_size: 1
+  font_size: 1.4
   speed_rate: 20
-  font_speed_rate: 40
+  font_speed_rate: 15
 --- !u!222 &7063046882396513834
 CanvasRenderer:
   m_ObjectHideFlags: 0
