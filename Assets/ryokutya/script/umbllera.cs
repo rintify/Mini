@@ -11,6 +11,7 @@ public class umbllera : MonoBehaviour
     private int x;
     private int y;
     private Rigidbody2D rb = null;
+    private bool stop =true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,28 @@ public class umbllera : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time >= 1)
+        if(stop)
         {
-            time = 0;
-            x = Random.Range(0, 2);
-            y = 1 - x;
+            if(time <0.5)
+            {
+                Debug.Log("stop");
+                rb.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                stop = false;
+            }
         }
-        rb.velocity = new Vector2(Speed * list[x], 0);
+        else
+        {
+            if (time >= 1)
+            {
+                time = 0;
+                x = Random.Range(0, 2);
+                y = 1 - x;
+            }
+            rb.velocity = new Vector2(Speed * list[x], 0);
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
