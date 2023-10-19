@@ -14,6 +14,8 @@ namespace RinExterminate{
         public AudioClip sound1;
         public AudioSource source;
         public AudioClip sound2;
+        public List<GameObject> livers = new();
+        public MathEX.Virgin ending;
         // Start is called before the first frame update
         void Start()
         {
@@ -22,6 +24,12 @@ namespace RinExterminate{
             });
             this.guidCollider = new BulletColliderM(c => BulletColliderM.onCollision_Monst(guidCollider,c),1f);
             guidCollider.exitst = false;
+            ending = new(()=>{
+                this.Delay(() => {
+                    if(livers.Count == 0) Common.EndGame(true);
+                    else Common.EndGame(false);
+                }, 0.5f);
+            });
         }
 
         public static Manager This{

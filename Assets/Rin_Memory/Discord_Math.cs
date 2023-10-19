@@ -16,8 +16,8 @@ public class Discord_Math : MonoBehaviour
     private SexyEncription current = null;
     public GameObject batsuPrefab;
     public AudioClip bu,pinpon;
-    private AudioSource source;
     public bool listen = false;
+    private int clearCount =0;
 
     void Awake(){
         var cards = new Sprite[sprites.Length*2];
@@ -32,11 +32,11 @@ public class Discord_Math : MonoBehaviour
         Common.StartGame(13,()=>{
             Common.EndGame(true);
         });
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        source = GetComponent<AudioSource>();
         for(int i = 0; i < n; i ++){
             for(int j = 0; j < m; j ++){
                 if(cards.Count < 1) continue;
@@ -59,18 +59,27 @@ public class Discord_Math : MonoBehaviour
         if(current == null) current = sexy;
         else{
             if(current.sexyprite == sexy.sexyprite){
-                source.PlayOneShot(pinpon);
+                Common.PlayOneShot(pinpon);
                 
                 var fin = current;
                 current = null;
+                clearCount ++;
                 this.Delay(()=>{
                     Destroy(fin.gameObject);
                     Destroy(sexy.gameObject);
+                    Debug.Log(cards.Count);
+                    if(clearCount >= sprites.Length) this.Delay(()=>{
+                        Common.EndGame(true);
+                    },0.3f);
                 },0.3f);
             }
             else{
-                source.PlayOneShot(bu);
+                listen = false;
+                Common.PlayOneShot(bu);
                 Instantiate(batsuPrefab,sexy.transform);
+                this.Delay(()=>{
+                    Common.EndGame(false);
+                },0.3f);
             }
         }
     }
