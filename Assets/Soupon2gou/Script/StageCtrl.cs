@@ -65,6 +65,7 @@ public class StageCtrl : MonoBehaviour
         Debug.Log("ステージクリアSEをならしました");
 
         clear = true;
+        Common.EndGame(clear);
     }
     /// <summary>
     /// 落下した
@@ -73,5 +74,6 @@ public class StageCtrl : MonoBehaviour
     {
         GameManager.instance.PlaySE(fallSE);
         Debug.Log("fallSEをならしました");
+        Common.EndGame(clear);
     }
 }
