@@ -110,7 +110,7 @@
     {
         "title": "コインを集めろ！",
         "titleEng": "Collect coins!",
-        "instruction": "A: 左 D: 右  スペース:ジャンプ",
+        "instruction": "A: 左 D: 右 スペース:ジャンプ",
         "instructionEng": "A: left D: right Space:jump",
         "scenes": [
             {
@@ -122,7 +122,7 @@
     {
         "title": "コインを集めろ！",
         "titleEng": "Collect coins!",
-        "instruction": "A: 左 D: 右  スペース:ジャンプ",
+        "instruction": "A: 左 D: 右 スペース:ジャンプ",
         "instructionEng": "A: left D: right Space:jump",
         "scenes": [
             {
@@ -134,7 +134,7 @@
     {
         "title": "コインを集めろ！",
         "titleEng": "Collect coins!",
-        "instruction": "A: 左 D: 右  スペース:ジャンプ",
+        "instruction": "A: 左 D: 右 スペース:ジャンプ",
         "instructionEng": "A: left D: right Space:jump",
         "scenes": [
             {
@@ -158,7 +158,7 @@
     {
         "title": "ゴールしろ！",
         "titleEng": "Go to the goal!",
-        "instruction": "A: 左 D: 右  スペース:ジャンプ",
+        "instruction": "A: 左 D: 右 スペース:ジャンプ",
         "instructionEng": "A: left D: right Space:jump",
         "scenes": [
             {
@@ -194,7 +194,7 @@
     {
         "title": "敵を倒せ！",
         "titleEng": "Shoot enemy!",
-        "instruction": "A：左　D：右　スペース:発射",
+        "instruction": "A：左　D：右 スペース:発射",
         "instructionEng": "A: left D:right Space:Shooting",
         "scenes": [
             {

@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound1: {fileID: 8300000, guid: fbac54c96b50d8645a849ccb8b3b2097, type: 3}
-  sound2: {fileID: 8300000, guid: 67ad8aa637218474a9a04bb21b45a547, type: 3}
+  sound2: {fileID: 8300000, guid: 9443075fc07b41346b02a67de94e7863, type: 3}
   force: -1
   disapper: 1
 --- !u!50 &1144912648
