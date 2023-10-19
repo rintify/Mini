@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class baseball : MonoBehaviour
 {
+    public AudioClip sound1;
+    public AudioClip sound2;
     public float force;
     public bool disapper;
     private Rigidbody2D rb = null;
     private AudioSource audioSource = null;
+    private AudioClip[] audioClips;
     private float time = 1;
     private Renderer ball;
 
@@ -20,6 +23,7 @@ public class baseball : MonoBehaviour
         Vector3 Force = new Vector3(0, force, 0);
         Invoke("Ball", time);
         //rb.AddForce(Force, ForceMode2D.Impulse);
+        //audioSource.PlayOneShot(sound1);
         //audioSource.Play();
     }
 
@@ -29,14 +33,16 @@ public class baseball : MonoBehaviour
         Vector3 Position = rb.position;
        if(disapper)
         {
-             if(Position.y < 2.5)
+             if(Position.y < 2.5 &&  2.2 < Position.y)
             {
                 ball.enabled = false;
+                audioSource.PlayOneShot(sound2);
             }
             if (Position.y < -2)
             {
                 ball.enabled = true;
                 disapper = false;
+                audioSource.PlayOneShot(sound2);
             }
         }
     }
@@ -44,7 +50,8 @@ public class baseball : MonoBehaviour
     {
         Vector3 Force = new Vector3(0, force, 0);
         rb.AddForce(Force, ForceMode2D.Impulse);
-        audioSource.Play();
+        audioSource.PlayOneShot(sound1);
+        //audioSource.Play();
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
