@@ -150,6 +150,11 @@ public class Common : MonoBehaviour
 
 
 
+//*** その他便利機能 ***
+
+    public static void PlayOneShot(AudioClip clip){
+        instance.audioSource.PlayOneShot(clip);
+    }
 
 
 
@@ -174,6 +179,7 @@ public class Common : MonoBehaviour
     string resultScene;
 
     GameTransition transition;
+    AudioSource audioSource;
 
 
     //共通パラメータ
@@ -211,6 +217,7 @@ public class Common : MonoBehaviour
         Reselect();
 
         transition = GetComponent<GameTransition>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     //今の難易度に対応したゲームリストを作成
