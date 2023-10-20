@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
             StageClear = true;
             Debug.Log("game3クリア!");
             audioSource.PlayOneShot(SwordSE);
+
+            Common.EndGame(StageClear);
         }
     }
 
