@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         startY = transform.position.y;
-        Common.StartGame(8, () => { Common.EndGame(false); });
+        Common.StartGame(8, () => { Common.EndGame(StageClear); });
     }
 
     // Update is called once per frame
@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         if (obj.name.Equals("Clear"))
         {
             Debug.Log("game3クリア!");
+            StageClear = true;
             StartCoroutine(Fin_C());
         }
     }

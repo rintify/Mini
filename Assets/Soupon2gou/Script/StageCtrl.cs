@@ -23,7 +23,7 @@ public class StageCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Common.StartGame(8, () => { Common.EndGame(false); });
+        Common.StartGame(8, () => { Common.EndGame(doClear); });
         audioSource = GetComponent<AudioSource>();
         if (playerObj != null && continuePoint != null && continuePoint.Length > 0)
         {
