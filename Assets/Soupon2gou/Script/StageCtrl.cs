@@ -17,19 +17,18 @@ public class StageCtrl : MonoBehaviour
     private bool doClear = false;
     private bool isfall = false;
 
-    //クリア判定
-    public bool clear = false;
+    //sound Get
+    private AudioSource audioSource = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        Common.StartGame(8, () => { Common.EndGame(clear); });
-
+        Common.StartGame(8, () => { Common.EndGame(false); });
+        audioSource = GetComponent<AudioSource>();
         if (playerObj != null && continuePoint != null && continuePoint.Length > 0)
         {
             Debug.Log("プレイヤーは原点に移動しました");
             playerObj.transform.position = continuePoint[0].transform.position;
-            //stageClearObj.SetActive(false);
         }
         else
         {
@@ -41,39 +40,41 @@ public class StageCtrl : MonoBehaviour
     {
         if(PlayerfallTrigger != null && PlayerfallTrigger.isOn && !isfall)
         {
-            Debug.Log("fallしました");
-            playerfall();
             isfall = true;
+            Debug.Log("fallしました");
+            StartCoroutine(Fin_F());
         }
    
         if(stageClearTrigger != null && stageClearTrigger.isOn2 && !doClear) {
-            Debug.Log("clearしました");
-            StageClear();
             doClear = true;
+            Debug.Log("clearしました");
+            StartCoroutine(Fin_C());
         }
 
        
     }
-    /// <summary>
-    /// ステージをクリアした
-    /// </summary>
-    public void StageClear()
+
+     IEnumerator Fin_C()
     {
-        GameManager.instance.isStageClear = true;
-        //stageClearObj.SetActive(true);
-        GameManager.instance.PlaySE(stageClearSE);
+        //音楽を鳴らす
+        audioSource.PlayOneShot(stageClearSE);
         Debug.Log("ステージクリアSEをならしました");
 
-        clear = true;
-        Common.EndGame(clear);
+        //終了まで待機
+        yield return new WaitWhile(() => audioSource.isPlaying);
+
+        Common.EndGame(true);
     }
-    /// <summary>
-    /// 落下した
-    /// </summary>
-    public void playerfall()
+
+    IEnumerator Fin_F()
     {
-        GameManager.instance.PlaySE(fallSE);
+        //音楽を鳴らす
+        audioSource.PlayOneShot(fallSE);
         Debug.Log("fallSEをならしました");
-        Common.EndGame(clear);
+
+        //終了まで待機
+        yield return new WaitWhile(() => audioSource.isPlaying);
+
+        Common.EndGame(false);
     }
 }

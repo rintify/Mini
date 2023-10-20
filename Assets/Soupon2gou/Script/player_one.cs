@@ -21,6 +21,7 @@ public class player_one : MonoBehaviour
     //private変数
     private Animator anim = null;
     private Rigidbody2D rb = null;
+    private AudioSource audioSource = null;
     private bool isGround = false;
     private bool isHead = false;
     private bool isJump = false;
@@ -37,6 +38,8 @@ public class player_one : MonoBehaviour
         //コンポーネントのインスタンスを捕まえる
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -59,7 +62,7 @@ public class player_one : MonoBehaviour
             {
                 if (!isJump)
                 {
-                    GameManager.instance.PlaySE(jumpSE); 
+                    audioSource.PlayOneShot(jumpSE);
                 }
                 ySpeed = jumpSpeed;
                 jumpPos = transform.position.y;

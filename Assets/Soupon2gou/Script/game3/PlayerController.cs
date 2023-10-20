@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         startY = transform.position.y;
-        Common.StartGame(8, () => { Common.EndGame(StageClear); });
+        Common.StartGame(8, () => { Common.EndGame(false); });
     }
 
     // Update is called once per frame
@@ -55,12 +55,21 @@ public class PlayerController : MonoBehaviour
 
         if (obj.name.Equals("Clear"))
         {
-            StageClear = true;
             Debug.Log("game3クリア!");
-            audioSource.PlayOneShot(SwordSE);
-
-            Common.EndGame(StageClear);
+            StartCoroutine(Fin_C());
         }
+    }
+
+    IEnumerator Fin_C()
+    {
+        //音楽を鳴らす
+        audioSource.PlayOneShot(SwordSE);
+        Debug.Log("ステージクリアSEをならしました");
+
+        //終了まで待機
+        yield return new WaitWhile(() => audioSource.isPlaying);
+
+        Common.EndGame(true);
     }
 
     public void Stop()

@@ -15,19 +15,24 @@ public class GameTransition : MonoBehaviour
 
     //次のゲームに遷移する時にコモンから呼ばれる
     public void GameToGame(string nextSceneName){
-        IEnumerator GtoG()
+        void GtoG()
         {
-            /*GameObject Im = transform.Find("Canvas/Image").gameObject;
+            GameObject Im = transform.Find("Canvas/Image").gameObject;
             Im.GetComponent<Image>().color = new Color(0.8f, 0.3f, 0.1f, 255.0f);
             var tansitionAnim = img.GetComponent<Animator>();
-            tansitionAnim.SetTrigger("out2");*/
-            yield return new WaitForSeconds(1);
+            tansitionAnim.SetTrigger("out2");
+            StartCoroutine(TimeLate());
             SceneManager.LoadScene(nextSceneName);
-            /*yield return new WaitForSeconds(1);
-            Im.GetComponent<Image>().color = new Color(0.8f, 0.3f, 0.1f, 0.0f);
-            tansitionAnim.SetTrigger("in2");*/
+            Im.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+            tansitionAnim.SetTrigger("in2");
+            StartCoroutine(TimeLate());
+            Debug.Log("GtoG");
         }
-        StartCoroutine(GtoG());
+        IEnumerator TimeLate()
+        {
+            yield return new WaitForSeconds(1);
+        }
+        GtoG();
         
     }
 
@@ -35,11 +40,13 @@ public class GameTransition : MonoBehaviour
     public void GameToResult(string resultSceneName){
         IEnumerator Fin()
         {
+            GameObject Im = transform.Find("Canvas/Image").gameObject;
             var TansitionAnimResult = img.GetComponent<Animator>();
             TansitionAnimResult.SetTrigger("out");
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(resultSceneName);
             TansitionAnimResult.SetTrigger("in");
+            Debug.Log("GtoRe");
         }
         StartCoroutine(Fin());
     }
