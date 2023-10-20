@@ -22,7 +22,10 @@ public class Common : MonoBehaviour
 
     ///<summary>ゲームを開始する時に実行する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
+        Debug.Log("Game Start");
         if(!instance) return;
+        //間連続呼び出しを避ける
+        if(instance.onTimeUp != null) return;
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
         instance.ui = Instantiate(instance.uiPrefab, instance.canvas.transform);
@@ -32,7 +35,7 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを終了し次のゲームを開始する</summary>
     ///<param name="isCleared">ゲームをクリアできたか</param>
     public static void EndGame(bool isCleared){
-        Debug.Log(isCleared ? "GameClear" : "GameOver");
+        Debug.Log(isCleared ? "Game Clear" : "Game Over");
 
         if(!instance){
             return;
