@@ -6,7 +6,7 @@ public class EventSystem_paperplane : MonoBehaviour
 {
     public paperplane False;
     public AudioSource music;
-    private bool isGame;
+    private bool isGame = true;
 
     // Start is called before the first frame update
     void Start()
