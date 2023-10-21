@@ -6,23 +6,33 @@ public class EventSystem_ball : MonoBehaviour
 {
     public ball Ball;
     public AudioSource music;
+    private bool isGame = true;
+
     // Start is called before the first frame update
     void Start()
     {
         Common.StartGame(8, () =>
         {
-            Debug.Log("success");
-            Common.EndGame(true);
+            if(isGame)
+            {
+                isGame = false;
+                Debug.Log("success");
+                Common.EndGame(true);
+            }
         });
      }
 
     // Update is called once per frame
         void Update()
     {
-        if (Ball.On)
+        if(isGame)
         {
-            Debug.Log("false");
-            Common.EndGame(false);
+            if (Ball.On)
+            {
+                isGame = false;
+                Debug.Log("false");
+                Common.EndGame(false);
+            }
         }
     }
 }

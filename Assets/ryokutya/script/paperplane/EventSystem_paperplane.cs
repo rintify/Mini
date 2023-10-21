@@ -6,23 +6,34 @@ public class EventSystem_paperplane : MonoBehaviour
 {
     public paperplane False;
     public AudioSource music;
+    private bool isGame;
+
     // Start is called before the first frame update
     void Start()
     {
         Common.StartGame(8, () =>
         {
-            Debug.Log("success");
-            Common.EndGame(true);
+            if(isGame)
+            {
+                isGame = false;
+                Debug.Log("success");
+                Common.EndGame(true);
+
+            }
         });
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (False.touch)
+        if(isGame)
         {
-            Debug.Log("false");
-            Common.EndGame(false);
+            if (False.touch)
+            {
+                isGame = false;
+                Debug.Log("false");
+                Common.EndGame(false);
+            }
         }
     }
 

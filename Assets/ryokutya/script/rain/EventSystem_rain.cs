@@ -6,14 +6,19 @@ public class EventSystem_rain : MonoBehaviour
 {
     public playerCheck player;
     public AudioSource music;
+    private bool isGame = true;
 
     // Start is called before the first frame update
     void Start()
     {
         Common.StartGame(8, () => {
             {
-                Debug.Log("success");
-                Common.EndGame(true);
+                if(isGame)
+                {
+                    isGame = false;
+                    Debug.Log("success");
+                    Common.EndGame(true);
+                }
             }
         });
     }
@@ -21,10 +26,14 @@ public class EventSystem_rain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.outPlayer)
+        if(isGame)
         {
-            Debug.Log("false");
-            Common.EndGame(false);
+            if (player.outPlayer)
+            {
+                isGame = false;
+                Debug.Log("false");
+                Common.EndGame(false);
+            }
         }
     }
 }
