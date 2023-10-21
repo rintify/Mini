@@ -8,6 +8,7 @@ public class AirPlayer : MonoBehaviour
     public float speed = 3f;
     public AudioClip foot1,foot2;
     float dS = 0;
+    Rigidbody rb;
 
     string wPressed = null;
     bool run = false;
@@ -26,7 +27,12 @@ public class AirPlayer : MonoBehaviour
     {
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
+        Common.StartGame(15,()=>{
+            Common.EndGame(true);
+        });
+        rb = GetComponent<Rigidbody>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -67,26 +73,26 @@ public class AirPlayer : MonoBehaviour
     bool foot = false;
     private void FixedUpdate()
     {
-        var dir = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")).normalized;
+        var dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         if(dir == Vector2.zero) return;
 
-
-        var ds = (run ? speed*3 : speed)*Time.fixedDeltaTime;
+        var ds = (run ? speed * 2 : speed) * Time.fixedDeltaTime;
         dS += ds;
-        if(dS > 2f){
+        if (dS > 3f)
+        {
             Common.PlayOneShot(foot ? foot1 : foot2);
             foot = !foot;
-            dS -= 2f;
+            dS -= 3f;
         }
 
-        var move = ds*dir;
-
-        //transform.position += new Vector3(x,0,z);
+        var move = ds * dir;
 
         Vector3 forwardWithoutY = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z).normalized;
         Vector3 rightWithoutY = new Vector3(cam.transform.right.x, 0, cam.transform.right.z).normalized;
 
-        transform.position += forwardWithoutY * move.y + rightWithoutY * move.x;
+        Vector3 newPosition = transform.position + forwardWithoutY * move.y + rightWithoutY * move.x;
+
+        rb.MovePosition(newPosition);
     }
 
 

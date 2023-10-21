@@ -64,10 +64,10 @@ namespace RinExterminate{
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.RightArrow)){
+            if (Input.GetKey(KeyCode.D)){
                 taiho.transform.Rotate(0,0,-140f*Time.deltaTime);
             }
-            else if (Input.GetKey(KeyCode.LeftArrow)){
+            else if (Input.GetKey(KeyCode.A)){
                 taiho.transform.Rotate(0,0,140f*Time.deltaTime);
             }
             if (Input.GetKeyDown(KeyCode.Space) && bullet == null){
