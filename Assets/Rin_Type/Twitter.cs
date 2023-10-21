@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +12,20 @@ public class Twitter : MonoBehaviour
     public TextAsset data;
     private string question;
     private int current;
-    string[] lines;
+    string[][] lines;
     public AudioSource source;
     public AudioClip clip,bu;
     bool canPress;
     // Start is called before the first frame update
     void Start()
     {
-        Common.StartGame(9,()=>{
+        Common.StartGame(
+            Common.RequiredLevel == 4 ? 15 :
+            Common.RequiredLevel == 3 ? 12 :
+            10,()=>{
             Common.EndGame(false);
         });
-        lines = data.text.Split("\n");
+        lines = data.text.Split("\n\n").Select(a => a.Split("\n")).ToArray();
         next();
     }
 
@@ -29,7 +33,7 @@ public class Twitter : MonoBehaviour
         canPress = true;
         current = 0;
         texual.text = question;
-        var selected = lines[Random.Range(0,lines.Length)].Split(" ");
+        var selected = lines[Common.RequiredLevel-1].ElementAtRandom().Split(" ");
         japanese.text = selected[0];
         question = texual.text = selected[1];
     }
