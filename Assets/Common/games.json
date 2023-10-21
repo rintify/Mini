@@ -91,7 +91,7 @@
         "scenes": [
             {
                 "name": "rain",
-                "level": 1
+                "level": 2
             }
         ]
     },
@@ -139,7 +139,7 @@
         "scenes": [
             {
                 "name": "coin3",
-                "level": 3
+                "level": 4
             }
         ]
     },
@@ -151,7 +151,7 @@
         "scenes": [
             {
                 "name": "paperplane",
-                "level": 2
+                "level": 3
             }
         ]
     },
