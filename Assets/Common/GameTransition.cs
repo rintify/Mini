@@ -18,14 +18,13 @@ public class GameTransition : MonoBehaviour
         void GtoG()
         {
             GameObject Im = transform.Find("Canvas/Image").gameObject;
-            Im.GetComponent<Image>().color = new Color(0.8f, 0.3f, 0.1f, 255.0f);
+            Im.GetComponent<Image>().color = new Color(0.8f, 0.3f, 0.1f, 255f);
             var tansitionAnim = img.GetComponent<Animator>();
             tansitionAnim.SetTrigger("out2");
             StartCoroutine(TimeLate());
             SceneManager.LoadScene(nextSceneName);
             Im.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             tansitionAnim.SetTrigger("in2");
-            StartCoroutine(TimeLate());
             Debug.Log("GtoG");
         }
         IEnumerator TimeLate()
