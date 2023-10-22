@@ -1,13 +1,25 @@
 [
     {
         "title": "一発で殲滅しろ!",
-        "titleEng": "Do!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Exterminate!",
+        "instruction": "A: 左 D: 右 Shift: 微調整 Space: 発射",
+        "instructionEng": "A: left D: right Shift: slow",
         "scenes": [
             {
                 "name": "Exterminate",
                 "level": 1
+            },
+            {
+                "name": "Exterminate",
+                "level": 2
+            },
+            {
+                "name": "Exterminate",
+                "level": 3
+            },
+            {
+                "name": "Exterminate",
+                "level": 4
             }
         ]
     },
@@ -25,9 +37,9 @@
     },
     {
         "title": "生き残れ！",
-        "titleEng": "Run!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Survive!",
+        "instruction": "A: 左 D: 右 W: 上 S: 下",
+        "instructionEng": "A: Left D: Right W: Up S: Down",
         "scenes": [
             {
                 "name": "Survivor1-1",
@@ -44,6 +56,10 @@
             {
                 "name": "Survivor3-2",
                 "level": 3
+            },
+            {
+                "name": "Survivor4-1",
+                "level": 4
             }
         ]
     },

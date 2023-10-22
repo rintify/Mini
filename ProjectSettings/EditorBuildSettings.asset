@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Soupon2gou/Scenes/game3.unity
     guid: 9e8c9912d32d1fd4aa6b3f6839a6fdc4
   - enabled: 1
-    path: Assets/Rin_Exterminate/Exterminate.unity
-    guid: 1fc4ed4f845e343609720d4c2f605dd7
-  - enabled: 1
     path: Assets/Rin_Memory/Memory.unity
     guid: 1dc4e0cb5f53f4f2586229a92f076b20
   - enabled: 1
@@ -74,4 +71,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ryokutya/scene/ball2.unity
     guid: 8b7a462a157d0bd4f80bdda0228ca2c6
+  - enabled: 1
+    path: Assets/Rin_Exterminate/Exterminate.unity
+    guid: 4c0608c508a60469fa823702b7b0ee61
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor4-2.unity
+    guid: a3636d9839f88419e9acb4ebc27a140b
   m_configObjects: {}

@@ -223,7 +223,16 @@ public class Common : MonoBehaviour
 
         //各ゲームのデータをJSONから取得
         games = JsonConvert.DeserializeObject<Game[]>(gamesData.text);
-        currentScene = (null,null);
+        //テストプレイ用
+        currentScene = (new Scene(){
+            level = level,
+            name = ""
+        },new Game(){
+            instruction = "X: dot",
+            instructionEng = "X: dot",
+            title = "Do!",
+            titleEng = "Do!"
+        });
 
         //初期レベルのゲームリストを作成
         Reselect();
@@ -257,14 +266,11 @@ public class Common : MonoBehaviour
 
     void SelectGamesLevel(int level, int max){
         var a = games.Select(game => {
-            //今のゲームは除く
-            if(game == currentScene.game) return (null,null);
-            //すでに追加してあるゲームは除く
-            foreach(var scene in scenesAtLevel){
-                if(game == scene.game) return (null,null);
-            }
-            //要求される難易度がないゲームは除く
-            var s = game.scenes.Where(s => s.level == level);
+            //要求される難易度かつ今のシーンでないシーンを選択 -> シーンの連続を避ける
+            var s = game.scenes.Where(s => 
+                s.level == level && s != currentScene.scene
+            );
+            //それがないゲームを除く
             if(s.Count() == 0) return (null,null);
 
             return (s.ElementAtRandom(),game);

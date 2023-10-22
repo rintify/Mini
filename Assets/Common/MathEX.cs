@@ -139,6 +139,10 @@ public static class MathEX
         return self;
     }
 
+    public static string Join(this IEnumerable<string> self, string sep){
+        return string.Join(sep,self);
+    }
+
     public class Intervalist{
         float t = 0;
         public float interval;

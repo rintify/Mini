@@ -43,9 +43,11 @@ public class EnemyHub : Hub
         Vector2 pSword = (playerSword.transform.position - target.transform.position).normalized;
         Vector2 sword = (this.sword.transform.position - transform.position).normalized;
 
-        if(rotationTime > 0){
+         if(rotationTime > 0){
             if(toTarget_ < 4.2){
-                pos -= speed*Time.deltaTime * toTarget.normalized;
+                pos -= speed*Time.deltaTime * toTarget.normalized.Rotate(
+                    Mathf.Sign(target.rotationSpeed)*0.4f
+                );
             }  
             else if(toTarget_ < 4.3){
                 pos += speed*Time.deltaTime * 
@@ -53,16 +55,14 @@ public class EnemyHub : Hub
             }
             else{
                 pos += speed*Time.deltaTime * toTarget.normalized.Rotate(
-                    -Mathf.Sign(target.rotationSpeed)*1.1f
+                    -Mathf.Sign(target.rotationSpeed)*0.4f
                 );
             } 
             rotationTime -= Time.deltaTime;
-            transform.position = pos;
-            return;
         }
 
-        var T_o_PS= Vector2.Dot(toTarget.normalized,pSword);
-        var T_x_PS = toTarget.normalized.Cross(pSword);
+        var T_o_PS= Vector2.Dot(toTarget,pSword);
+        var T_x_PS = toTarget.Cross(pSword);
         
         if(toTarget_ < 3.16){
             pos -= speed*Time.deltaTime * toTarget.normalized;
