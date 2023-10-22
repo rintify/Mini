@@ -102,8 +102,20 @@
         "instructionEng": "A: left D: right",
         "scenes": [
             {
-                "name": "ball",
+                "name": "ball1",
                 "level": 2
+            }
+        ]
+    },
+    {
+        "title": "ボールを落とすな！",
+        "titleEng": "Don't drop ball!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "ball2",
+                "level": 3
             }
         ]
     },
@@ -139,7 +151,7 @@
         "scenes": [
             {
                 "name": "coin3",
-                "level": 4
+                "level": 3
             }
         ]
     },
