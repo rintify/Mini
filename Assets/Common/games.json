@@ -49,13 +49,25 @@
     },
     {
         "title": "入力しろ！",
-        "titleEng": "Run!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Type!",
+        "instruction": "A ~ Z: 文字入力",
+        "instructionEng": "A ~ Z: 文字入力",
         "scenes": [
             {
                 "name": "Type",
                 "level": 1
+            },
+            {
+                "name": "Type",
+                "level": 2
+            },
+            {
+                "name": "Type",
+                "level": 3
+            },
+            {
+                "name": "Type",
+                "level": 4
             }
         ]
     },

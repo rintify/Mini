@@ -17,7 +17,7 @@ public class Common : MonoBehaviour
     ///<summary>ゲームに要求される難易度</summary>
     public static int RequiredLevel {get{
         if(!instance) return 1;
-        return instance.level;
+        return instance.currentScene.scene.level;
     }}
 
     ///<summary>ゲームを開始する時に実行する</summary>
@@ -53,8 +53,8 @@ public class Common : MonoBehaviour
             int preLevel = instance.level;
             //スコアに応じてレベルを決める
             instance.level = 
-                instance.score >= 20 ? 4 :
-                instance.score >= 15 ? 3 :
+                instance.score >= 30 ? 4 :
+                instance.score >= 20 ? 3 :
                 instance.score >= 10 ? 2 :
                 1;
 
@@ -109,6 +109,12 @@ public class Common : MonoBehaviour
     public static int Score {get{
         if(!instance) return 1;
         return instance.score;
+    }}
+
+    ///<summary>現在のレベル</summary>
+    public static int Level {get{
+        if(!instance) return 1;
+        return instance.level;
     }}
 
 
@@ -196,7 +202,7 @@ public class Common : MonoBehaviour
     //今のレベル
     [SerializeField]
     int level = 1;
-    List<(Scene scene,Game game)> scenesAtLevel;
+    readonly List<(Scene scene,Game game)> scenesAtLevel = new();
 
     //今のゲーム
     (Scene scene,Game game) currentScene;
@@ -207,14 +213,17 @@ public class Common : MonoBehaviour
     void Awake() {
         //唯一無二
         if(instance == null) instance = this;
-        else Destroy(gameObject);
+        else {
+            Destroy(gameObject);
+            return;
+        }
 
         //不滅
         DontDestroyOnLoad(gameObject);
 
         //各ゲームのデータをJSONから取得
         games = JsonConvert.DeserializeObject<Game[]>(gamesData.text);
-        currentScene = (games[0].scenes.ElementAtRandom(),games[0]);
+        currentScene = (null,null);
 
         //初期レベルのゲームリストを作成
         Reselect();
@@ -225,48 +234,48 @@ public class Common : MonoBehaviour
 
     //今の難易度に対応したゲームリストを作成
     void Reselect(){
-        scenesAtLevel = SelectGamesLevel(level,-1);
+        scenesAtLevel.Clear();
+        SelectGamesLevel(level,-1);
         int c = scenesAtLevel.Count;
         if(level == 1){
         }
         else if(level == 2){
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(1,Mathf.CeilToInt(0.7f*c))
-            );
-        }else if(level == 3){
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(2,Mathf.CeilToInt(0.5f*c))
-            );
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(1,Mathf.CeilToInt(0.2f*c))
-            );
+            SelectGamesLevel(1,Mathf.CeilToInt(0.7f*c));
+        }
+        else if(level == 3){
+            SelectGamesLevel(2,Mathf.CeilToInt(0.5f*c));
+            SelectGamesLevel(1,Mathf.CeilToInt(0.2f*c));
         }
         else{
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(3,Mathf.CeilToInt(0.4f*c))
-            );
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(2,Mathf.CeilToInt(0.2f*c))
-            );
-            scenesAtLevel.AddRange(
-                SelectGamesLevel(1,Mathf.CeilToInt(0.1f*c))
-            );
+            SelectGamesLevel(3,Mathf.CeilToInt(0.4f*c));
+            SelectGamesLevel(2,Mathf.CeilToInt(0.2f*c));
+            SelectGamesLevel(1,Mathf.CeilToInt(0.1f*c));
         }
 
-        Debug.Log("select" + scenesAtLevel.Count + "/" + c);
+        Debug.Log($"select total -> {scenesAtLevel.Count} level:{level} -> {c}");
     }
 
-    List<(Scene,Game)> SelectGamesLevel(int level, int max){
+    void SelectGamesLevel(int level, int max){
         var a = games.Select(game => {
+            //今のゲームは除く
+            if(game == currentScene.game) return (null,null);
+            //すでに追加してあるゲームは除く
+            foreach(var scene in scenesAtLevel){
+                if(game == scene.game) return (null,null);
+            }
+            //要求される難易度がないゲームは除く
             var s = game.scenes.Where(s => s.level == level);
-            if(s.Count() == 0) return (null,game);
+            if(s.Count() == 0) return (null,null);
+
             return (s.ElementAtRandom(),game);
-        }).Where(g => g.Item1 != null && g.game != currentScene.game).ToList();
+        }).Where(g => g.Item1 != null).ToList();
+
         if(max != -1){
             a.Shuffle();
             if(a.Count > max) a.RemoveRange(max,a.Count - max);
         }
-        return a;
+        
+        scenesAtLevel.AddRange(a);
     }
 
     //ライフに応じて次のゲームorリザルト画面

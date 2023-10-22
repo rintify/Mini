@@ -59,6 +59,7 @@
 都市計画 tosikeikaku
 形而上学 keizizyougaku
 実存主義 zituzonnsyugi
+金沢大学 kanazawadaigaku
 
 一向専念無量寿仏 ikkousennnennmuryouzyubutu
 天上天下唯我独尊 tenzyoutengeyuigadokusonn
@@ -83,3 +84,4 @@
 取らぬ狸の皮算用 toranutanukinokawazanyou
 飛んで火に入る夏の虫 tonndehiniirunatunomusi
 大聖釈迦牟尼世尊 daisyousyakamunisesonn
+金沢大学角間キャンパス kanazawadaigakukakumakyannpasu

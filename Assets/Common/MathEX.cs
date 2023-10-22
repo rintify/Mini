@@ -107,7 +107,7 @@ public static class MathEX
         return monoBehaviour.StartCoroutine(CoroutineAction_Loop(action, interval));
     }
 
-    private static IEnumerator CoroutineAction(System.Action action, float delay)
+    private static IEnumerator CoroutineAction(Action action, float delay)
     {
         yield return new WaitForSeconds(delay);
         action?.Invoke();
