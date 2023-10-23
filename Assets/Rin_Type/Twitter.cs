@@ -25,7 +25,7 @@ public class Twitter : MonoBehaviour
             10,()=>{
             Common.EndGame(false);
         });
-        lines = data.text.Split("\n\n").Select(a => a.Split("\n")).ToArray();
+        lines = data.text.Split(",,").Select(a => a.Split(",")).ToArray();
         next();
     }
 
