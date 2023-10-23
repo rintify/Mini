@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour
         {
             Destroy(this.gameObject);
             Miss = true;
+            Common.EndGame(false);
         }
         
     }

@@ -71,4 +71,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NinNin/Scene/yokero.unity
     guid: 5452e5adfb15a8345b921f64343fdeac
+  - enabled: 1
+    path: Assets/NinNin/Scene/kowase.unity
+    guid: 71bab7c9beed07e498df83ed430899a0
   m_configObjects: {}

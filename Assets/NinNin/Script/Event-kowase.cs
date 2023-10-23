@@ -14,7 +14,11 @@ public class UI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+      Common.StartGame(10, () =>
+      {
+        Debug.Log("false");
+        Common.EndGame(false);
+      });
     }
 
     // Update is called once per frame
@@ -28,6 +32,7 @@ public class UI : MonoBehaviour
                 Debug.Log("ゲームクリア");
                 isGameClear = true;
                 Destroy(destroy_ball);
+                Common.EndGame(true);
             }
         }
     }

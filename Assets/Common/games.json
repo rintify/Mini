@@ -217,5 +217,18 @@
                 "level": 1
             }
     ]
-    }
+    },
+
+    {
+        "title": "ブロックを壊せ！",
+        "titleEng": "Break blocks!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "kowase",
+                "level": 1
+            }
+        ]
+    },
 ]
