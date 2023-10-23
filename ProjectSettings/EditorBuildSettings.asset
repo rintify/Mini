@@ -76,6 +76,9 @@ EditorBuildSettings:
     guid: 4a2e567deab527e4aa89e93ea24c6d84
   - enabled: 1
     path: Assets/ryokutya/scene/ball2.unity
+    guid: 708d648cc484c9043a4586cd20ff0f48
+  - enabled: 1
+    path: Assets/ryokutya/scene/ball3.unity
     guid: 8b7a462a157d0bd4f80bdda0228ca2c6
   - enabled: 1
     path: Assets/Rin_Exterminate/Exterminate.unity

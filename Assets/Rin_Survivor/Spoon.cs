@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spoon : MonoBehaviour
 {
     public EnemyHubLv1 prefab;
-    MathEX.Intervalist a;
+    EX.Intervalist a;
     public float r = 13;
     public float interval = 2f;
     // Start is called before the first frame update

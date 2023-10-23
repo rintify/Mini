@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Common : MonoBehaviour
@@ -17,7 +18,7 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを開始する時に実行し、カウントを開始する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
         //Awakeされてなかったらスタートする
-        if(instance.ui == null) AwakeGame(); 
+        if(instance.ui == null) StartGame(); 
         //連続呼び出しを避ける
         if(instance.onTimeUp != null) return;
         Debug.Log("Game Start");
@@ -26,8 +27,8 @@ public class Common : MonoBehaviour
         instance.ui.OnStartGame();
     }
 
-    ///<summary>[任意]ゲームを開始する前に実行し、カウントは開始しない</summary>
-    public static void AwakeGame(){
+    ///<summary>ゲームを開始する前に実行し、カウントは開始しない</summary>
+    public static void StartGame(){
         //連続呼び出しを避ける
         if(instance.ui != null) return;
         Debug.Log("Game Awake");
@@ -35,19 +36,33 @@ public class Common : MonoBehaviour
         instance.ui.transform.SetAsLastSibling();
     }
 
-    ///<summary>ゲームを終了し次のゲームを開始する</summary>
-    ///<param name="isCleared">ゲームをクリアできたか</param>
-    public static void EndGame(bool isCleared){
-        //シーンが切り替わるまでの間連続呼び出しを避ける
+    ///<summary>ゲームを終了する前に実行し、カウントを終了する onTimeupは実行されない</summary>
+    public static void BreakGame(){
+        //連続呼び出しを避ける
         if(instance.onTimeUp == null) return;
-        Debug.Log(isCleared ? "Game Clear" : "Game Over");
+        instance.ui.OnBreakGame();
+        instance.onTimeUp = null;
+    }
+
+    ///<summary>ゲームノクリア判定を設定</summary>
+    public static bool IsCleared {set {
+        if(instance.isCleared != 0) return;
+        instance.isCleared = value ? 1 : -1;
+    }}
+
+    ///<summary>ゲームを終了する</summary>
+    public static void EndGame(){
+        //シーンが切り替わるまでの間連続呼び出しを避ける
+        if(instance.ui == null) return;
+        Debug.Log(instance.isCleared == 1 ? "Game Clear" : "Game Over");
         //リセット
+        Destroy(instance.ui.gameObject);
         instance.onTimeUp = null;
         instance.timeLimit = 10;
-        Destroy(instance.ui.gameObject);
+        instance.ui = null;
 
         //クリアしたらスコア+1
-        if(isCleared){
+        if(instance.isCleared == 1){
             instance.score ++;
             int preLevel = instance.level;
             //スコアに応じてレベルを決める
@@ -67,6 +82,13 @@ public class Common : MonoBehaviour
 
         //次のゲームorリザルト画面へ遷移
         instance.Next();
+    }
+
+    ///<summary>ゲームを終了し次のゲームを開始する</summary>
+    ///<param name="isCleared">ゲームをクリアできたか</param>
+    public static void EndGame(bool isCleared){
+        IsCleared = isCleared;
+        EndGame();
     }
 
 
@@ -192,6 +214,7 @@ public class Common : MonoBehaviour
     (Scene scene,Game game) currentScene;
     int timeLimit;
     Action onTimeUp;
+    int isCleared;
 
 
     void Awake() {
@@ -286,6 +309,8 @@ public class Common : MonoBehaviour
             //ランダムにゲームを選んで抜く
             currentScene = scenesAtLevel.ElementAtRandom();
             scenesAtLevel.Remove(currentScene);
+
+            isCleared = 0;
             
             transition.GameToGame(currentScene.scene.name);
         } 

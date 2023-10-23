@@ -11,6 +11,8 @@ public class Class1 : MonoBehaviour
     private List<Vector2> points;
     Rigidbody2D rb;
     public bool drawable = true;
+    public AudioClip hati;
+    Dog dog;
 
     private void Start()
     {
@@ -22,7 +24,10 @@ public class Class1 : MonoBehaviour
         edgeCollider.enabled = false;
         rb.isKinematic = true;
 
-        Common.AwakeGame();
+        dog = GameObject.Find("Dog").GetComponent<Dog>();
+        dog.GetComponent<Rigidbody2D>().isKinematic = true;
+
+        Common.StartGame();
     }
 
     private void Update()
@@ -47,7 +52,9 @@ public class Class1 : MonoBehaviour
             drawable = false;
             edgeCollider.enabled = true;
             rb.isKinematic = false;
+            dog.GetComponent<Rigidbody2D>().isKinematic = false;
             Common.StartGame(8,() => Common.EndGame(true));
+            Common.PlayOneShot(hati);
         }
     }
 }
