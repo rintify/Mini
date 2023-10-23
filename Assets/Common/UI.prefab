@@ -54,7 +54,7 @@ MonoBehaviour:
   xposition: 0
   yposition: -120
   target_xposition: -600
-  target_yposition: 320
+  target_yposition: 350
   font_size: 1.2
   speed_rate: 20
   font_speed_rate: 15
@@ -354,8 +354,8 @@ MonoBehaviour:
   - {fileID: 8609562540783540237}
   - {fileID: 7102074983627931807}
   - {fileID: 903039742494685567}
-  heart_xposition: -600
-  heart_yposition: 280
+  heart_xposition: -500
+  heart_yposition: 320
 --- !u!222 &6750515453949663031
 CanvasRenderer:
   m_ObjectHideFlags: 0
