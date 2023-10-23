@@ -43,6 +43,9 @@ EditorBuildSettings:
     guid: 7bfe50f245b05284c911a5bd2d19b327
   - enabled: 1
     path: Assets/ryokutya/scene/coin3.unity
+    guid: 55c0b7309a9efb049ab7d7010406b3cb
+  - enabled: 1
+    path: Assets/ryokutya/scene/coin4.unity
     guid: 3df4f2fcc62a39848a77a0380a93cec8
   - enabled: 1
     path: Assets/ryokutya/scene/paperplane.unity

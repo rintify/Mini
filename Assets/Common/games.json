@@ -184,6 +184,18 @@
         ]
     },
     {
+        "title": "コインを集めろ！",
+        "titleEng": "Collect coins!",
+        "instruction": "A: 左 D: 右 スペース:ジャンプ",
+        "instructionEng": "A: left D: right Space:jump",
+        "scenes": [
+            {
+                "name": "coin4",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "ぶつかるな！",
         "titleEng": "Don't collide!",
         "instruction": "A: 左 D: 右",
