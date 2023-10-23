@@ -68,8 +68,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NinNin/Scene/kowase.unity
     guid: 71bab7c9beed07e498df83ed430899a0
-    path: Assets/ryokutya/scene/ball1.unity
-    guid: 4a2e567deab527e4aa89e93ea24c6d84
   - enabled: 1
     path: Assets/ryokutya/scene/ball2.unity
     guid: 8b7a462a157d0bd4f80bdda0228ca2c6
