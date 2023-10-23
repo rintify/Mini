@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace RinExterminate{
@@ -14,12 +17,26 @@ namespace RinExterminate{
         public AudioClip sound1;
         public AudioSource source;
         public AudioClip sound2;
+        [NonSerialized]
         public List<GameObject> livers = new();
         public MathEX.Virgin ending;
+        public TextAsset json;
+        public GameObject enemyPrefab;
         // Start is called before the first frame update
         void Start()
         {
-            Common.StartGame(13,()=>{
+            var es = FindObjectsOfType<EnermyBody>();
+            Debug.Log($"[\n{es.Select(e => $"\t[{e.transform.position.x},{e.transform.position.y}]").Join(",\n")}\n]");
+
+            var stage = JsonConvert.DeserializeObject<float[][][][]>(json.text)
+                [Common.RequiredLevel-1].ElementAtRandom();
+
+            foreach(var s in stage){
+                var a = Instantiate(enemyPrefab);
+                a.transform.position = new(s[0],s[1]);
+            }
+
+            Common.StartGame(Common.RequiredLevel >= 3 ? 15 : 9,()=>{
                 Common.EndGame(false);
             });
             this.guidCollider = new BulletColliderM(c => BulletColliderM.onCollision_Monst(guidCollider,c),1f);
@@ -64,11 +81,12 @@ namespace RinExterminate{
         // Update is called once per frame
         void Update()
         {
+            var slow = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) ? 0.3f : 1f;
             if (Input.GetKey(KeyCode.D)){
-                taiho.transform.Rotate(0,0,-140f*Time.deltaTime);
+                taiho.transform.Rotate(0,0,slow*-110f*Time.deltaTime);
             }
             else if (Input.GetKey(KeyCode.A)){
-                taiho.transform.Rotate(0,0,140f*Time.deltaTime);
+                taiho.transform.Rotate(0,0,slow*140f*Time.deltaTime);
             }
             if (Input.GetKeyDown(KeyCode.Space) && bullet == null){
                 bullet = Instantiate(bulletPrefab);

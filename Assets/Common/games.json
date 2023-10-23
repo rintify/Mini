@@ -1,13 +1,25 @@
 [
     {
         "title": "一発で殲滅しろ!",
-        "titleEng": "Do!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Exterminate!",
+        "instruction": "A: 左 D: 右 Shift: 微調整 Space: 発射",
+        "instructionEng": "A: left D: right Shift: slow",
         "scenes": [
             {
                 "name": "Exterminate",
                 "level": 1
+            },
+            {
+                "name": "Exterminate",
+                "level": 2
+            },
+            {
+                "name": "Exterminate",
+                "level": 3
+            },
+            {
+                "name": "Exterminate",
+                "level": 4
             }
         ]
     },
@@ -25,9 +37,9 @@
     },
     {
         "title": "生き残れ！",
-        "titleEng": "Run!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Survive!",
+        "instruction": "A: 左 D: 右 W: 上 S: 下",
+        "instructionEng": "A: Left D: Right W: Up S: Down",
         "scenes": [
             {
                 "name": "Survivor1-1",
@@ -44,18 +56,34 @@
             {
                 "name": "Survivor3-2",
                 "level": 3
+            },
+            {
+                "name": "Survivor4-1",
+                "level": 4
             }
         ]
     },
     {
         "title": "入力しろ！",
-        "titleEng": "Run!",
-        "instruction": "A: 左 D: 右",
-        "instructionEng": "A: left D: right",
+        "titleEng": "Type!",
+        "instruction": "A ~ Z: 文字入力",
+        "instructionEng": "A ~ Z: 文字入力",
         "scenes": [
             {
                 "name": "Type",
                 "level": 1
+            },
+            {
+                "name": "Type",
+                "level": 2
+            },
+            {
+                "name": "Type",
+                "level": 3
+            },
+            {
+                "name": "Type",
+                "level": 4
             }
         ]
     },
@@ -91,7 +119,7 @@
         "scenes": [
             {
                 "name": "rain",
-                "level": 1
+                "level": 2
             }
         ]
     },
@@ -102,8 +130,20 @@
         "instructionEng": "A: left D: right",
         "scenes": [
             {
-                "name": "ball",
+                "name": "ball1",
                 "level": 2
+            }
+        ]
+    },
+    {
+        "title": "ボールを落とすな！",
+        "titleEng": "Don't drop ball!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "ball2",
+                "level": 3
             }
         ]
     },
@@ -151,7 +191,7 @@
         "scenes": [
             {
                 "name": "paperplane",
-                "level": 2
+                "level": 3
             }
         ]
     },

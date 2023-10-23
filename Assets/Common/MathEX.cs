@@ -107,7 +107,7 @@ public static class MathEX
         return monoBehaviour.StartCoroutine(CoroutineAction_Loop(action, interval));
     }
 
-    private static IEnumerator CoroutineAction(System.Action action, float delay)
+    private static IEnumerator CoroutineAction(Action action, float delay)
     {
         yield return new WaitForSeconds(delay);
         action?.Invoke();
@@ -137,6 +137,10 @@ public static class MathEX
     public static List<T> Concat<T>(this List<T> self, List<T> list){
         self.AddRange(list);
         return self;
+    }
+
+    public static string Join(this IEnumerable<string> self, string sep){
+        return string.Join(sep,self);
     }
 
     public class Intervalist{

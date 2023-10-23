@@ -74,7 +74,7 @@ public class CollisionManager : MonoBehaviour
         if(Dir_dot_PB < 0) return null; //逆方向の球を排除
         float minBP = p.r + b.r;
         float sqrtArg = Dir_dot_PB*Dir_dot_PB - BP.sqrMagnitude + minBP*minBP;
-        if(sqrtArg < 0.5) return null; //外れる球を排除
+        if(sqrtArg < 0.05) return null; //外れる球を排除
         float modified = Dir_dot_PB - Mathf.Sqrt(sqrtArg);
         if(modified < 0 || modified > p.delta) return null; //移動範囲にないものを排除
         Vector2 n = (modified*p.dir - BP)/minBP;
