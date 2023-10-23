@@ -17,15 +17,14 @@ public class GameTransition : MonoBehaviour
     public void GameToGame(string nextSceneName){
         IEnumerator GtoG()
         {
-            GameObject Im = transform.Find("Canvas/Image").gameObject;
-            Im.GetComponent<Image>().color = new Color(0.8f, 0.3f, 0.1f, 255f);
+            /*GameObject Im = transform.Find("Canvas/Image").gameObject;
+            Im.GetComponent<Image>().color = new Color(0.9f, 0.7f, 0.0f, 255f);
             var tansitionAnim = Im.GetComponent<Animator>();
-            tansitionAnim.SetTrigger("out2");
+            tansitionAnim.SetTrigger("out2");*/
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(nextSceneName);
-            tansitionAnim.SetTrigger("in2");
-            Im.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-            Debug.Log("GtoG");
+            /*tansitionAnim.SetTrigger("in2");
+            Debug.Log("GtoG");*/
         }
 
 
