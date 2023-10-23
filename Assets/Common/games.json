@@ -148,6 +148,18 @@
         ]
     },
     {
+        "title": "ボールを落とすな！",
+        "titleEng": "Don't drop ball!",
+        "instruction": "A: 左 D: 右",
+        "instructionEng": "A: left D: right",
+        "scenes": [
+            {
+                "name": "ball3",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "コインを集めろ！",
         "titleEng": "Collect coins!",
         "instruction": "A: 左 D: 右 スペース:ジャンプ",
