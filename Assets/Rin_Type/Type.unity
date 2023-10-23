@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863042502385275631, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: level
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8359934129883148106, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -659,7 +659,7 @@ MonoBehaviour:
   sexy: {fileID: 1604187353}
   texual: {fileID: 755398778}
   japanese: {fileID: 847967801}
-  data: {fileID: 4900000, guid: 2fb6dd5c1fea0418b954f5c477fbbfb3, type: 3}
+  data: {fileID: 4900000, guid: 4fdb70aa46516421084bb33ed0d9beac, type: 3}
   source: {fileID: 1670017264}
   clip: {fileID: 8300000, guid: 42d8c738f537d43b3b4cae2d803d0683, type: 3}
   bu: {fileID: 8300000, guid: ed38595ff01904eb6a1ae470bbc1a482, type: 3}
