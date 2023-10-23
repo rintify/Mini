@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisasterBullet : MonoBehaviour
 {
-    MathEX.Delayer a;
+    EX.Delayer a;
     public float speed;
     Vector2 dir;
     public Disaster parent;

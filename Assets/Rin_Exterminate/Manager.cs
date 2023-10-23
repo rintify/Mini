@@ -19,7 +19,7 @@ namespace RinExterminate{
         public AudioClip sound2;
         [NonSerialized]
         public List<GameObject> livers = new();
-        public MathEX.Virgin ending;
+        public EX.Virgin ending;
         public TextAsset json;
         public GameObject enemyPrefab;
         // Start is called before the first frame update

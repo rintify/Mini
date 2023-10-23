@@ -8,7 +8,7 @@ public class Disaster : MonoBehaviour
     public PlayHub target;
     public DisasterBullet bulletPrefab; // 弾丸のPrefabを指定するためのパブリック変数
     public float bulletSpeed = 20f; // 弾丸の速度
-    MathEX.Intervalist a,b;
+    EX.Intervalist a,b;
     public float speed = 4;
     public float interval = 1;
     Vector3 prePos;

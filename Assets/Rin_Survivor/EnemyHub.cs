@@ -9,7 +9,7 @@ public class EnemyHub : Hub
     GameObject playerSword;
     public float speed = 4;
     GameObject sword;
-    MathEX.Intervalist inter;
+    EX.Intervalist inter;
     Vector2 preT, prepreT;
     float rotationTime = 0;
     // Start is called before the first frame update
