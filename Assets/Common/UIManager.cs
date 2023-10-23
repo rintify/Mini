@@ -5,8 +5,14 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject timerPrefab;
+    GameObject timer;
     // Start is called from Common
     public void OnStartGame(){
-        Instantiate(timerPrefab,transform);
+        timer = Instantiate(timerPrefab,transform);
+    }
+
+    // Start is called from Common
+    public void OnBreakGame(){
+        Destroy(timer);
     }
 }

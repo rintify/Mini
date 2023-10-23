@@ -7,7 +7,7 @@ using Unity.Burst.Intrinsics;
 using Unity.Mathematics;
 using UnityEngine;
 
-public static class MathEX
+public static class EX
 {
     public static void FlipX(this Transform self){
         var a = self.transform.localScale;
@@ -163,6 +163,11 @@ public static class MathEX
         public Intervalist(Action action,float interval){
             this.interval = interval;
             this.action = action;
+        }
+        public Intervalist(Action action,float interval, float t0){
+            this.interval = interval;
+            this.action = action;
+            t = t0;
         }
         public void Update(){
             t += Time.deltaTime;
