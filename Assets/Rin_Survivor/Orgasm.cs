@@ -32,24 +32,29 @@ public class Orgasm : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.GetComponent<PlayHub>() != null){
             Debug.Log("player");
-            //Destroy(other.gameObject);
-            Common.EndGame(false);
+            var play = other.GetComponent<PlayHub>();
+            Common.PlayOneShot(play.duhu);
+            Destroy(other.GetComponent<PlayHub>().gameObject);
+            this.Delay(()=>Common.EndGame(false),0.4f);
         }
         else if(other.GetComponent<EnemyHub>() != null){
             Debug.Log("enemy");
+            if(play) Common.PlayOneShot(play.duhu);
             Destroy(other.gameObject);
         }
         else if(other.GetComponent<EnemyHubLv1>() != null){
             Debug.Log("enemy");
+            if(play) Common.PlayOneShot(play.duhu);
             Destroy(other.gameObject);
         }
         else if(other.GetComponent<Disaster>() != null){
             Debug.Log("enemy");
+            if(play) Common.PlayOneShot(play.duhu);
             Destroy(other.gameObject);
         }
         else{
             parent.rotationSpeed *= -1;
-            if(play) play.kan();
+            if(play) Common.PlayOneShot(play.kakin);
         }
     }
 

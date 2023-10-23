@@ -103,6 +103,8 @@ MonoBehaviour:
   rotationSpeed: 180
   moveSpeed: 5
   kakin: {fileID: 8300000, guid: f14f0e15d7f1c480492ff4b170bb9f8a, type: 3}
+  duhu: {fileID: 8300000, guid: 065107e32653d46d092ce8fd459dfee2, type: 3}
+  ban: {fileID: 8300000, guid: 0d3d95a3eda7f4858bc0802bb95cc15a, type: 3}
 --- !u!58 &8320377115593751695
 CircleCollider2D:
   m_ObjectHideFlags: 0

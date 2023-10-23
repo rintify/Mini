@@ -29,16 +29,9 @@ public class DisasterBullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.GetComponent<PlayHub>() != null){
             Debug.Log("player");
-            //Destroy(other.gameObject);
-            Common.EndGame(false);
-        }
-        else if(other.GetComponent<EnemyHub>() != null){
-            Debug.Log("enemy");
+            Common.PlayOneShot(other.GetComponent<PlayHub>().ban);
             Destroy(other.gameObject);
-        }
-        else if(other.GetComponent<EnemyHubLv1>() != null){
-            Debug.Log("enemy");
-            Destroy(other.gameObject);
+            this.Delay(()=>Common.EndGame(false),0.4f);
         }
         else if(other.GetComponent<Disaster>() != null){
             Debug.Log("enemy");

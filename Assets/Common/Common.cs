@@ -1,13 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Common : MonoBehaviour
 {
@@ -16,18 +11,26 @@ public class Common : MonoBehaviour
 
     ///<summary>ゲームに要求される難易度</summary>
     public static int RequiredLevel {get{
-        if(!instance) return 1;
         return instance.currentScene.scene.level;
     }}
 
-    ///<summary>ゲームを開始する時に実行する</summary>
+    ///<summary>ゲームを開始する時に実行し、カウントを開始する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
-        Debug.Log("Game Start");
-        if(!instance) return;
-        //間連続呼び出しを避ける
+        //Awakeされてなかったらスタートする
+        if(instance.ui == null) AwakeGame(); 
+        //連続呼び出しを避ける
         if(instance.onTimeUp != null) return;
+        Debug.Log("Game Start");
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
+        instance.ui.OnStartGame();
+    }
+
+    ///<summary>[任意]ゲームを開始する前に実行し、カウントは開始しない</summary>
+    public static void AwakeGame(){
+        //連続呼び出しを避ける
+        if(instance.ui != null) return;
+        Debug.Log("Game Awake");
         instance.ui = Instantiate(instance.uiPrefab, instance.canvas.transform);
         instance.ui.transform.SetAsLastSibling();
     }
@@ -35,17 +38,13 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを終了し次のゲームを開始する</summary>
     ///<param name="isCleared">ゲームをクリアできたか</param>
     public static void EndGame(bool isCleared){
-        Debug.Log(isCleared ? "Game Clear" : "Game Over");
-
-        if(!instance){
-            return;
-        }
         //シーンが切り替わるまでの間連続呼び出しを避ける
         if(instance.onTimeUp == null) return;
+        Debug.Log(isCleared ? "Game Clear" : "Game Over");
         //リセット
         instance.onTimeUp = null;
         instance.timeLimit = 10;
-        Destroy(instance.ui);
+        Destroy(instance.ui.gameObject);
 
         //クリアしたらスコア+1
         if(isCleared){
@@ -79,10 +78,6 @@ public class Common : MonoBehaviour
 
     ///<summary>スタート画面からゲームを開始する</summary>
     public static void StartGames(string playerName,string langage){
-        if(!instance){
-            Debug.Log("Start!");
-            return;
-        }
         instance.playerName = playerName;
         instance.langage = langage;
         instance.Next();
@@ -95,25 +90,21 @@ public class Common : MonoBehaviour
 
     ///<summary>プレイヤーの名前</summary>
     public static string PlayerName {get{
-        if(!instance) return "Alice";
         return instance.playerName;
     }}
 
     ///<summary>ライフ</summary>
     public static int Life {get{
-        if(!instance) return 1;
         return instance.life;
     }}
 
     ///<summary>スコア</summary>
     public static int Score {get{
-        if(!instance) return 1;
         return instance.score;
     }}
 
     ///<summary>現在のレベル</summary>
     public static int Level {get{
-        if(!instance) return 1;
         return instance.level;
     }}
 
@@ -124,7 +115,6 @@ public class Common : MonoBehaviour
 
     ///<summary>タイトル</summary>
     public static string Title {get{
-        if(!instance) return "Test!";
         return instance.langage == "Japanese" ?
             instance.currentScene.game.title : 
             instance.currentScene.game.titleEng;
@@ -132,7 +122,6 @@ public class Common : MonoBehaviour
 
     ///<summary>操作方法</summary>
     public static string Instruction {get{
-        if(!instance) return "A: Left B: Right";
         return instance.langage == "Japanese" ? 
             instance.currentScene.game.instruction : 
             instance.currentScene.game.instructionEng;
@@ -144,16 +133,11 @@ public class Common : MonoBehaviour
 
     ///<summary>制限時間</summary>
     public static int TimeLimit {get{
-        if(!instance) return 10;
         return instance.timeLimit;
     }}
 
     ///<summary>制限時間が切れたら実行</summary>
     public static void TimeUp(){
-        if(!instance){
-            Debug.Log("TimeUp!");
-            return;
-        }
         instance.onTimeUp?.Invoke();
     }
 
@@ -180,9 +164,9 @@ public class Common : MonoBehaviour
     [SerializeField]
     Canvas canvas;
 
-    GameObject ui;
+    UIManager ui;
     [SerializeField]
-    GameObject uiPrefab;
+    UIManager uiPrefab;
 
     [SerializeField]
     string resultScene;

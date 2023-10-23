@@ -12,7 +12,7 @@ public class Class1 : MonoBehaviour
     Rigidbody2D rb;
     public bool drawable = true;
 
-    private void Awake()
+    private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -22,6 +22,7 @@ public class Class1 : MonoBehaviour
         edgeCollider.enabled = false;
         rb.isKinematic = true;
 
+        Common.AwakeGame();
     }
 
     private void Update()
@@ -46,10 +47,7 @@ public class Class1 : MonoBehaviour
             drawable = false;
             edgeCollider.enabled = true;
             rb.isKinematic = false;
+            Common.StartGame(8,() => Common.EndGame(true));
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("sex");
     }
 }

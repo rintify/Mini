@@ -102,6 +102,19 @@ public static class MathEX
         return monoBehaviour.StartCoroutine(CoroutineAction(action, delay));
     }
 
+    public static T GetComponentInDescendants<T>(this GameObject o) where T : MonoBehaviour
+    {
+        var component = o.GetComponent<T>();
+        Debug.Log(o.name + " " + (component == null ? "d" : "f"));
+        if (component != null) return component;
+
+        for(int i = 0; i < o.transform.childCount; i ++){
+            component = o.transform.GetChild(i).gameObject.GetComponentInDescendants<T>();
+            if (component != null) return component;
+        }
+        return null;
+    }
+
     public static Coroutine Interval(this MonoBehaviour monoBehaviour, System.Func<bool> action, float interval)
     {
         return monoBehaviour.StartCoroutine(CoroutineAction_Loop(action, interval));

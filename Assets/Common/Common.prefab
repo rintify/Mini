@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamesData: {fileID: 4900000, guid: d7e9f9f5855ba4c11b61b2d29078195d, type: 3}
   canvas: {fileID: 6373512390690171644}
-  uiPrefab: {fileID: 7837889393997385455, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
+  uiPrefab: {fileID: 5507776990519082647, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
   resultScene: TestResult
   life: 5
   score: 0

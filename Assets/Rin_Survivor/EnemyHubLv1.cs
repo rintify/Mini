@@ -12,7 +12,7 @@ public class EnemyHubLv1 : Hub
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Player").GetComponent<PlayHub>();
+        target = GameObject.Find("Player")?.GetComponent<PlayHub>();
         enemys = GameObject.FindObjectsOfType<EnemyHubLv1>().ToList();
         enemys.Remove(this);
         
@@ -21,6 +21,8 @@ public class EnemyHubLv1 : Hub
     // Update is called once per frame
     void Update()
     {
+        if(!target) return;
+        
         Vector2 pos = transform.position;
 
         Vector2 toTarget = target.transform.position - transform.position;

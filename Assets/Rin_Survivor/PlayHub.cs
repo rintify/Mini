@@ -5,19 +5,13 @@ using UnityEngine;
 public class PlayHub : Hub
 {
     public float moveSpeed = 5.0f;
-    private AudioSource source;
-    public AudioClip kakin;
+    public AudioClip kakin,duhu,ban;
     // Start is called before the first frame update
     void Start()
     {
         Common.StartGame(13,()=>{
             Common.EndGame(true);
         });
-        source = GetComponent<AudioSource>();
-    }
-
-    public void kan(){
-        source.PlayOneShot(kakin);
     }
 
     // Update is called once per frame

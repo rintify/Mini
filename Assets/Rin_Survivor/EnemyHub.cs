@@ -32,6 +32,8 @@ public class EnemyHub : Hub
     // Update is called once per frame
     void Update()
     {
+        if(!target) return;
+        
         inter.Update();
 
         Vector2 pos = transform.position;

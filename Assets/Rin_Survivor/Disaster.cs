@@ -61,6 +61,8 @@ public class Disaster : MonoBehaviour
 
     void Update()
     {
+        if(!target) return;
+        
         a.Update();
         b.Update();
         Vector2 pos = transform.position;
