@@ -12,7 +12,7 @@ public class Dog : MonoBehaviour
     void Start()
     {
         over = new(()=>{
-            Common.BreakGame();
+            Common.EndTimer();
             Common.IsCleared = false;
             this.Delay(()=>{
                 Common.EndGame();

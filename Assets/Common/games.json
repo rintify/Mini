@@ -52,6 +52,42 @@
         ]
     },
     {
+        "title": "かわせ!",
+        "titleEng": "Dodge!",
+        "instruction": "Space: 上昇",
+        "instructionEng": "Space: Up",
+        "scenes": [
+            {
+                "name": "Flappy1-1",
+                "level": 1
+            },
+            {
+                "name": "Flappy2-1",
+                "level": 2
+            },
+            {
+                "name": "Flappy2-2",
+                "level": 2
+            },
+            {
+                "name": "Flappy3-1",
+                "level": 3
+            },
+            {
+                "name": "Flappy3-2",
+                "level": 3
+            },
+            {
+                "name": "Flappy4-1",
+                "level": 4
+            },
+            {
+                "name": "Flappy4-2",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "記憶しろ！",
         "titleEng": "Run!",
         "instruction": "A: 左 D: 右",
@@ -136,30 +172,6 @@
             {
                 "name": "baseball2",
                 "level": 2
-            }
-        ]
-    },
-    {
-        "title": "打ち返せ！",
-        "titleEng": "returned a ball!",
-        "instruction": "スペースキー：打つ",
-        "instructionEng": "Space:hit",
-        "scenes": [
-            {
-                "name": "baseball3",
-                "level": 3
-            }
-        ]
-    },
-    {
-        "title": "打ち返せ！",
-        "titleEng": "returned a ball!",
-        "instruction": "スペースキー：打つ",
-        "instructionEng": "Space:hit",
-        "scenes": [
-            {
-                "name": "baseball4",
-                "level": 4
             }
         ]
     },
@@ -315,8 +327,20 @@
         "scenes": [
             {
               "name": "shooting",
-               
-                "level": 2
+               "level": 1
+            },
+            {
+                "name": "shooting",
+                 "level": 2
+            },
+
+            {
+                "name": "shooting",
+                 "level": 3
+            },
+            {
+                "name": "shooting",
+                 "level": 4
             }
         ]
     },

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,14 +20,20 @@ public class Common : MonoBehaviour
 
     ///<summary>ゲームを開始する時に実行し、カウントを開始する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
-        //Awakeされてなかったらスタートする
+        //スタートされてなかったらスタートする
         if(instance.ui == null) StartGame(); 
         //連続呼び出しを避ける
         if(instance.onTimeUp != null) return;
         Debug.Log("Game Start");
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
-        instance.ui.OnStartGame();
+        instance.ui.StartTimer();
+    }
+
+    ///<summary>カウントを中断し再度開始する</summary>
+    public static void RestartTimer(int timeLimit,Action onTimeUp){
+        EndTimer();
+        StartGame(timeLimit,onTimeUp);
     }
 
     ///<summary>ゲームを開始する前に実行し、カウントは開始しない</summary>
@@ -39,10 +46,10 @@ public class Common : MonoBehaviour
     }
 
     ///<summary>ゲームを終了する前に実行し、カウントを終了する onTimeupは実行されない</summary>
-    public static void BreakGame(){
+    public static void EndTimer(){
         //連続呼び出しを避ける
         if(instance.onTimeUp == null) return;
-        instance.ui.OnBreakGame();
+        instance.ui.BreakTimer();
         instance.onTimeUp = null;
     }
 
@@ -50,10 +57,13 @@ public class Common : MonoBehaviour
     public static bool IsCleared {set {
         if(instance.isCleared != 0) return;
         instance.isCleared = value ? 1 : -1;
-    }}
+    } get{return instance.isCleared == 1;}}
+
+    ///<summary>ゲームノクリア判定を設定</summary>
+    public static bool IsOvered {get{return instance.isCleared == -1;}}
 
     ///<summary>ゲームを終了する</summary>
-    public static void EndGame(){
+    public static async void EndGame(){
         //シーンが切り替わるまでの間連続呼び出しを避ける
         if(instance.ui == null) return;
         Debug.Log(instance.isCleared == 1 ? "Game Clear" : "Game Over");
@@ -294,7 +304,7 @@ public class Common : MonoBehaviour
     }
 
     //ライフに応じて次のゲームorリザルト画面
-    void Next(){
+    Task Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
             transition.GameToResult(resultScene);
@@ -306,7 +316,6 @@ public class Common : MonoBehaviour
             if(scenesAtLevel.Count == 0){
                 Debug.Log("No Game");
                 //SceneManager.LoadScene(resultScene);
-                return;
             }
             //ランダムにゲームを選んで抜く
             currentScene = scenesAtLevel.ElementAtRandom();
@@ -315,9 +324,9 @@ public class Common : MonoBehaviour
             isCleared = 0;
             
             //StartCoroutine(LoadSceneInBackground(currentScene.scene.name));
-
             transition.GameToGame(currentScene.scene.name);
         } 
+        return null;
     }
 
 
