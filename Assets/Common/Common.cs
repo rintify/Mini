@@ -63,7 +63,7 @@ public class Common : MonoBehaviour
     public static bool IsOvered {get{return instance.isCleared == -1;}}
 
     ///<summary>ゲームを終了する</summary>
-    public static async void EndGame(){
+    public static void EndGame(){
         //シーンが切り替わるまでの間連続呼び出しを避ける
         if(instance.ui == null) return;
         Debug.Log(instance.isCleared == 1 ? "Game Clear" : "Game Over");
@@ -72,6 +72,11 @@ public class Common : MonoBehaviour
         instance.onTimeUp = null;
         instance.timeLimit = 10;
         instance.ui = null;
+        instance.Delay(() => {
+            instance.audioSource.Stop();
+            Cursor.lockState = CursorLockMode.None;
+        },0.7f);
+        
 
         //クリアしたらスコア+1
         if(instance.isCleared == 1){
@@ -304,7 +309,7 @@ public class Common : MonoBehaviour
     }
 
     //ライフに応じて次のゲームorリザルト画面
-    Task Next(){
+    void Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
             transition.GameToResult(resultScene);
@@ -326,7 +331,6 @@ public class Common : MonoBehaviour
             //StartCoroutine(LoadSceneInBackground(currentScene.scene.name));
             transition.GameToGame(currentScene.scene.name);
         } 
-        return null;
     }
 
 

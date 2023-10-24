@@ -88,6 +88,18 @@
         ]
     },
     {
+        "title": "建築しろ！",
+        "titleEng": "Craft!",
+        "instruction": "A: 左 D: 右 W: 前 S: 後 Space: ジャンプ 右クリック: 壊す 左クリック: 置く",
+        "instructionEng": "A: left D: right forward S: buck Space: jump 右クリック: break 左クリック: put",
+        "scenes": [
+            {
+                "name": "Craft",
+                "level": 1
+            }
+        ]
+    },
+    {
         "title": "記憶しろ！",
         "titleEng": "Run!",
         "instruction": "A: 左 D: 右",
