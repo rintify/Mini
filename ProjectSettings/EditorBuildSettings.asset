@@ -122,4 +122,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rin_Flappy/Flappy4-2.unity
     guid: a4207d9278bfc4d6e92ddb39d4aab843
+  - enabled: 1
+    path: Assets/Rin_Craft/Craft.unity
+    guid: 5b562531345eb4d13aa074e545397ff4
   m_configObjects: {}
