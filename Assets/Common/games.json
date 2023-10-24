@@ -291,8 +291,20 @@
         "scenes": [
             {
               "name": "shooting",
-               
-                "level": 2
+               "level": 1
+            },
+            {
+                "name": "shooting",
+                 "level": 2
+            },
+
+            {
+                "name": "shooting",
+                 "level": 3
+            },
+            {
+                "name": "shooting",
+                 "level": 4
             }
         ]
     },

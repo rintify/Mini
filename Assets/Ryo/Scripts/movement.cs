@@ -13,7 +13,14 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if(Common.RequiredLevel==1){
+            enemy=2;
+        }else if(Common.RequiredLevel==2)
+        {
+            enemy=4;
+        }else if(Common.RequiredLevel==3){
+            enemy=6;
+        }
         rb= GetComponent<Rigidbody2D>();
         for (int i = 0; i < enemy; i++)
         {
