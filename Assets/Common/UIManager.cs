@@ -7,12 +7,13 @@ public class UIManager : MonoBehaviour
     public GameObject timerPrefab;
     GameObject timer;
     // Start is called from Common
-    public void OnStartGame(){
+    public void StartTimer(){
+        if(timer) Destroy(timer);
         timer = Instantiate(timerPrefab,transform);
     }
 
     // Start is called from Common
-    public void OnBreakGame(){
-        Destroy(timer);
+    public void BreakTimer(){
+        if(timer) Destroy(timer);
     }
 }

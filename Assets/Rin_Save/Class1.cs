@@ -27,7 +27,7 @@ public class Class1 : MonoBehaviour
         dog = GameObject.Find("Dog").GetComponent<Dog>();
         dog.GetComponent<Rigidbody2D>().isKinematic = true;
 
-        Common.StartGame();
+        Common.StartGame(8,()=>{Common.EndGame(false);});
     }
 
     private void Update()
@@ -53,8 +53,9 @@ public class Class1 : MonoBehaviour
             edgeCollider.enabled = true;
             rb.isKinematic = false;
             dog.GetComponent<Rigidbody2D>().isKinematic = false;
-            Common.StartGame(8,() => Common.EndGame(true));
             Common.PlayOneShot(hati);
+
+            Common.RestartTimer(7, () => {Common.EndGame(true);});
         }
     }
 }

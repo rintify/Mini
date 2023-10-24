@@ -195,14 +195,14 @@ public static class EX
     }
 
     public class Virgin{
-        bool virgin = true;
+        public bool isVirgin = true;
         Action action;
         public Virgin(Action action){
             this.action = action;
         }
         public void Break(){
-            if(virgin){
-                virgin = false;
+            if(isVirgin){
+                isVirgin = false;
                 action.Invoke();
             }
         }

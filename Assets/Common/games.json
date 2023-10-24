@@ -52,6 +52,42 @@
         ]
     },
     {
+        "title": "かわせ!",
+        "titleEng": "Dodge!",
+        "instruction": "Space: 上昇",
+        "instructionEng": "Space: Up",
+        "scenes": [
+            {
+                "name": "Flappy1-1",
+                "level": 1
+            },
+            {
+                "name": "Flappy2-1",
+                "level": 2
+            },
+            {
+                "name": "Flappy2-2",
+                "level": 2
+            },
+            {
+                "name": "Flappy3-1",
+                "level": 3
+            },
+            {
+                "name": "Flappy3-2",
+                "level": 3
+            },
+            {
+                "name": "Flappy4-1",
+                "level": 4
+            },
+            {
+                "name": "Flappy4-2",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "記憶しろ！",
         "titleEng": "Run!",
         "instruction": "A: 左 D: 右",
