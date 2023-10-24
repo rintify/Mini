@@ -24,6 +24,34 @@
         ]
     },
     {
+        "title": "救え!",
+        "titleEng": "Save!",
+        "instruction": "ドラッグ: 壁を作る",
+        "instructionEng": "Drag: build wall",
+        "scenes": [
+            {
+                "name": "Save1-1",
+                "level": 1
+            },
+            {
+                "name": "Save2-1",
+                "level": 2
+            },
+            {
+                "name": "Save2-2",
+                "level": 2
+            },
+            {
+                "name": "Save3-1",
+                "level": 3
+            },
+            {
+                "name": "Save4-1",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "記憶しろ！",
         "titleEng": "Run!",
         "instruction": "A: 左 D: 右",

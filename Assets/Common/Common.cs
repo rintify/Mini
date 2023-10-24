@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Common : MonoBehaviour
 {
@@ -312,9 +314,52 @@ public class Common : MonoBehaviour
 
             isCleared = 0;
             
+            //StartCoroutine(LoadSceneInBackground(currentScene.scene.name));
+
             transition.GameToGame(currentScene.scene.name);
         } 
     }
+
+
+/*
+    private AsyncOperation asyncLoad;
+
+    private IEnumerator LoadSceneInBackground(string sceneName)
+    {
+        asyncLoad = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Additive);
+        asyncLoad.allowSceneActivation = false;
+
+        // シーンが読み込まれるのを待つ
+        while (!asyncLoad.isDone)
+        {
+            // asyncLoad.progressはallowSceneActivationがfalseの場合、最大0.9までしか進まない
+            if (asyncLoad.progress >= 0.9f)
+            {
+                // ここで何らかの処理を行い、シーンをスタートするタイミングを待つ
+                // 例: ボタンが押されたら、シーンをスタートするなど
+
+                // 以下はデモのためのコードで、3秒待った後にシーンをスタートします
+                yield return new WaitForSeconds(1f);
+                asyncLoad.allowSceneActivation = true;
+
+
+                var loadedScene = SceneManager.GetSceneByName(sceneName);
+                if (loadedScene.isLoaded)
+                {
+                    foreach (GameObject obj in loadedScene.GetRootGameObjects())
+                    {
+                        Camera cam = obj.GetComponentInChildren<Camera>();
+                        if (cam)
+                        {
+                            cam.depth = -1;
+                        }
+                    }
+                }
+            }
+
+            yield return null;
+        }
+    }*/
 
     
 }
