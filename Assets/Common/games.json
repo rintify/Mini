@@ -140,6 +140,30 @@
         ]
     },
     {
+        "title": "打ち返せ！",
+        "titleEng": "returned a ball!",
+        "instruction": "スペースキー：打つ",
+        "instructionEng": "Space:hit",
+        "scenes": [
+            {
+                "name": "baseball3",
+                "level": 3
+            }
+        ]
+    },
+    {
+        "title": "打ち返せ！",
+        "titleEng": "returned a ball!",
+        "instruction": "スペースキー：打つ",
+        "instructionEng": "Space:hit",
+        "scenes": [
+            {
+                "name": "baseball4",
+                "level": 4
+            }
+        ]
+    },
+    {
         "title": "傘から出るな！",
         "titleEng": "Don't get wet!",
         "instruction": "A: 左 D: 右",
