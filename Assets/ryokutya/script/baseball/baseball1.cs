@@ -49,7 +49,7 @@ public class baseball1 : MonoBehaviour
     }
     void acBall()
     {
-        force = -1.5f;
+        force = -1.0f;
         Vector3 Force = new Vector3(0, force, 0);
         rb.AddForce(Force, ForceMode2D.Impulse);
     }

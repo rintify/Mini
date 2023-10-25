@@ -43,7 +43,7 @@ public class baseball2 : MonoBehaviour
         }
        if(disapper)
         {
-            if (Position.y < 1 && 0 < Position.y)
+            if (Position.y < 1.5 && 0.5 < Position.y)
             {
                 ball.enabled = false;
                 audioSource.PlayOneShot(sound2);
@@ -71,13 +71,13 @@ public class baseball2 : MonoBehaviour
     }
     void bkBall()
     {
-        force = 2.5f;
+        force = 0.8f;
         Vector3 Force = new Vector3(0, force, 0);
         rb.AddForce(Force, ForceMode2D.Impulse);
     }
     void acBall()
     {
-        force = -2.0f;
+        force = -1.2f;
         Vector3 Force = new Vector3(0, force, 0);
         rb.AddForce(Force, ForceMode2D.Impulse);
     }
