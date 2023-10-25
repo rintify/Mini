@@ -14,16 +14,34 @@ public class GameTransition : MonoBehaviour
     }
 
     //次のゲームに遷移する時にコモンから呼ばれる
-    public void GameToGame(string nextSceneName){
+    public void GameToTrans()
+    {
         IEnumerator GtoG()
         {
             GameObject Im = transform.Find("Canvas/Image").gameObject;
             Im.GetComponent<Image>().color = new Color(0.1f, 1.0f, 0.3f, 1.0f);
-            var tansitionAnim = Im.GetComponent<Animator>();
-            tansitionAnim.SetTrigger("out2");
+            var transitionAnim = Im.GetComponent<Animator>();
+            transitionAnim.SetTrigger("out2");
+            yield return new WaitForSeconds(1);
+            SceneManager.LoadScene("TransScene1");
+            transitionAnim.SetTrigger("in2");
+            Debug.Log("GtoG");
+        }
+
+
+        StartCoroutine(GtoG());
+
+    }
+    public void TransToGame(string nextSceneName){
+        IEnumerator GtoG()
+        {
+            GameObject Im = transform.Find("Canvas/Image").gameObject;
+            Im.GetComponent<Image>().color = new Color(0.1f, 1.0f, 0.3f, 1.0f);
+            var transitionAnim = Im.GetComponent<Animator>();
+            transitionAnim.SetTrigger("out2");
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene(nextSceneName);
-            tansitionAnim.SetTrigger("in2");
+            transitionAnim.SetTrigger("in2");
             Debug.Log("GtoG");
         }
 

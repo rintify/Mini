@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Common/testResult.unity
     guid: 4ba07a9b9f26f48f39f83bbee06e23c1
   - enabled: 1
+    path: Assets/Common/TransScene1.unity
+    guid: 2df5c6f5f80064d478b6a5d40d84ba5c
+  - enabled: 1
     path: Assets/Soupon2gou/Scenes/game1.unity
     guid: f690cb0e6f2e16e4d8d24b9e26986f5d
   - enabled: 1
