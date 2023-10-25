@@ -329,8 +329,16 @@ public class Common : MonoBehaviour
             isCleared = 0;
             
             //StartCoroutine(LoadSceneInBackground(currentScene.scene.name));
-            transition.GameToGame(currentScene.scene.name);
-        } 
+            
+            StartCoroutine(WaitTrans());
+        }
+
+        IEnumerator WaitTrans()
+        {
+            transition.GameToTrans();
+            yield return new WaitForSeconds(3);
+            transition.TransToGame(currentScene.scene.name);
+        }
     }
 
 
