@@ -33,6 +33,15 @@ EditorBuildSettings:
     path: Assets/ryokutya/scene/baseball1.unity
     guid: cd9f086ef92ba414f8672c89e6f00dc4
   - enabled: 1
+    path: Assets/ryokutya/scene/baseball2.unity
+    guid: 19cd82c4912425b43b92528dedb0b8d2
+  - enabled: 1
+    path: Assets/ryokutya/scene/baseball3.unity
+    guid: e2aec09d9a88f4d4e95b5adadf36ccbe
+  - enabled: 1
+    path: Assets/ryokutya/scene/baseball4.unity
+    guid: 01408f92b9290bf4c82e2fac16d39617
+  - enabled: 1
     path: Assets/ryokutya/scene/rain.unity
     guid: db96591d6600ff34c8baa400c5c82a2c
   - enabled: 1
@@ -53,9 +62,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ryo/Scenes/shooting.unity
     guid: 0b90c2082a9ae2149bcbcc2d808ffc1e
-  - enabled: 1
-    path: Assets/ryokutya/scene/baseball2.unity
-    guid: 19cd82c4912425b43b92528dedb0b8d2
   - enabled: 1
     path: Assets/Rin_Survivor/Survivor1-1.unity
     guid: 57e68a95b770840049ce2b7bd908636d
