@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class TransController : MonoBehaviour
 {
-    public Text text;
+    public TMPro.TMP_Text text;
+    public TMPro.TMP_Text text1;
     void Start()
     {
-        text.text = $"Score: {Common.Score}";
+        text.text = $"スコア: {Common.Score}";
+        text1.text = $"レベル: {Common.Level}";
     }
 
     // Update is called once per frame
