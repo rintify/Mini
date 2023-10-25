@@ -85,7 +85,7 @@ public static class EX
         return new Vector2(cos * tx - sin * ty, sin * tx + cos * ty);
     }
 
-    public static void Shuffle<T>(this List<T> list)
+    public static List<T> Shuffle<T>(this List<T> list)
     {
         var rand = new System.Random();
         int n = list.Count;
@@ -95,6 +95,20 @@ public static class EX
             int k = rand.Next(n + 1);
             (list[n], list[k]) = (list[k], list[n]);
         }
+        return list;
+    }
+
+    public static T[] Shuffle<T>(this T[] list)
+    {
+        var rand = new System.Random();
+        int n = list.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            (list[n], list[k]) = (list[k], list[n]);
+        }
+        return list;
     }
 
     public static Coroutine Delay(this MonoBehaviour monoBehaviour, System.Action action, float delay)

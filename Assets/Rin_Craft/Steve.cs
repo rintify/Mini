@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Newtonsoft.Json;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Steve : MonoBehaviour
     float dS = 0;
     Rigidbody rb;
     public float jump;
+    public bool editMode = false;
 
     string wPressed = null;
     bool run = false;
@@ -29,11 +31,8 @@ public class Steve : MonoBehaviour
 
     public GameObject blockPrefab;
 
-    Vector3[] question = new Vector3[]{
-        new(0,0,0),
-        new(0,1,0),
-        new(1,1,0)
-    };
+    public TextAsset json;
+    Vector3[] question;
     List<GameObject> answer = new();
 
     EX.Virgin clear;
@@ -69,17 +68,20 @@ public class Steve : MonoBehaviour
             var index = Array.IndexOf(ain,q + min);
             if(index == -1) return;
         }
-        clear.Break();
+        if(!editMode) clear.Break();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        question = JsonConvert.DeserializeObject<float[][][][]>(json.text)
+            [Common.RequiredLevel-1].ElementAtRandom()
+            .Select(e => new Vector3(e[0],e[1],e[2])).ToArray();
         GenerateQuestion();
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
-        Common.StartGame(15,()=>{
-            Common.EndGame(false);
+        Common.StartGame(Common.RequiredLevel <= 3 ? 15 : 18,()=>{
+            if(!editMode) Common.EndGame(false);
         });
         rb = GetComponent<Rigidbody>();
 
@@ -115,6 +117,15 @@ public class Steve : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.W)){
             run = false;
+        }
+
+        if(Input.GetKeyUp(KeyCode.P)){
+            Debug.Log("[" +
+                answer.Select(a => {
+                    var p = a.transform.position;
+                    return $"[{p.x},{p.y},{p.z}]";
+                }).Join(",")
+            + "]"); 
         }
 
         if(Input.GetMouseButtonDown(1)){

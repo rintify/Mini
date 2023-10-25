@@ -7,6 +7,7 @@ public class AppleMusic : MonoBehaviour
     public float vx = 5;
     float vy = 0;
     public float gravity = 10f,power = 20f,vymax = 3f;
+    float gravityMax;
     Camera camera;
     public ParticleSystem pa;
     EX.Virgin over,clear;
@@ -17,6 +18,8 @@ public class AppleMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gravityMax = gravity;
+        gravity = 0;
         buddy = GameObject.Find("buddy");
         camera = Camera.main;
         pa.Stop();
@@ -28,7 +31,7 @@ public class AppleMusic : MonoBehaviour
             Common.EndGame(true);
         });
         Common.StartGame(Mathf.CeilToInt(
-            (buddy.transform.position.x-transform.position.x)/vx)
+            buddy.transform.position.x-transform.position.x + 0.5f)
             ,() => {Common.EndGame(true);}
         );
     }
@@ -37,7 +40,15 @@ public class AppleMusic : MonoBehaviour
     void Update()
     {
         if(!over.isVirgin || !clear.isVirgin) return;
+
+        var screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        if(transform.position.y < -screenBounds.y-0.5 || transform.position.y > screenBounds.y+0.5 ) over.Break();
+        if(transform.position.x > buddy.transform.position.x - 5) clear.Break();
+
         var pos = transform.position;
+
+        gravity += gravityMax/1f*Time.deltaTime;
+        if(gravity > gravityMax) gravity = gravityMax;
 
         vy -= gravity*Time.deltaTime;
         if(vy < -vymax) vy = - vymax;
@@ -61,10 +72,6 @@ public class AppleMusic : MonoBehaviour
 
         camera.transform.position =
         camera.transform.position.X(pos.x);
-
-        var screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        if(transform.position.y < -screenBounds.y-0.5 || transform.position.y > screenBounds.y+0.5 ) over.Break();
-        if(transform.position.x > buddy.transform.position.x - 5) clear.Break();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

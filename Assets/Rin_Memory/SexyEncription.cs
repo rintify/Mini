@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class SexyEncription : MonoBehaviour
 {
-    public Text cardText;
     [NonSerialized]
     public Sprite sexyprite;
     private Sprite defaultSp;
@@ -20,7 +19,6 @@ public class SexyEncription : MonoBehaviour
 
     private void Start()
     {
-        cardText.text = "Initial Text";
     }
 
     public void set(Sprite sprite,Discord_Math math){
@@ -30,14 +28,12 @@ public class SexyEncription : MonoBehaviour
     }
 
     public void open(){
-        cardText.text = "Initial Text";
         this.GetComponent<Image>().sprite = defaultSp;
         virgin = true;
     }
 
     public void flip(){
         if(!virgin || !math.listen) return;
-        cardText.text = "Clicked Text";
         this.GetComponent<Image>().sprite = sexyprite;
         math.notifyFliped(this);
         virgin = false;

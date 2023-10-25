@@ -8,18 +8,20 @@ using UnityEngine.UI;
 public class Discord_Math : MonoBehaviour
 {
     public SexyEncription sexyPrefab;
-    public Sprite[] sprites;
+    [System.Serializable]public class Deck{public Sprite[] cards;}
+    public Deck[] deck;
+    Sprite[] sprites;
     private List<Sprite> cards;
     private List<SexyEncription> sexys = new();
     int n,m;
-    public Text title;
     private SexyEncription current = null;
     public GameObject batsuPrefab;
-    public AudioClip bu,pinpon;
+    public AudioClip bu,pinpon,pera;
     public bool listen = false;
-    private int clearCount =0;
+    private int clearCount = 0;
 
     void Awake(){
+        sprites = deck.ElementAtRandom().cards.Shuffle().ToList().GetRange(0,Common.RequiredLevel == 4 ? 6 : 1+Common.RequiredLevel).ToArray();
         var cards = new Sprite[sprites.Length*2];
         for(int i = 0; i < sprites.Length; i ++){
             cards[i*2] = sprites[i];
@@ -51,15 +53,21 @@ public class Discord_Math : MonoBehaviour
             }
         }
 
-        StartCoroutine(DelayedAction());
+        this.Delay(() => {
+            foreach(var s in sexys) s.open();
+            listen = true;
+            Common.PlayOneShot(pera);
+        },Common.RequiredLevel == 4 ? 6f :
+        Common.RequiredLevel == 3 ? 4f : 2f);
         
     }
 
     public void notifyFliped(SexyEncription sexy){
+        Common.PlayOneShot(pera);
         if(current == null) current = sexy;
         else{
             if(current.sexyprite == sexy.sexyprite){
-                Common.PlayOneShot(pinpon);
+                this.Delay(() => {Common.PlayOneShot(pinpon);},0.3f);
                 
                 var fin = current;
                 current = null;
@@ -71,24 +79,17 @@ public class Discord_Math : MonoBehaviour
                     if(clearCount >= sprites.Length) this.Delay(()=>{
                         Common.EndGame(true);
                     },0.3f);
-                },0.3f);
+                },0.5f);
             }
             else{
                 listen = false;
-                Common.PlayOneShot(bu);
+                this.Delay(() => {Common.PlayOneShot(bu);},0.3f);
                 Instantiate(batsuPrefab,sexy.transform);
                 this.Delay(()=>{
                     Common.EndGame(false);
-                },0.3f);
+                },0.5f);
             }
         }
     }
 
-    IEnumerator DelayedAction()
-    {
-        yield return new WaitForSeconds(2f); // 3秒の遅延
-        foreach(var s in sexys) s.open();
-        title.text = "";
-        listen = true;
-    }
 }

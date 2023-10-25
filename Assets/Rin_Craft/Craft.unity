@@ -305,6 +305,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6863042502385275631, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
+      propertyPath: level
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8359934129883148106, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 662.94464
@@ -958,10 +962,12 @@ MonoBehaviour:
   ton: {fileID: 8300000, guid: d30ffb053b0704eb88f159c18242fb7f, type: 3}
   gan: {fileID: 8300000, guid: 94fd3959f54ac41cc9d4085cbfd7b183, type: 3}
   jump: 400
+  editMode: 0
   cam: {fileID: 1320862395}
   ambient: {r: 1, g: 1, b: 1, a: 0.25490198}
   gravity: -20
   blockPrefab: {fileID: 7078545370060127970, guid: f27f1225c6dbc49c3a37bc4dc2049bd0, type: 3}
+  json: {fileID: 4900000, guid: 087f3db5c846446ba977a65092539fe3, type: 3}
 --- !u!1 &2013112768
 GameObject:
   m_ObjectHideFlags: 0
