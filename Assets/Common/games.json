@@ -88,8 +88,8 @@
         ]
     },
     {
-        "title": "建築しろ！",
-        "titleEng": "Craft!",
+        "title": "同じ形を作れ！",
+        "titleEng": "Craft same figure!",
         "instruction": "A: 左 D: 右 W: 前 S: 後 Space: ジャンプ 右クリック: 壊す 左クリック: 置く",
         "instructionEng": "A: left D: right forward S: buck Space: jump R-Click: break L-Click: put",
         "scenes": [
