@@ -29,7 +29,7 @@ public class AirPlayer : MonoBehaviour
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
         Common.StartGame(15,()=>{
-            Common.EndGame(true);
+            Common.EndGame(false);
         });
         rb = GetComponent<Rigidbody>();
     }

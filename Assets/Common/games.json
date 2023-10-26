@@ -24,6 +24,18 @@
         ]
     },
     {
+        "title": "脱出しろ!",
+        "titleEng": "Escape!",
+        "instruction": "WASD: 移動",
+        "instructionEng": "WASD",
+        "scenes": [
+            {
+                "name": "Escape",
+                "level": 1
+            }
+        ]
+    },
+    {
         "title": "救え!",
         "titleEng": "Save!",
         "instruction": "ドラッグ: 壁を作る",

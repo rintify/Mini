@@ -12,9 +12,9 @@ public class God : MonoBehaviour
         Camera.main.GetComponent<Skybox>().enabled = false;
         var goal = rooms.Shuffle();
         Instantiate(goalPrefab,goal[0].transform);
+        goal[0].transform.Find("Door").GetComponent<Door>().goal = true;
         for(int i = 1; i < rooms.Length; i ++){
-            var a = Instantiate(lostPrefab,goal[i].transform);
-            a.transform.Find("Door").GetComponent<Door>().goal = false;
+            Instantiate(lostPrefab,goal[i].transform);
         }
     }
 
