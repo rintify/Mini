@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     public float openAngle = 90f; // 開く角度
     public float openSpeed = 2f; // 開くスピード
     public GameObject nobuLight;
+    public bool goal = true;
 
     public bool isOpen = false;
     private Vector2 closedDir,openedDir;
@@ -22,7 +23,10 @@ public class Door : MonoBehaviour
     {
         var Dir = transform.rotation.eulerAngles.y.Deg2Direction();
         if(isOpen){
-            //if()
+            if(goal){
+                Debug.Log("afa");
+                Camera.main.GetComponent<Skybox>().enabled = true;
+            }
             if(Dir.Dot(openedDir) < 0.99) 
                 transform.Rotate(Vector3.up * openSpeed*Time.deltaTime);
             else{
