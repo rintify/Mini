@@ -23,7 +23,7 @@ public class GameTransition : MonoBehaviour
             var transitionAnim = Im.GetComponent<Animator>();
             transitionAnim.SetTrigger("out2");
             yield return new WaitForSeconds(1);
-            SceneManager.LoadScene("TransScene1");
+            SceneManager.LoadScene($"TransScene{Common.Level}");
             transitionAnim.SetTrigger("in2");
             Debug.Log("GtoG");
         }

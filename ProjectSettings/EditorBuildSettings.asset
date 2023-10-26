@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/Common/TransScene1.unity
     guid: 2df5c6f5f80064d478b6a5d40d84ba5c
   - enabled: 1
+    path: Assets/Common/TransScene2.unity
+    guid: 63c1abc00104a7045bd34aada5578048
+  - enabled: 1
+    path: Assets/Common/TransScene3.unity
+    guid: 096cc49f615e2904791f23b1e3dcaa3e
+  - enabled: 1
+    path: Assets/Common/TransScene4.unity
+    guid: 2b6ee32aaf6d2c841bba31b8840bbdbd
+  - enabled: 1
     path: Assets/Soupon2gou/Scenes/game1.unity
     guid: f690cb0e6f2e16e4d8d24b9e26986f5d
   - enabled: 1
