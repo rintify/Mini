@@ -77,6 +77,7 @@ public class Common : MonoBehaviour
         instance.Delay(() => {
             instance.audioSource.Stop();
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         },0.7f);
         
 
