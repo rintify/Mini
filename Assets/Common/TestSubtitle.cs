@@ -25,7 +25,7 @@ public class TestSubtitle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         GetComponent<TextMeshProUGUI>().text = Common.Title;
         RectTransform_get = gameObject.GetComponent<RectTransform>();
         Vector2 pos = RectTransform_get.anchoredPosition;
@@ -48,7 +48,7 @@ public class TestSubtitle : MonoBehaviour
         {
             apper = true;
             //Destroy(this.gameObject);
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
 
             Vector2 pos = RectTransform_get.anchoredPosition;
             Vector2 scale = RectTransform_get.localScale;
@@ -81,7 +81,7 @@ public class TestSubtitle : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
     }
 }

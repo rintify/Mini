@@ -19,6 +19,8 @@ public class TestHow_to_play : MonoBehaviour
 
     //public  Timer sub;
     RectTransform RectTransform_get;
+    public TestSubtitle subtitle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +40,10 @@ public class TestHow_to_play : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        //サブタイトルが左に行き始める時間まで待機
+        if(!subtitle.apper) return;
         if(Time.timeScale == 0)
         {
             RectTransform_get = gameObject.GetComponent<RectTransform>();

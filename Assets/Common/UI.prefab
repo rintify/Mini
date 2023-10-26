@@ -58,6 +58,7 @@ MonoBehaviour:
   font_size: 1.2
   speed_rate: 20
   font_speed_rate: 15
+  subtitle: {fileID: 5974649857925017101}
 --- !u!222 &7063046882396513834
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,11 +18,17 @@ public class TestTimer : MonoBehaviour
     void Start()
     {
         time = CountDownTime = Common.TimeLimit;
+        CountDownTime += 0.5f; //カウントダウン開始まで0.5秒待機する
     }
 
     // Update is called once per frame
     void Update()
     {
+        //カウントダウン開始まで0.5秒待機するための処理
+        if(CountDownTime > time){
+            CountDownTime -= Time.deltaTime;
+            return;
+        }
         if (CountDownTime > 0)
         {
             CountDownTime -= Time.deltaTime;
