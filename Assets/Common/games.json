@@ -344,7 +344,7 @@
     {
         "title": "リンゴを避けろ！",
         "titleEng": "Avoid apples!",
-        "instruction": "A：左D：右",
+        "instruction": "A：左 D：右",
         "instructionEng": "A: left D:right",
         "scenes": [
             {
@@ -364,6 +364,10 @@
             {
                 "name": "kowase",
                 "level": 1
+            },
+            {
+                "name":"kowase 1",
+                "level":2
             }
         ]
     }
