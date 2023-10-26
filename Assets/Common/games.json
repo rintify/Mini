@@ -348,8 +348,7 @@
         "instructionEng": "A: left D:right",
         "scenes": [
             {
-              "name": "yokero",
-
+                "name": "yokero",
                 "level": 1
             }
     ]
