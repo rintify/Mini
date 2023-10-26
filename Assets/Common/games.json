@@ -90,8 +90,8 @@
     {
         "title": "同じ形を作れ！",
         "titleEng": "Craft same figure!",
-        "instruction": "A: 左 D: 右 W: 前 S: 後 Space: ジャンプ 右クリック: 壊す 左クリック: 置く",
-        "instructionEng": "A: left D: right forward S: buck Space: jump R-Click: break L-Click: put",
+        "instruction": "WASD: 移動 Space: ジャンプ 右クリック: 壊す 左クリック: 置く",
+        "instructionEng": "WASD Space: jump R-Click: break L-Click: put",
         "scenes": [
             {
                 "name": "Craft",
@@ -114,7 +114,7 @@
     {
         "title": "記憶しろ！",
         "titleEng": "Memory!",
-        "instruction": "右クリック: めくる",
+        "instruction": "左クリック: めくる",
         "instructionEng": "R-Click: flip",
         "scenes": [
             {
@@ -138,7 +138,7 @@
     {
         "title": "生き残れ！",
         "titleEng": "Survive!",
-        "instruction": "A: 左 D: 右 W: 上 S: 下",
+        "instruction": "WASD: 移動",
         "instructionEng": "A: Left D: Right W: Up S: Down",
         "scenes": [
             {

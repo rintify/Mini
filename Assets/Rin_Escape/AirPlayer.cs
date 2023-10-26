@@ -16,8 +16,6 @@ public class AirPlayer : MonoBehaviour
     public GameObject cam;
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 3f, Ysensityvity = 3f;
-    
-    bool cursorLock = true;
 
     //変数の宣言(角度の制限用)
     float minX = -90f, maxX = 90f;
@@ -25,6 +23,9 @@ public class AirPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        RenderSettings.ambientLight = new Color(0.05f,0.05f,0.05f,0.05f);
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
         Common.StartGame(15,()=>{
@@ -66,8 +67,20 @@ public class AirPlayer : MonoBehaviour
         cam.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
 
+        Ray ray = Camera.main.ViewportPointToRay(0.5f*Vector2.one);
+        if(Physics.Raycast(ray, out RaycastHit hit, 2.5f)){
+            var door = hit.collider.gameObject.GetComponent<Door>();
+            if(door){
+                if(!door.nobuLight.activeInHierarchy){
+                    door.nobuLight.SetActive(true);
+                    this.Delay(()=>{
+                        if(door.nobuLight.activeInHierarchy)door.nobuLight.SetActive(false);
+                    },0.5f);
+                }
+                if(Input.GetMouseButtonDown(0)) door.isOpen = true;
+            }
+        }
 
-        UpdateCursorLock();
     }
 
     bool foot = false;
@@ -95,29 +108,6 @@ public class AirPlayer : MonoBehaviour
         rb.MovePosition(newPosition);
     }
 
-
-    public void UpdateCursorLock()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            cursorLock = false;
-        }
-        else if(Input.GetMouseButton(0))
-        {
-            cursorLock = true;
-        }
-
-
-        if (cursorLock)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else if(!cursorLock)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-    }
-    
     //角度制限関数の作成
     public Quaternion ClampRotation(Quaternion q)
     {
