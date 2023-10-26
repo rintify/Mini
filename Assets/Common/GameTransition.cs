@@ -51,11 +51,13 @@ public class GameTransition : MonoBehaviour
     }
 
     //リザルト画面に遷移する時にコモンから呼ばれる
+
+    public Color color;
     public void GameToResult(string resultSceneName){
         IEnumerator Fin()
         {
             GameObject Im = transform.Find("Canvas/Image").gameObject;
-            Im.GetComponent<Image>().color = new Color(0.9f, 0.1f, 0.0f, 1.0f);
+            Im.GetComponent<Image>().color = color;
             var TansitionAnimResult = img.GetComponent<Animator>();
             TansitionAnimResult.SetTrigger("out");
             yield return new WaitForSeconds(1);
