@@ -22,7 +22,7 @@ public class Door : MonoBehaviour
     {
         var Dir = transform.rotation.eulerAngles.y.Deg2Direction();
         if(isOpen){
-            if()
+            //if()
             if(Dir.Dot(openedDir) < 0.99) 
                 transform.Rotate(Vector3.up * openSpeed*Time.deltaTime);
             else{
