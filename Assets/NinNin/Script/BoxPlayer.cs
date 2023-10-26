@@ -17,13 +17,13 @@ public class BoxPlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            if (this.transform.position.x > -5)
+            if (this.transform.position.x > -5.5)
                 this.transform.position += Vector3.left * speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            if (this.transform.position.x < 5)
+            if (this.transform.position.x < 5.5)
                 this.transform.position += Vector3.right * speed * Time.deltaTime;
         }
     }
