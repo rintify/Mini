@@ -33,7 +33,9 @@ public class Common : MonoBehaviour
     ///<summary>カウントを中断し再度開始する</summary>
     public static void RestartTimer(int timeLimit,Action onTimeUp){
         EndTimer();
-        StartGame(timeLimit,onTimeUp);
+        instance.timeLimit = timeLimit;
+        instance.onTimeUp = onTimeUp;
+        instance.ui?.StartTimer();
     }
 
     ///<summary>ゲームを開始する前に実行し、カウントは開始しない</summary>
