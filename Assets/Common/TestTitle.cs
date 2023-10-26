@@ -1,46 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-//using System.Diagnostics;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TestTitle : MonoBehaviour
 {
     private bool firstPush=false;
     private bool can_do = false;
 
-    InputField inputField;
-    string language="Japanese";
-    string name="ゲスト";
+    public string username;
+    private string language="Japanese";
 
+
+    InputFieldManager IM; //呼ぶスクリプトにあだなつける
     private void Start()
     {
-        inputField = GameObject.Find("InputField").GetComponent<InputField>();
+        
+        GameObject obj = GameObject.Find("入力確認"); //オブジェクトを探す
+        IM = obj.GetComponent<InputFieldManager>(); //付いているスクリプトを取得
         //allow_startを3.5秒後に呼び出す
         Invoke(nameof(allow_start), 4.5f);
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        username = IM.name;
+        if (Input.GetKeyDown(KeyCode.Space)){
             PressStart();
         }
     }
 
-    public void ChangeToJapanese()
+public void ChangeToJapanese()
     {
         language = "Japanese";
+        Debug.Log("ToJap");
     }
 
     public void ChangeToEnglish()
     {
         language = "English";
-    }
-
-    public void InputUserName() {
-        name = inputField.text;
-        Debug.Log(name);
-        inputField.text = "";
+        Debug.Log("ToEng");
     }
 
     //スタートボタンを押されたら呼ばれる
@@ -52,7 +52,8 @@ public class TestTitle : MonoBehaviour
         {
             Debug.Log("Go Next Scene!");
             //ここに次のシーンに行く命令を書く
-            Common.StartGames(name,language);
+            Common.StartGames(username,language);
+            Debug.Log(username+" "+language);
             firstPush = true;
         }
     }
