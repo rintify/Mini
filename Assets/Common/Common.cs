@@ -195,6 +195,10 @@ public class Common : MonoBehaviour
         instance.audioSource.PlayOneShot(clip);
     }
 
+    public static void PlayOneShot(AudioClip clip, float vol){
+        instance.audioSource.PlayOneShot(clip,vol);
+    }
+
 
 
 

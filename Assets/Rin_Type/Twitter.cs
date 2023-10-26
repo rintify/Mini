@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,27 +7,26 @@ using UnityEngine.UI;
 
 public class Twitter : MonoBehaviour
 {
-    public RectTransform sexy;
     public Text texual;
     public Text japanese;
     public TextAsset data;
     private string question;
     private int current;
     string[][] lines;
-    public AudioSource source;
-    public AudioClip clip,bu;
+    public AudioClip clip,bu,pinpon;
     bool canPress;
+    [NonSerialized]
+    public float timeLimit;
+    [NonSerialized]
+    public TypeMonster monster;
     // Start is called before the first frame update
     void Start()
     {
-        Common.StartGame(
-            Common.RequiredLevel == 4 ? 15 :
-            Common.RequiredLevel == 3 ? 12 :
-            10,()=>{
-            Common.EndGame(false);
-        });
         lines = data.text.Split(",,").Select(a => a.Split(",")).ToArray();
         next();
+        clearAnime = () => {
+            this.transform.localScale += 0.5f/timeLimit*Vector3.one*Time.deltaTime;
+        };
     }
 
     void next(){
@@ -38,9 +38,13 @@ public class Twitter : MonoBehaviour
         question = texual.text = selected[1];
     }
 
+    Action clearAnime;
+
     // Update is called once per frame
     void Update()
     {
+        clearAnime();
+
         if(!canPress) return;
         char pressed = (char)0;
         for(int kcode = (int)KeyCode.A; kcode <= (int)KeyCode.Z; kcode ++)
@@ -52,19 +56,29 @@ public class Twitter : MonoBehaviour
         }
 
         if(pressed != 0){
-            source.PlayOneShot(clip);
+            Common.PlayOneShot(clip);
             if(current < question.Length && question[current] == pressed){
                 texual.text = $"<color=#00ff00>{question.Substring(0,current+1)}</color>{question.Substring(current+1,question.Length-current-1)}";
                 current ++;
-                if(current == question.Length)
-                this.Delay(()=>{
-                    Common.EndGame(true);
-                },0.5f);
+                if(current == question.Length){
+                    Common.IsCleared = true;
+                    clearAnime = () => {
+                        this.transform.localScale *= Mathf.Pow(0.01f, Time.deltaTime*5);
+                        if(this.transform.localScale.x < 0.01f){
+                            Common.PlayOneShot(pinpon);
+                            monster.die();
+                            clearAnime = () => {};
+                            this.Delay(()=>{
+                                Common.EndGame();
+                            },0.8f);
+                        }
+                    };
+                }
             }
             else{
                 texual.text = $"<color=#00ff00>{question.Substring(0,current)}</color><color=#ff0033>{pressed}</color>{question.Substring(current+1,question.Length-current-1)}";
                 canPress = false;
-                source.PlayOneShot(bu);
+                Common.PlayOneShot(bu);
                 this.Delay(()=>{
                     current = 0;
                     canPress = true;
