@@ -1,6 +1,6 @@
 <?php
 
-$db = new SQLite3('Mini.db');
+$db = new SQLite3('../Mini.db');
 
 function getTopScores($limit) {
     global $db;

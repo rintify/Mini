@@ -88,6 +88,7 @@ public class Steve : MonoBehaviour
         RenderSettings.ambientLight = ambient;
         Physics.gravity = gravity*Vector3.up;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         clear = new(() => {
             Common.EndGame(true);

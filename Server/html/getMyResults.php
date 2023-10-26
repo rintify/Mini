@@ -1,7 +1,7 @@
 <?php
 
 include("funcs.php"); 
-$db = new SQLite3('Mini.db');
+$db = new SQLite3('../Mini.db');
 
 function getMyScores($name,$limit) {
     global $db;
