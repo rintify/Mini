@@ -41,7 +41,7 @@ public class Common : MonoBehaviour
     ///<summary>ゲームを開始する前に実行し、カウントは開始しない</summary>
     public static void StartGame(){
         //連続呼び出しを避ける
-        if(instance.ui != null) return;
+        if(instance.ui == null) StartUI();
         Debug.Log("Game Awake");
     }
 
