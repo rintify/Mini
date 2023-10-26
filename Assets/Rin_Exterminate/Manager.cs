@@ -22,6 +22,7 @@ namespace RinExterminate{
         public EX.Virgin ending;
         public TextAsset json;
         public GameObject enemyPrefab;
+        float rotSpeed = 0;
         // Start is called before the first frame update
         void Start()
         {
@@ -83,11 +84,15 @@ namespace RinExterminate{
         {
             var slow = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) ? 0.3f : 1f;
             if (Input.GetKey(KeyCode.D)){
-                taiho.transform.Rotate(0,0,slow*-110f*Time.deltaTime);
+                taiho.transform.Rotate(0,0,-slow*rotSpeed*Time.deltaTime);
+                rotSpeed += (110f - rotSpeed)*6f*Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.A)){
-                taiho.transform.Rotate(0,0,slow*140f*Time.deltaTime);
+                taiho.transform.Rotate(0,0,slow*rotSpeed*Time.deltaTime);
+                rotSpeed += (110f - rotSpeed)*6f*Time.deltaTime;
             }
+            else rotSpeed = 0;
+
             if (Input.GetKeyDown(KeyCode.Space) && bullet == null){
                 bullet = Instantiate(bulletPrefab);
                 bullet.set(

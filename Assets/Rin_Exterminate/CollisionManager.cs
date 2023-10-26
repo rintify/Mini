@@ -65,6 +65,7 @@ public class CollisionManager : MonoBehaviour
         float minBP = p.r + b.r;
         if(BP.sqrMagnitude >= minBP*minBP) return null;
         Vector2 n = -b.pos.normalized;
+        if(n.Dot(p.dir) > 0) return null;
         return new CollisionM(0,p,b,n);
     }
 

@@ -1,9 +1,9 @@
 [
     {
-        "title": "一発で殲滅しろ!",
+        "title": "一発で消し去れ!",
         "titleEng": "Exterminate!",
-        "instruction": "A: 左 D: 右 Shift: 微調整 Space: 発射",
-        "instructionEng": "A: left D: right Shift: slow",
+        "instruction": "A: 左 D: 右 Space: 発射",
+        "instructionEng": "A: left D: right",
         "scenes": [
             {
                 "name": "Exterminate",

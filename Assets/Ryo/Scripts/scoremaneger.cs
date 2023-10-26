@@ -10,7 +10,7 @@ public class scoremaneger : MonoBehaviour
 private TextMeshProUGUI textframe;
     // Start is called before the first frame update
    
-    string NewData="none";
+    string NewData="ロード中";
     // コルーチンの開始
     //Dictionary<string, string> postData = new Dictionary<string, string>();
 
@@ -26,7 +26,7 @@ private TextMeshProUGUI textframe;
     {
         textframe = GetComponent<TextMeshProUGUI>();
         add();
-       top();
+        Invoke(nameof(top), 0.5f);
         //my();
     }
     
@@ -46,11 +46,11 @@ private TextMeshProUGUI textframe;
     void add()
     {
         formDataadd = new WWWForm();
-        int score;
-        string name;
+        int score=0;
+        string name="none";
         
-        name = Common.PlayerName;
-        score = Common.Score;
+        //name = Common.PlayerName;
+        //score = Common.Score;
 
         formDataadd.AddField("name", name);
         formDataadd.AddField("score", score);
