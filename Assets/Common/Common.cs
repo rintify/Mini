@@ -43,7 +43,6 @@ public class Common : MonoBehaviour
         //連続呼び出しを避ける
         if(instance.ui != null) return;
         Debug.Log("Game Awake");
-        StartUI();
     }
 
     ///<summary>ゲームを終了する前に実行し、カウントを終了する onTimeupは実行されない</summary>

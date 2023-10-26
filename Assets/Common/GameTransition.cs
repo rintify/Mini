@@ -35,6 +35,7 @@ public class GameTransition : MonoBehaviour
     public void TransToGame(string nextSceneName){
         IEnumerator GtoG()
         {
+            this.Delay(Common.StartUI,0.6f);
             GameObject Im = transform.Find("Canvas/Image").gameObject;
             Im.GetComponent<Image>().color = new Color(0.1f, 1.0f, 0.3f, 1.0f);
             var transitionAnim = Im.GetComponent<Animator>();
