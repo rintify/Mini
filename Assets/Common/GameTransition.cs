@@ -57,7 +57,8 @@ public class GameTransition : MonoBehaviour
         IEnumerator Fin()
         {
             GameObject Im = transform.Find("Canvas/Image").gameObject;
-            Im.GetComponent<Image>().color = color;
+            //Im.GetComponent<Image>().color = color;
+            Im.GetComponent<Image>().color = new Color(0.1f, 1.0f, 0.3f, 1.0f);
             var TansitionAnimResult = img.GetComponent<Animator>();
             TansitionAnimResult.SetTrigger("out");
             yield return new WaitForSeconds(1);
