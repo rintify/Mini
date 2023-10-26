@@ -1,59 +1,121 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.Networking;
+using System.Collections;
+using TMPro;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 public class scoremaneger : MonoBehaviour
 {
 private TextMeshProUGUI textframe;
     // Start is called before the first frame update
-    static string URL_SELECT = "";
-    string NewData;
+   
+    string NewData="none";
     // コルーチンの開始
-    IEnumerator Start()
+    //Dictionary<string, string> postData = new Dictionary<string, string>();
+
+    private string postUrladd = "https://cas-ru.com/DOdbhfRG9ze37XoF/addResult.php"; // POSTリクエストを送信するURL
+    private string postUrltop = "https://cas-ru.com/DOdbhfRG9ze37XoF/getTopPlayers.php";
+    private string postUrlmy = "https://cas-ru.com/DOdbhfRG9ze37XoF/getMyResult.php";
+    // 送信するデータをキーと値のペアで作成
+    private WWWForm formDataadd;
+    private WWWForm formDatatop;
+    private WWWForm formDatamy;
+
+    void Start()
     {
         textframe = GetComponent<TextMeshProUGUI>();
-        StartCoroutine(Write());
-        // UnityWebRequestを作成してURL_SELECTのページにアクセス
-        UnityWebRequest request = UnityWebRequest.Get(URL_SELECT);
-
-        yield return request.SendWebRequest();  // リクエストを送信し、レスポンスを待つ
-
-        if (request.result == UnityWebRequest.Result.Success) // レスポンスの結果をチェック
-        {
-            // レスポンスデータを取得
-            string data = request.downloadHandler.text;
-
-            // HTMLエンコードされた文字列をデコード
-            string decodedData = System.Web.HttpUtility.HtmlDecode(data);
-
-            // 改行タグを実際の改行文字に変換
-            NewData = decodedData.Replace("<br>", "\n");
-            //Debug.Log(NewData);
-        }
-        else
-        {
-            Debug.LogError("WebAPI Error: " + request.error);
-        }
-    }
-    private IEnumerator Write()
-    {
-        string url = URL_SELECT;
-
-        //WWWForm:WWWクラスを使用してwebサーバにポストするフォームデータを生成するヘルパークラス
-        WWWForm wwwForm = new WWWForm();
-
-        //AddFieldでfieldに値を格納                
-        wwwForm.AddField("player_name", Common.PlayerName);
-        wwwForm.AddField("score", Common.Score);
-
-        //WWWオブジェクトにURL,WWWFormをセットすることでPOST,GETを行える。
-        WWW www = new WWW(url, wwwForm);
-
-        //実行
-        yield return www;
+        add();
+       top();
+        //my();
     }
     
+    IEnumerator SendPostRequestadd()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDataadd))
+        {
+            www.redirectLimit = 10;
+            yield return www.SendWebRequest();
+            Debug.Log("Response: " + www.downloadHandler.text);
+
+            
+            
+        }
+    }
+
+    void add()
+    {
+        formDataadd = new WWWForm();
+        int score;
+        string name;
+        
+        name = Common.PlayerName;
+        score = Common.Score;
+
+        formDataadd.AddField("name", name);
+        formDataadd.AddField("score", score);
+        formDataadd.AddField("key", "sq9YZY0ZfQA7vI9zK3QIsHawIb");
+
+        // POSTリクエストを送信
+        StartCoroutine(SendPostRequestadd());
+    }
+    IEnumerator SendPostRequesttop()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Post(postUrltop, formDatatop))
+        {
+            yield return www.SendWebRequest();
+
+            List<PlayerScore> playerScores = JsonConvert.DeserializeObject<List<PlayerScore>>(www.downloadHandler.text);
+
+            // 名前とスコアを一つのstringに出力
+            string output = "";
+            foreach (PlayerScore player in playerScores)
+            {
+                output += $"{player.Name}: {player.Score}\n";
+            }
+
+            Debug.Log(output);
+            Debug.Log("Response: " + www.downloadHandler.text);
+            NewData = output;
+        }
+    }
+
+    void top()
+    {
+        formDatatop = new WWWForm();
+        
+
+        // POSTリクエストを送信
+        StartCoroutine(SendPostRequesttop());
+    }
+
+
+    IEnumerator SendPostRequestmy()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDatamy))
+        {
+            yield return www.SendWebRequest();
+
+
+            Debug.Log("Response: " + www.downloadHandler.text);
+
+        }
+    }
+
+    void my()
+    {
+        formDatamy = new WWWForm();
+        int score;
+        string name;
+        score = 39;
+        name = "AAA";
+        formDatamy.AddField("name", "taro");
+        
+
+        // POSTリクエストを送信
+        StartCoroutine(SendPostRequestmy());
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -61,4 +123,9 @@ private TextMeshProUGUI textframe;
         
         textframe.text=NewData;
     }
+}
+public class PlayerScore
+{
+    public string Name { get; set; }
+    public int Score { get; set; }
 }

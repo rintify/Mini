@@ -8,7 +8,11 @@ public class text : MonoBehaviour
     void Start()
     {
          textframe = GetComponent<TextMeshProUGUI>();
+
+
+        
     }
+
 
     // Update is called once per frame
     void Update()
