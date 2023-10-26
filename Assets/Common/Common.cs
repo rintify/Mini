@@ -43,8 +43,7 @@ public class Common : MonoBehaviour
         //連続呼び出しを避ける
         if(instance.ui != null) return;
         Debug.Log("Game Awake");
-        instance.ui = Instantiate(instance.uiPrefab, instance.canvas.transform);
-        instance.ui.transform.SetAsLastSibling();
+        StartUI();
     }
 
     ///<summary>ゲームを終了する前に実行し、カウントを終了する onTimeupは実行されない</summary>
@@ -181,6 +180,12 @@ public class Common : MonoBehaviour
     ///<summary>制限時間が切れたら実行</summary>
     public static void TimeUp(){
         instance.onTimeUp?.Invoke();
+    }
+
+    ///<summary>次のゲームシーンに遷移したら実行</summary>
+    public static void StartUI(){
+        instance.ui = Instantiate(instance.uiPrefab, instance.canvas.transform);
+        instance.ui.transform.SetAsLastSibling();
     }
 
 

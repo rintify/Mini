@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863042502385275631, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: level
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8359934129883148106, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,7 +960,7 @@ MonoBehaviour:
   foot1: {fileID: 8300000, guid: d9fe7376ba7aa43f099b8fb37508ad05, type: 3}
   foot2: {fileID: 8300000, guid: d9fe7376ba7aa43f099b8fb37508ad05, type: 3}
   ton: {fileID: 8300000, guid: d30ffb053b0704eb88f159c18242fb7f, type: 3}
-  gan: {fileID: 8300000, guid: 94fd3959f54ac41cc9d4085cbfd7b183, type: 3}
+  gan: {fileID: 8300000, guid: 0da3c02fd333641c9a7228dea4d68583, type: 3}
   jump: 400
   editMode: 0
   cam: {fileID: 1320862395}
