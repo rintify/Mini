@@ -332,9 +332,7 @@ public class Common : MonoBehaviour
     void Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
-            //名前とスコアをサーバーに転送
-            addresult();
-            transition.GameToResult(resultScene);
+            ToResult();
         }
         //次のゲームへ遷移
         else{
@@ -362,24 +360,33 @@ public class Common : MonoBehaviour
             transition.TransToGame(currentScene.scene.name);
         }
     }
+
+    async void ToResult(){
+        Debug.Log("add REsult");
+        await addresult();
+        Debug.Log("added REsult");
+        //名前とスコアをサーバーに転送
+        transition.GameToResult(resultScene);
+    }
+
+
     //データベース
     private string postUrladd = "https://cas-ru.com/DOdbhfRG9ze37XoF/addResult.php";
     private WWWForm formDataadd;
-    IEnumerator SendPostRequestadd()
+    IEnumerator SendPostRequestadd(TaskCompletionSource<bool> tcs)
     {
         using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDataadd))
         {
             www.redirectLimit = 10;
             yield return www.SendWebRequest();
             Debug.Log("Response: " + www.downloadHandler.text);
-
-
-
+            tcs.SetResult(www.downloadHandler.text == "Result");
         }
     }
 
-    void addresult()
+    Task addresult()
     {
+        var tcs = new TaskCompletionSource<bool>();
         formDataadd = new WWWForm();
         int score = Common.Score;
         string name;
@@ -396,7 +403,9 @@ public class Common : MonoBehaviour
         formDataadd.AddField("key", "sq9YZY0ZfQA7vI9zK3QIsHawIb");
 
         // POSTリクエストを送信
-        StartCoroutine(SendPostRequestadd());
+        StartCoroutine(SendPostRequestadd(tcs));
+
+        return tcs.Task;
     }
     /*
         private AsyncOperation asyncLoad;
