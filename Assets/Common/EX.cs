@@ -2,13 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Unity.Burst.Intrinsics;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public static class EX
 {
+    public static TaskAwaiter<UnityWebRequest> GetAwaiter(this UnityWebRequestAsyncOperation asyncOp)
+    {
+        var tcs = new TaskCompletionSource<UnityWebRequest>();
+        asyncOp.completed += obj => { tcs.SetResult((obj as UnityWebRequestAsyncOperation).webRequest); };
+        return tcs.Task.GetAwaiter();
+    }
+
     public static void FlipX(this Transform self){
         var a = self.transform.localScale;
         a.x *= -1;

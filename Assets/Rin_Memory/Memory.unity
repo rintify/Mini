@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863042502385275631, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: level
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8359934129883148106, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -478,7 +478,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d5405de9cb5604e97923d802b7eec2dd, type: 3}
     - {fileID: 21300000, guid: f61ea8bf294e04207b4adb92c7e81a90, type: 3}
     - {fileID: 21300000, guid: aea29b22c60584104be7ad171c9bb16a, type: 3}
-    - {fileID: 21300000, guid: 653d4cc3def0e4e99916eb8a9192d70e, type: 3}
+    - {fileID: 21300000, guid: 2877e5528d352423db0a24684adff71a, type: 3}
+    - {fileID: 21300000, guid: ec9d7c0cb038b4a4dac46bc1e343d791, type: 3}
+    - {fileID: 21300000, guid: 6860c545506f7493ab0d2bece73b4825, type: 3}
+    - {fileID: 21300000, guid: 8d5f230b0d4ec4a998d6713171dc5229, type: 3}
+    - {fileID: 21300000, guid: 2030ba09ebcb749f5b79defce74e1c30, type: 3}
+    - {fileID: 21300000, guid: e2ec6e5571db249d18cf7e4b082e7c99, type: 3}
+    - {fileID: 21300000, guid: 15b6867a19d9f4a9598b0540950e192b, type: 3}
+    - {fileID: 21300000, guid: 3afc80906b9ef4e4a97b6a81b2786268, type: 3}
   batsuPrefab: {fileID: 5271953930057914065, guid: 93aac8987f4ad4c3699d5af90ddad273, type: 3}
   bu: {fileID: 8300000, guid: 1e56bed20bba04d8796a1a9e1f7610c6, type: 3}
   pinpon: {fileID: 8300000, guid: a69473db2b72149769faeea623a6205c, type: 3}

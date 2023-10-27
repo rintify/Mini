@@ -24,6 +24,7 @@ public class GameTransition : MonoBehaviour
             transitionAnim.SetTrigger("out2");
             yield return new WaitForSeconds(1);
             SceneManager.LoadScene($"TransScene{Common.Level}");
+            this.Delay(() => Common.ShowScore(),0.8f);
             transitionAnim.SetTrigger("in2");
             Debug.Log("GtoG");
         }

@@ -15,10 +15,11 @@ public class TypeMonster : MonoBehaviour
     public Twitter twittePrefab;
     public Canvas canvas;
     public ParticleSystem pa;
-    public AudioClip ban;
+    public AudioClip ban,bowa;
     // Start is called before the first frame update
     void Start()
     {
+        RenderSettings.ambientLight = new Color(0.1f,0.08f,0.08f,0.1f);
         anime = new(() => {
             renn.sprite = sprites[sp_i%sprites.Length];
             sp_i ++;
@@ -41,6 +42,7 @@ public class TypeMonster : MonoBehaviour
                             Common.EndGame(false);
                         });
                         var a = Instantiate(twittePrefab,canvas.transform);
+                        Common.PlayOneShot(bowa);
                         a.timeLimit = timeLimit;
                         a.monster = this;
                         time = 0;
@@ -55,7 +57,7 @@ public class TypeMonster : MonoBehaviour
 
     public void die(){
         pa.Play();
-        Common.PlayOneShot(ban,0.5f);
+        Common.PlayOneShot(ban);
         renn.color=Color.clear;
     }
 

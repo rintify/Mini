@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using TMPro;
 
 public class Common : MonoBehaviour
 {
@@ -119,9 +119,11 @@ public class Common : MonoBehaviour
 //*** スタート画面が実行してほしい ***
 
     ///<summary>スタート画面からゲームを開始する</summary>
-    public static void StartGames(string playerName,string langage){
+    public static async void StartGames(string playerName,string langage){
         instance.playerName = SuperCommonData.PlayerName = playerName;
         instance.langage = langage;
+        instance.topPlayers = await instance.GetTopPlayers();
+        if(instance.topPlayers == null) Debug.Log("fail topPlayers");
         instance.Next();
     }
 
@@ -149,6 +151,7 @@ public class Common : MonoBehaviour
     public static int Level {get{
         return instance.level;
     }}
+
 
     public static class SuperCommonData{
         public static string PlayerName = null;
@@ -227,6 +230,8 @@ public class Common : MonoBehaviour
     UIManager ui;
     [SerializeField]
     UIManager uiPrefab;
+    [SerializeField]
+    CurrentRank rankPrefab;
 
     [SerializeField]
     string resultScene;
@@ -235,6 +240,8 @@ public class Common : MonoBehaviour
 
     GameTransition transition;
     AudioSource audioSource;
+
+    PlayerScore[] topPlayers;
 
 
     //共通パラメータ
@@ -331,6 +338,24 @@ public class Common : MonoBehaviour
         scenesAtLevel.AddRange(a);
     }
 
+    int preRank = int.MaxValue;
+
+    public static void ShowScore(){
+        instance._ShowScore();
+    }
+
+    void _ShowScore(){
+        if(instance.topPlayers != null){
+            var rank = Array.FindIndex(instance.topPlayers, p => instance.score > p.Score);
+            if(rank == -1) rank = int.MaxValue;
+            if(preRank > rank){
+                var r = Instantiate(rankPrefab,canvas.transform);
+                r.set(rank + 1);
+            }
+            preRank = rank;
+        }
+    }
+
     //ライフに応じて次のゲームorリザルト画面
     void Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
@@ -351,17 +376,23 @@ public class Common : MonoBehaviour
 
             isCleared = 0;
             
-            //StartCoroutine(LoadSceneInBackground(currentScene.scene.name));
             
             StartCoroutine(WaitTrans());
         }
+
 
         IEnumerator WaitTrans()
         {
             transition.GameToTrans();
             yield return new WaitForSeconds(3);
+            ShowScore();
             transition.TransToGame(currentScene.scene.name);
         }
+    }
+
+    private IEnumerator WaitTrans()
+    {
+        throw new NotImplementedException();
     }
 
     async void ToResult(){
@@ -410,45 +441,19 @@ public class Common : MonoBehaviour
 
         return tcs.Task;
     }
-    /*
-        private AsyncOperation asyncLoad;
 
-        private IEnumerator LoadSceneInBackground(string sceneName)
-        {
-            asyncLoad = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Additive);
-            asyncLoad.allowSceneActivation = false;
+    async Task<PlayerScore[]> GetTopPlayers()
+    {
+        try{
+            using UnityWebRequest www = UnityWebRequest.Get("https://cas-ru.com/DOdbhfRG9ze37XoF/getTopPlayers.php");
+            await www.SendWebRequest();
+            return JsonConvert.DeserializeObject<PlayerScore[]>(www.downloadHandler.text);
+        }
+        catch{
+            return null;
+        }
+    }
 
-            // シーンが読み込まれるのを待つ
-            while (!asyncLoad.isDone)
-            {
-                // asyncLoad.progressはallowSceneActivationがfalseの場合、最大0.9までしか進まない
-                if (asyncLoad.progress >= 0.9f)
-                {
-                    // ここで何らかの処理を行い、シーンをスタートするタイミングを待つ
-                    // 例: ボタンが押されたら、シーンをスタートするなど
-
-                    // 以下はデモのためのコードで、3秒待った後にシーンをスタートします
-                    yield return new WaitForSeconds(1f);
-                    asyncLoad.allowSceneActivation = true;
-
-
-                    var loadedScene = SceneManager.GetSceneByName(sceneName);
-                    if (loadedScene.isLoaded)
-                    {
-                        foreach (GameObject obj in loadedScene.GetRootGameObjects())
-                        {
-                            Camera cam = obj.GetComponentInChildren<Camera>();
-                            if (cam)
-                            {
-                                cam.depth = -1;
-                            }
-                        }
-                    }
-                }
-
-                yield return null;
-            }
-        }*/
 
 
 }

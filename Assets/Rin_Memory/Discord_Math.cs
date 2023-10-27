@@ -21,17 +21,21 @@ public class Discord_Math : MonoBehaviour
     private int clearCount = 0;
 
     void Awake(){
-        sprites = deck.ElementAtRandom().cards.Shuffle().ToList().GetRange(0,Common.RequiredLevel == 4 ? 6 : 1+Common.RequiredLevel).ToArray();
+        sprites = deck.ElementAtRandom().cards.Shuffle().ToList().GetRange(0,1+Common.RequiredLevel).ToArray();
         var cards = new Sprite[sprites.Length*2];
         for(int i = 0; i < sprites.Length; i ++){
             cards[i*2] = sprites[i];
             cards[i*2 + 1] = sprites[i];
         }
-        n = Mathf.FloorToInt(Mathf.Sqrt(cards.Length));
-        m = Mathf.CeilToInt((float)cards.Length/n);
+
+        if(cards.Length == 4) (m,n) = (2,2); 
+        else if(cards.Length == 6) (m,n) = (3,2); 
+        else if(cards.Length == 8) (m,n) = (4,2); 
+        else if(cards.Length == 10) (m,n) = (5,2); 
+
         this.cards = cards.ToList();
         this.cards.Shuffle();
-        Common.StartGame(13,()=>{
+        Common.StartGame(Common.RequiredLevel == 4 ? 15 : 13,()=>{
             Common.EndGame(false);
         });
 

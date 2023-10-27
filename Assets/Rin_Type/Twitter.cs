@@ -25,7 +25,7 @@ public class Twitter : MonoBehaviour
         lines = data.text.Split(",,").Select(a => a.Split(",")).ToArray();
         next();
         clearAnime = () => {
-            this.transform.localScale += 0.5f/timeLimit*Vector3.one*Time.deltaTime;
+            this.transform.localScale += 1.17f/timeLimit*Vector3.one*Time.deltaTime;
         };
     }
 
@@ -56,7 +56,7 @@ public class Twitter : MonoBehaviour
         }
 
         if(pressed != 0){
-            Common.PlayOneShot(clip);
+            Common.PlayOneShot(clip,3);
             if(current < question.Length && question[current] == pressed){
                 texual.text = $"<color=#00ff00>{question.Substring(0,current+1)}</color>{question.Substring(current+1,question.Length-current-1)}";
                 current ++;
@@ -65,7 +65,7 @@ public class Twitter : MonoBehaviour
                     clearAnime = () => {
                         this.transform.localScale *= Mathf.Pow(0.01f, Time.deltaTime*5);
                         if(this.transform.localScale.x < 0.01f){
-                            Common.PlayOneShot(pinpon);
+                            Common.PlayOneShot(pinpon,2.5f);
                             monster.die();
                             clearAnime = () => {};
                             this.Delay(()=>{
@@ -78,7 +78,7 @@ public class Twitter : MonoBehaviour
             else{
                 texual.text = $"<color=#00ff00>{question.Substring(0,current)}</color><color=#ff0033>{pressed}</color>{question.Substring(current+1,question.Length-current-1)}";
                 canPress = false;
-                Common.PlayOneShot(bu);
+                Common.PlayOneShot(bu,2.5f);
                 this.Delay(()=>{
                     current = 0;
                     canPress = true;

@@ -95,6 +95,7 @@ namespace RinExterminate{
 
             if (Input.GetKeyDown(KeyCode.Space) && bullet == null){
                 bullet = Instantiate(bulletPrefab);
+                bullet.transform.position = taiho.transform.position;
                 bullet.set(
                     taiho.transform.position,
                     taiho.transform.eulerAngles.z*Mathf.Deg2Rad,
