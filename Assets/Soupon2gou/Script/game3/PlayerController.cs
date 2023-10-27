@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         
         if (isStop) return ;
         //毎フレーム回転させる
-        transform.Rotate(new Vector3(0, rotate_speed, 0));
+        transform.Rotate(new Vector3(0, rotate_speed*Time.deltaTime, 0));
 
         //少しずつ下へ
         //transform.Translate(0, -0.005f, 0);
