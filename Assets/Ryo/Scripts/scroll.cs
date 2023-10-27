@@ -23,11 +23,11 @@ public class scroll : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             
-            pos.y-=0.01f;
+            pos.y-=0.04f;
         }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            pos.y+=0.01f;
+            pos.y+=0.04f;
         }
         myTransform.position = pos;  // 座標を設定
     }
