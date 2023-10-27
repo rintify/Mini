@@ -32,7 +32,7 @@ public class Discord_Math : MonoBehaviour
         this.cards = cards.ToList();
         this.cards.Shuffle();
         Common.StartGame(13,()=>{
-            Common.EndGame(true);
+            Common.EndGame(false);
         });
 
     }
@@ -76,9 +76,13 @@ public class Discord_Math : MonoBehaviour
                     Destroy(fin.gameObject);
                     Destroy(sexy.gameObject);
                     Debug.Log(cards.Count);
-                    if(clearCount >= sprites.Length) this.Delay(()=>{
-                        Common.EndGame(true);
-                    },0.3f);
+                    //クリア処理
+                    if(clearCount >= sprites.Length){
+                        Common.IsCleared = true;
+                        this.Delay(()=>{
+                            Common.EndGame();
+                        },0.3f);
+                    }
                 },0.5f);
             }
             else{
