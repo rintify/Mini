@@ -102,8 +102,8 @@
     {
         "title": "同じ形を作れ！",
         "titleEng": "Craft same figure!",
-        "instruction": "WASD: 移動 Space: ジャンプ 右クリック: 壊す 左クリック: 置く",
-        "instructionEng": "WASD Space: jump R-Click: break L-Click: put",
+        "instruction": "WASD: 移動 Space: ジャンプ 左クリック: 壊す 右クリック: 置く",
+        "instructionEng": "WASD Space: jump L-Click: break R-Click: put",
         "scenes": [
             {
                 "name": "Craft",
@@ -127,7 +127,7 @@
         "title": "記憶しろ！",
         "titleEng": "Memory!",
         "instruction": "左クリック: めくる",
-        "instructionEng": "R-Click: flip",
+        "instructionEng": "L-Click: flip",
         "scenes": [
             {
                 "name": "Memory",
