@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Soupon2gou/Scenes/titleScene.unity
-    guid: b7cbd5bf2202c27469dacd5c2c9703f1
+    path: Assets/Common/TestTitleScene.unity
+    guid: 85b178fc892074076afb92c4a9eaa6da
   - enabled: 1
     path: Assets/Common/testResult.unity
     guid: 4ba07a9b9f26f48f39f83bbee06e23c1
+  - enabled: 1
+    path: Assets/Ryo/Scenes/Score.unity
+    guid: 0951409326853c845895a3888f5062bd
   - enabled: 1
     path: Assets/Common/TransScene1.unity
     guid: 2df5c6f5f80064d478b6a5d40d84ba5c
@@ -36,11 +39,26 @@ EditorBuildSettings:
     path: Assets/Rin_Memory/Memory.unity
     guid: 1dc4e0cb5f53f4f2586229a92f076b20
   - enabled: 1
+    path: Assets/Rin_Type/Type.unity
+    guid: 7ec26e5f9f17d4b98b39e75b59a3fe01
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor1-1.unity
+    guid: 57e68a95b770840049ce2b7bd908636d
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor2-1.unity
+    guid: 9794023c7f011453db40ae46c6067671
+  - enabled: 1
     path: Assets/Rin_Survivor/Survivor3-1.unity
     guid: caff6b8aad3514492896442314868b2f
   - enabled: 1
-    path: Assets/Rin_Type/Type.unity
-    guid: 7ec26e5f9f17d4b98b39e75b59a3fe01
+    path: Assets/Rin_Survivor/Survivor3-2.unity
+    guid: a2afa94832f6f4153b663244cbfb1154
+  - enabled: 1
+    path: Assets/Rin_Survivor/Survivor4-2.unity
+    guid: a3636d9839f88419e9acb4ebc27a140b
+  - enabled: 1
+    path: Assets/Rin_Exterminate/Exterminate.unity
+    guid: 4c0608c508a60469fa823702b7b0ee61
   - enabled: 1
     path: Assets/ryokutya/scene/baseball1.unity
     guid: cd9f086ef92ba414f8672c89e6f00dc4
@@ -75,15 +93,6 @@ EditorBuildSettings:
     path: Assets/Ryo/Scenes/shooting.unity
     guid: 0b90c2082a9ae2149bcbcc2d808ffc1e
   - enabled: 1
-    path: Assets/Rin_Survivor/Survivor1-1.unity
-    guid: 57e68a95b770840049ce2b7bd908636d
-  - enabled: 1
-    path: Assets/Rin_Survivor/Survivor2-1.unity
-    guid: 9794023c7f011453db40ae46c6067671
-  - enabled: 1
-    path: Assets/Rin_Survivor/Survivor3-2.unity
-    guid: a2afa94832f6f4153b663244cbfb1154
-  - enabled: 1
     path: Assets/NinNin/Scene/yokero.unity
     guid: 5452e5adfb15a8345b921f64343fdeac
   - enabled: 1
@@ -98,25 +107,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ryokutya/scene/ball3.unity
     guid: 8b7a462a157d0bd4f80bdda0228ca2c6
-  - enabled: 1
-    path: Assets/Rin_Exterminate/Exterminate.unity
-    guid: 4c0608c508a60469fa823702b7b0ee61
-  - enabled: 1
-    path: Assets/Rin_Survivor/Survivor4-2.unity
-    guid: a3636d9839f88419e9acb4ebc27a140b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rin_Save/Save1-1.unity
     guid: 80ff6c9d8d53a402b9770c03b7cd7a61
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rin_Save/Save2-1.unity
     guid: 8ee36fa213f2149bf82d582651ee60f1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rin_Save/Save2-2.unity
     guid: fffb8b591705e4a50870b8676a89b210
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rin_Save/Save3-1.unity
     guid: 96f033ecea7184c658e89d1a46b6bd44
-  - enabled: 1
+  - enabled: 0
     path: Assets/Rin_Save/Save4-1.unity
     guid: 8d7adf1f064b64683895d54d46ce0c30
   - enabled: 1
