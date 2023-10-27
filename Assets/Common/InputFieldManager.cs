@@ -51,7 +51,7 @@ public class InputFieldManager : MonoBehaviour
             {
                 exist.SetActive(true);
                 Debug.Log("存在する");
-            }
+            }else exist.SetActive(false);
             //Debug.Log("Response: " + www.downloadHandler.text);
 
         }
