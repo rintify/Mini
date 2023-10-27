@@ -9,8 +9,8 @@ public class TransController : MonoBehaviour
     public TMPro.TMP_Text text1;
     void Start()
     {
-        text.text = $"スコア: {Common.Score}";
-        text1.text = $"レベル: {Common.Level}";
+        text.text = $"SCORE: {Common.Score}";
+        text1.text = $"LEVEL: {Common.Level}";
     }
 
     // Update is called once per frame
