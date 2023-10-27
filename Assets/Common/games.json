@@ -35,7 +35,7 @@
             }
         ]
     },
-    /*{
+    {
         "title": "救え!",
         "titleEng": "Save!",
         "instruction": "ドラッグ: 壁を作る",
@@ -62,7 +62,7 @@
                 "level": 4
             }
         ]
-    },*/
+    },
     {
         "title": "かわせ!",
         "titleEng": "Dodge!",
