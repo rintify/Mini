@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 93cce4c0409a3ea4390f6b3d37f4eeca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6159f49a87059d4e92a9f98b05360c1, type: 2}
     - target: {fileID: 919132149155446097, guid: 93cce4c0409a3ea4390f6b3d37f4eeca, type: 3}
       propertyPath: m_Name
       value: 3DApple001_HQ-2K-PNG

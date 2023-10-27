@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageClear: 0
-  rotate_speed: 0.4
+  rotate_speed: 1.5
   SwordSE: {fileID: 8300000, guid: 98a77b70cdf199845a093e486910f8da, type: 3}
 --- !u!54 &1409911906
 Rigidbody:
