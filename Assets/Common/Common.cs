@@ -374,7 +374,11 @@ public class Common : MonoBehaviour
     {
         formDataadd = new WWWForm();
         int score = Common.Score;
-        string name = Common.PlayerName;
+        string name;
+        if (Common.PlayerName == ""|| Common.PlayerName==null)
+        {
+            name = "Guest";
+        }else name = Common.PlayerName;
 
         //name = Common.PlayerName;
         //score = Common.Score;
