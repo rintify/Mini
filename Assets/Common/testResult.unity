@@ -221,11 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b860882cd50e34e4da4573415a745e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awesome: {fileID: 0}
-  excellent: {fileID: 0}
-  great: {fileID: 0}
-  good: {fileID: 0}
-  poor: {fileID: 0}
+  awesome: {fileID: 1307665406}
+  excellent: {fileID: 1889355260}
+  great: {fileID: 441130303}
+  good: {fileID: 1983851683}
+  poor: {fileID: 1285433848}
 --- !u!114 &441130306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Great!
+  m_text: "Great\u3000\u25CE"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c678f982bb410524bae247bcfe4e74e1, type: 2}
   m_sharedMaterial: {fileID: -4120704118437240707, guid: c678f982bb410524bae247bcfe4e74e1, type: 2}
@@ -1057,11 +1057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b860882cd50e34e4da4573415a745e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awesome: {fileID: 0}
-  excellent: {fileID: 0}
-  great: {fileID: 0}
-  good: {fileID: 0}
-  poor: {fileID: 0}
+  awesome: {fileID: 1307665406}
+  excellent: {fileID: 1889355260}
+  great: {fileID: 441130303}
+  good: {fileID: 1983851683}
+  poor: {fileID: 1285433848}
 --- !u!114 &1285433851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,7 +1547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272, y: -759}
+  m_AnchoredPosition: {x: -286, y: -759}
   m_SizeDelta: {x: 1332.71, y: 538.97}
   m_Pivot: {x: 0.44905668, y: -0.5188679}
 --- !u!114 &1754933600
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 2.5037756, y: 1.9486694, z: 0.00007630434, w: -0.4976257}
+  m_margin: {x: 31.098867, y: 1.9486694, z: 0.00007630434, w: -0.4976257}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1710,11 +1710,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b860882cd50e34e4da4573415a745e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awesome: {fileID: 0}
-  excellent: {fileID: 0}
-  great: {fileID: 0}
-  good: {fileID: 0}
-  poor: {fileID: 0}
+  awesome: {fileID: 1307665406}
+  excellent: {fileID: 1889355260}
+  great: {fileID: 441130303}
+  good: {fileID: 1983851683}
+  poor: {fileID: 1285433848}
 --- !u!114 &1889355263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,11 +1862,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b860882cd50e34e4da4573415a745e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awesome: {fileID: 0}
-  excellent: {fileID: 0}
-  great: {fileID: 0}
-  good: {fileID: 0}
-  poor: {fileID: 0}
+  awesome: {fileID: 1307665406}
+  excellent: {fileID: 1889355260}
+  great: {fileID: 441130303}
+  good: {fileID: 1983851683}
+  poor: {fileID: 1285433848}
 --- !u!114 &1983851686
 MonoBehaviour:
   m_ObjectHideFlags: 0
