@@ -1,7 +1,7 @@
 <?php
 
 function isValidName($name) {
-    return !empty($name) && strlen($name) >= 1 && strlen($name) <= 20;
+    return !empty($name) && strlen($name) >= 1 && strlen($name) <= 1000;
 }
 
 function isValidScore($score) {

@@ -13,20 +13,35 @@ public class InputFieldManager : MonoBehaviour
     private WWWForm formData;
     //出力用のテキスト
     public TMP_InputField Field;
-    public new string name =" ";
+    string _name = "";
+    public string Name {
+        get {
+            return _name == "" ? "ゲスト" : _name;
+        }
+        set{
+            Field.text = value;
+        }
+    }
     public GameObject exist;
     private void Start()
     {
         exist.SetActive(false);
-        GetComponent<TMP_Text>().text = "ユーザー名:ゲスト";
+        //前のプレイのプレイヤー名を引き継ぐ
+        if(Common.SuperCommonData.PlayerName != null){
+            Name = Common.SuperCommonData.PlayerName;
+        }
+        GetComponent<TMP_Text>().text = "ユーザー名:" + Name;
+        //120秒後に自動で名前をリセット
+        this.Delay(() => {
+            Name = "";
+        },120f);
     }
 
     //inputFieldのOnEndEditに設定する用の関数
     public void OnValueChanged()
     {
-        string input = Field.GetComponent<TMP_InputField>().text;
-        GetComponent<TMP_Text>().text = "ユーザー名:"+input;
-        name = input;
+        _name = Field.text;
+        GetComponent<TMP_Text>().text = "ユーザー名:" + Name;
         //名前が存在するか確認
         checkname();
     }
@@ -35,7 +50,7 @@ public class InputFieldManager : MonoBehaviour
     {
         formData = new WWWForm();
 
-        formData.AddField("name", name);
+        formData.AddField("name", Name);
         // POSTリクエストを送信
         StartCoroutine(SendPostRequest());
     }

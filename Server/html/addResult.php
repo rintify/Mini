@@ -41,7 +41,7 @@ function addScore($name, $score) {
 
     return "ok";
 }
-
+header('Content-Type: application/json');
 if (isset($_POST['key']) && $_POST['key'] === 'sq9YZY0ZfQA7vI9zK3QIsHawIb') {
     
     $name = $_POST['name'];
@@ -50,7 +50,7 @@ if (isset($_POST['key']) && $_POST['key'] === 'sq9YZY0ZfQA7vI9zK3QIsHawIb') {
     if (isValidName($name) && isValidScore($score)) {
         $result = addScore($name, $score);
         if ($result == "ok") {
-            echo 1;
+            echo 0;
         }else echo $result;
     }else echo "value";
 } else echo "key";

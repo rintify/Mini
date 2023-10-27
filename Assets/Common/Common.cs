@@ -120,7 +120,7 @@ public class Common : MonoBehaviour
 
     ///<summary>スタート画面からゲームを開始する</summary>
     public static void StartGames(string playerName,string langage){
-        instance.playerName = playerName;
+        instance.playerName = SuperCommonData.PlayerName = playerName;
         instance.langage = langage;
         instance.Next();
     }
@@ -150,6 +150,9 @@ public class Common : MonoBehaviour
         return instance.level;
     }}
 
+    public static class SuperCommonData{
+        public static string PlayerName = null;
+    }
 
 
 
@@ -363,8 +366,8 @@ public class Common : MonoBehaviour
 
     async void ToResult(){
         Debug.Log("add REsult");
-        await addresult();
-        Debug.Log("added REsult");
+        var result = await addresult();
+        Debug.Log($"added REsult {result}");
         //名前とスコアをサーバーに転送
         transition.GameToResult(resultScene);
     }
@@ -380,11 +383,11 @@ public class Common : MonoBehaviour
             www.redirectLimit = 10;
             yield return www.SendWebRequest();
             Debug.Log("Response: " + www.downloadHandler.text);
-            tcs.SetResult(www.downloadHandler.text == "Result");
+            tcs.SetResult(www.downloadHandler.text == "0");
         }
     }
 
-    Task addresult()
+    Task<bool> addresult()
     {
         var tcs = new TaskCompletionSource<bool>();
         formDataadd = new WWWForm();
