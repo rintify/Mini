@@ -13,7 +13,7 @@ public class shootinggamemaneger : MonoBehaviour
         //Camera.main.gameObject;
         for (int i = 0; i < enemy; i++)
         {
-            point =new Vector3(Random.Range(-8f, 8f),3.5f,0f);
+            point =new Vector3(Random.Range(-6f, 6f),3.5f,0f);
             Instantiate(target, point, Quaternion.identity);
         }
     }
