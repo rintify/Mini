@@ -50,6 +50,7 @@ public class Common : MonoBehaviour
     public static void EndTimer(){
         //連続呼び出しを避ける
         if(instance.onTimeUp == null) return;
+        Debug.Log("End Timer");
         instance.ui.BreakTimer();
         instance.onTimeUp = null;
     }
@@ -188,6 +189,11 @@ public class Common : MonoBehaviour
         instance.ui.transform.SetAsLastSibling();
     }
 
+    public static void ToTitle(){
+        Destroy(instance.gameObject);
+        SceneManager.LoadScene(instance.titleScene);
+    }
+
 
 
 //*** その他便利機能 ***
@@ -221,6 +227,8 @@ public class Common : MonoBehaviour
 
     [SerializeField]
     string resultScene;
+    [SerializeField]
+    string titleScene;
 
     GameTransition transition;
     AudioSource audioSource;

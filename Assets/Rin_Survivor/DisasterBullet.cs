@@ -31,7 +31,8 @@ public class DisasterBullet : MonoBehaviour
             Debug.Log("player");
             Common.PlayOneShot(other.GetComponent<PlayHub>().ban);
             Destroy(other.gameObject);
-            this.Delay(()=>Common.EndGame(false),0.4f);
+            Common.IsCleared = false;
+            this.Delay(()=>Common.EndGame(),0.4f);
         }
         else if(other.GetComponent<Disaster>() != null){
             Debug.Log("enemy");

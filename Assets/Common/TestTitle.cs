@@ -79,11 +79,24 @@ public void ChangeToJapanese()
             username = IM.name;
             Debug.Log("Go Next Scene!");
             //ここに次のシーンに行く命令を書く
+            delete(username);
+            if (username == "" || username == null)
+            {
+                username = "ゲスト";
+            }
             Common.StartGames(username,language);
             Debug.Log(username+" "+language);
             firstPush = true;
         }
     }
+
+
+    public static string delete(string str)
+    {
+        return str.Replace("\r", "").Replace("\n", "").Trim();
+    }
+
+
 
     public void allow_start()
     {

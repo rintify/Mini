@@ -153,6 +153,7 @@ MonoBehaviour:
   canvas: {fileID: 6373512390690171644}
   uiPrefab: {fileID: 5507776990519082647, guid: a00241e12e36b49aeab6de2fb41ee093, type: 3}
   resultScene: TestResult
+  titleScene: TitleScene
   life: 5
   score: 0
   level: 1
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 8412289282631702205}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &3177836330561440840
 AudioSource:
   m_ObjectHideFlags: 0
