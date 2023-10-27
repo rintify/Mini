@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 260000979}
-  waittime: 200
+  waittime: 50
 --- !u!114 &483672173
 MonoBehaviour:
   m_ObjectHideFlags: 0
