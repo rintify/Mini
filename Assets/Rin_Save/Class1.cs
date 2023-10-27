@@ -13,6 +13,7 @@ public class Class1 : MonoBehaviour
     public bool drawable = true;
     public AudioClip hati;
     Dog dog;
+    EX.Virgin startAtack;
 
     private void Start()
     {
@@ -27,7 +28,20 @@ public class Class1 : MonoBehaviour
         dog = GameObject.Find("Dog").GetComponent<Dog>();
         dog.GetComponent<Rigidbody2D>().isKinematic = true;
 
-        Common.StartGame(8,()=>{Common.EndGame(false);});
+        Common.StartGame(8,()=>{
+            startAtack.Break();
+        });
+
+        startAtack = new(() => {
+            edgeCollider.points = points.ToArray();
+            drawable = false;
+            edgeCollider.enabled = true;
+            rb.isKinematic = false;
+            dog.GetComponent<Rigidbody2D>().isKinematic = false;
+            Common.PlayOneShot(hati);
+
+            Common.RestartTimer(7, () => {Common.EndGame(true);});
+        });
     }
 
     private void Update()
@@ -48,14 +62,8 @@ public class Class1 : MonoBehaviour
             }
         }
         if(Input.GetMouseButtonUp(0)){
-            edgeCollider.points = points.ToArray();
-            drawable = false;
-            edgeCollider.enabled = true;
-            rb.isKinematic = false;
-            dog.GetComponent<Rigidbody2D>().isKinematic = false;
-            Common.PlayOneShot(hati);
-
-            Common.RestartTimer(7, () => {Common.EndGame(true);});
+            startAtack.Break();
         }
     }
+
 }

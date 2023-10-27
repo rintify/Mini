@@ -50,6 +50,7 @@ public class Common : MonoBehaviour
     public static void EndTimer(){
         //連続呼び出しを避ける
         if(instance.onTimeUp == null) return;
+        Debug.Log("End Timer");
         instance.ui.BreakTimer();
         instance.onTimeUp = null;
     }

@@ -34,7 +34,8 @@ public class Orgasm : MonoBehaviour
             var play = other.GetComponent<PlayHub>();
             Common.PlayOneShot(play.duhu);
             Destroy(other.GetComponent<PlayHub>().gameObject);
-            this.Delay(()=>Common.EndGame(false),0.4f);
+            Common.IsCleared = false;
+            this.Delay(()=>Common.EndGame(),0.4f);
         }
         else if(other.GetComponent<EnemyHub>() != null){
             Debug.Log("enemy");
