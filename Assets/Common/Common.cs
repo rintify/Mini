@@ -188,6 +188,11 @@ public class Common : MonoBehaviour
         instance.ui.transform.SetAsLastSibling();
     }
 
+    public static void ToTitle(){
+        Destroy(instance.gameObject);
+        SceneManager.LoadScene(instance.titleScene);
+    }
+
 
 
 //*** その他便利機能 ***
@@ -221,6 +226,8 @@ public class Common : MonoBehaviour
 
     [SerializeField]
     string resultScene;
+    [SerializeField]
+    string titleScene;
 
     GameTransition transition;
     AudioSource audioSource;

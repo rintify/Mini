@@ -8,6 +8,6 @@ public class ToTitle : MonoBehaviour
     // Start is called before the first frame update
     public void Title()
     {
-        SceneManager.LoadScene("TestTitleScene");
+        Common.ToTitle();
     }
 }
