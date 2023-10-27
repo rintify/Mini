@@ -172,6 +172,7 @@ MonoBehaviour:
   nobuLight: {fileID: 6071416236560620200}
   goal: 0
   isOpen: 0
+  op: {fileID: 8300000, guid: a9c00dbc65db942f49b3c59167ad9cad, type: 3}
 --- !u!114 &118472765429008137
 MonoBehaviour:
   m_ObjectHideFlags: 0

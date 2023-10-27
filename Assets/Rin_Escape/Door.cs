@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
 
     public bool isOpen = false;
     private Vector2 closedDir,openedDir;
+    public AudioClip op;
 
     EX.Virgin onOpen;
 
@@ -19,6 +20,7 @@ public class Door : MonoBehaviour
         closedDir = transform.rotation.eulerAngles.y.Deg2Direction();
         openedDir = closedDir.Rotate(openAngle*Mathf.Deg2Rad);
         onOpen = new(() => {
+            Common.PlayOneShot(op);
             if(goal){
                 Debug.Log("afa");
                 Camera.main.GetComponent<Skybox>().enabled = true;
@@ -39,7 +41,6 @@ public class Door : MonoBehaviour
             if(Dir.Dot(openedDir) < 0.99) 
                 transform.Rotate(Vector3.up * openSpeed*Time.deltaTime);
             else{
-                isOpen = false;
             }
         }
     }

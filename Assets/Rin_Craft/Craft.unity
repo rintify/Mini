@@ -831,9 +831,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0641afc8d67f64401bb6368d4502938d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 663b2f89847634298ba2eacc7e46025a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.11
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   foot1: {fileID: 8300000, guid: d9fe7376ba7aa43f099b8fb37508ad05, type: 3}
   foot2: {fileID: 8300000, guid: d9fe7376ba7aa43f099b8fb37508ad05, type: 3}
   ton: {fileID: 8300000, guid: d30ffb053b0704eb88f159c18242fb7f, type: 3}
-  gan: {fileID: 8300000, guid: 0da3c02fd333641c9a7228dea4d68583, type: 3}
+  gan: {fileID: 8300000, guid: a856e411a49724c3a98736743571fee2, type: 3}
   jump: 400
   editMode: 0
   cam: {fileID: 1320862395}

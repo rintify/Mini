@@ -152,4 +152,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rin_Escape/Escape1-1.unity
     guid: 1b9df40218940463788010e2bb88e224
+  - enabled: 1
+    path: Assets/Rin_Escape/Escape2-1.unity
+    guid: 400a35c08e482471e9f3a6df12de4556
   m_configObjects: {}
