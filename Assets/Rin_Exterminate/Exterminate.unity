@@ -705,7 +705,7 @@ MonoBehaviour:
   l2: {fileID: 1178569773}
   sound1: {fileID: 8300000, guid: e9b13f8a9bad34188be218bce44ddc2f, type: 3}
   source: {fileID: 1539416146}
-  sound2: {fileID: 8300000, guid: a9eeddc529f864eca829f928fdd21c2d, type: 3}
+  sound2: {fileID: 8300000, guid: fa3eb87b7b3b34358be5c850806d76ff, type: 3}
   json: {fileID: 4900000, guid: e6fee86e11e0e477a94ad26fe6c84d46, type: 3}
   enemyPrefab: {fileID: 3653887203950004800, guid: 5da3031f148c342958d0ed58242b25bc, type: 3}
 --- !u!82 &1539416145
