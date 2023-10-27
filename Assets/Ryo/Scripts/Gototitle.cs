@@ -16,7 +16,7 @@ public class Gototitle : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("escape"))
         {
-            SceneManager.LoadScene("TestTitleScene");
+            Common.ToTitle();
 
         }
 
