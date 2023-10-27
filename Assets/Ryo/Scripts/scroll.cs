@@ -20,12 +20,12 @@ public class scroll : MonoBehaviour
        
 
         
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             
             pos.y-=0.01f;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             pos.y+=0.01f;
         }
