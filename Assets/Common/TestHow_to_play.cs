@@ -40,7 +40,7 @@ public class TestHow_to_play : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //サブタイトルが左に行き始める時間まで待機
         if(!subtitle.apper) return;

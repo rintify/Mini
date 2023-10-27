@@ -41,7 +41,7 @@ public class TestSubtitle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         time -= Time.unscaledDeltaTime;
         if(time <= 0)
