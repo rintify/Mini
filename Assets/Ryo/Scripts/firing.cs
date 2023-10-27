@@ -7,7 +7,7 @@ public class firing : MonoBehaviour
 {
     public GameObject bullet;
     new Vector3 point;
-    public int waittime = 10000;
+    public int waittime = 5000;
     int time = 0;
     // Start is called before the first frame update
     void Start()

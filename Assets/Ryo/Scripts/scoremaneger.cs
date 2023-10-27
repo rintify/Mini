@@ -25,8 +25,8 @@ private TextMeshProUGUI textframe;
     void Start()
     {
         textframe = GetComponent<TextMeshProUGUI>();
-        add();
-        Invoke(nameof(top), 0.5f);
+        //add();
+        top();
         //my();
     }
     

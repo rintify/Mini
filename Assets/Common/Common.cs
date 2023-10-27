@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class Common : MonoBehaviour
 {
@@ -323,6 +324,8 @@ public class Common : MonoBehaviour
     void Next(){
         //ライフが0になったらFinでリザルト画面へ遷移
         if(instance.life <= 0){
+            //名前とスコアをサーバーに転送
+            addresult();
             transition.GameToResult(resultScene);
         }
         //次のゲームへ遷移
@@ -351,49 +354,79 @@ public class Common : MonoBehaviour
             transition.TransToGame(currentScene.scene.name);
         }
     }
-
-
-/*
-    private AsyncOperation asyncLoad;
-
-    private IEnumerator LoadSceneInBackground(string sceneName)
+    //データベース
+    private string postUrladd = "https://cas-ru.com/DOdbhfRG9ze37XoF/addResult.php";
+    private WWWForm formDataadd;
+    IEnumerator SendPostRequestadd()
     {
-        asyncLoad = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Additive);
-        asyncLoad.allowSceneActivation = false;
-
-        // シーンが読み込まれるのを待つ
-        while (!asyncLoad.isDone)
+        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDataadd))
         {
-            // asyncLoad.progressはallowSceneActivationがfalseの場合、最大0.9までしか進まない
-            if (asyncLoad.progress >= 0.9f)
+            www.redirectLimit = 10;
+            yield return www.SendWebRequest();
+            Debug.Log("Response: " + www.downloadHandler.text);
+
+
+
+        }
+    }
+
+    void addresult()
+    {
+        formDataadd = new WWWForm();
+        int score = Common.Score;
+        string name = Common.PlayerName;
+
+        //name = Common.PlayerName;
+        //score = Common.Score;
+
+        formDataadd.AddField("name", name);
+        formDataadd.AddField("score", score);
+        formDataadd.AddField("key", "sq9YZY0ZfQA7vI9zK3QIsHawIb");
+
+        // POSTリクエストを送信
+        StartCoroutine(SendPostRequestadd());
+    }
+    /*
+        private AsyncOperation asyncLoad;
+
+        private IEnumerator LoadSceneInBackground(string sceneName)
+        {
+            asyncLoad = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Additive);
+            asyncLoad.allowSceneActivation = false;
+
+            // シーンが読み込まれるのを待つ
+            while (!asyncLoad.isDone)
             {
-                // ここで何らかの処理を行い、シーンをスタートするタイミングを待つ
-                // 例: ボタンが押されたら、シーンをスタートするなど
-
-                // 以下はデモのためのコードで、3秒待った後にシーンをスタートします
-                yield return new WaitForSeconds(1f);
-                asyncLoad.allowSceneActivation = true;
-
-
-                var loadedScene = SceneManager.GetSceneByName(sceneName);
-                if (loadedScene.isLoaded)
+                // asyncLoad.progressはallowSceneActivationがfalseの場合、最大0.9までしか進まない
+                if (asyncLoad.progress >= 0.9f)
                 {
-                    foreach (GameObject obj in loadedScene.GetRootGameObjects())
+                    // ここで何らかの処理を行い、シーンをスタートするタイミングを待つ
+                    // 例: ボタンが押されたら、シーンをスタートするなど
+
+                    // 以下はデモのためのコードで、3秒待った後にシーンをスタートします
+                    yield return new WaitForSeconds(1f);
+                    asyncLoad.allowSceneActivation = true;
+
+
+                    var loadedScene = SceneManager.GetSceneByName(sceneName);
+                    if (loadedScene.isLoaded)
                     {
-                        Camera cam = obj.GetComponentInChildren<Camera>();
-                        if (cam)
+                        foreach (GameObject obj in loadedScene.GetRootGameObjects())
                         {
-                            cam.depth = -1;
+                            Camera cam = obj.GetComponentInChildren<Camera>();
+                            if (cam)
+                            {
+                                cam.depth = -1;
+                            }
                         }
                     }
                 }
+
+                yield return null;
             }
+        }*/
 
-            yield return null;
-        }
-    }*/
 
-    
 }
 
 class Game{
