@@ -60,6 +60,7 @@ public class Twitter : MonoBehaviour
             if(current < question.Length && question[current] == pressed){
                 texual.text = $"<color=#00ff00>{question.Substring(0,current+1)}</color>{question.Substring(current+1,question.Length-current-1)}";
                 current ++;
+                if(current >  question.Length) current = question.Length;
                 if(current == question.Length){
                     Common.IsCleared = true;
                     clearAnime = () => {
@@ -75,7 +76,7 @@ public class Twitter : MonoBehaviour
                     };
                 }
             }
-            else{
+            else{try{
                 texual.text = $"<color=#00ff00>{question.Substring(0,current)}</color><color=#ff0033>{pressed}</color>{question.Substring(current+1,question.Length-current-1)}";
                 canPress = false;
                 Common.PlayOneShot(bu,2.5f);
@@ -84,7 +85,7 @@ public class Twitter : MonoBehaviour
                     canPress = true;
                     texual.text = question;
                 },0.2f);
-            }
+            }catch{}}
         }
         
     }
