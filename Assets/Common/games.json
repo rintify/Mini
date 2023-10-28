@@ -31,11 +31,11 @@
         "scenes": [
             {
                 "name": "Escape1-1",
-                "level": 1
+                "level": 2
             },
             {
                 "name": "Escape2-1",
-                "level": 2
+                "level": 3
             }
         ]
     },

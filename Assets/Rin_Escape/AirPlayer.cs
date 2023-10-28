@@ -89,7 +89,7 @@ public class AirPlayer : MonoBehaviour
         var dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         if(dir == Vector2.zero) return;
 
-        var ds = (run ? speed * 2 : speed) * Time.fixedDeltaTime;
+        var ds = (run ? speed * 2.5f : speed * 2f) * Time.fixedDeltaTime;
         dS += ds;
         if (dS > 3f)
         {
