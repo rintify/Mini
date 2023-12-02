@@ -15,7 +15,7 @@ public class AirPlayer : MonoBehaviour
 
     public GameObject cam;
     Quaternion cameraRot, characterRot;
-    float Xsensityvity = 3f, Ysensityvity = 3f;
+    float Xsensityvity = 0.6f, Ysensityvity = 0.6f;
 
     //変数の宣言(角度の制限用)
     float minX = -90f, maxX = 90f;
