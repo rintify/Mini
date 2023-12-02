@@ -490,7 +490,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -498,7 +498,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://cas-ru.com/share/cas_background.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1761,7 +1761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -384, y: 403.99985}
+  m_AnchoredPosition: {x: -383.99994, y: 403.99985}
   m_SizeDelta: {x: -1833.2, y: -1030}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407644091
@@ -2622,6 +2622,14 @@ PrefabInstance:
     - target: {fileID: 1646227371477274044, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: color.r
       value: 0.15233767
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720492451316481845, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720492451316481845, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0009765625
       objectReference: {fileID: 0}
     - target: {fileID: 6076146233799753574, guid: 651f0936e80514ead993ec7330adf74e, type: 3}
       propertyPath: m_Color.a
