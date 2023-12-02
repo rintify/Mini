@@ -21,7 +21,7 @@ public class Steve : MonoBehaviour
 
     public GameObject cam;
     Quaternion cameraRot, characterRot;
-    float Xsensityvity = 1f, Ysensityvity = 1f;
+    float Xsensityvity = 0.6f, Ysensityvity = 0.6f;
     
     public Color ambient;
     public float gravity = -10;
