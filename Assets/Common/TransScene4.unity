@@ -1686,7 +1686,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://cas-ru.com/share/cas_trans.mp4
+  m_Url: https://cas-mini.s3.ap-northeast-1.amazonaws.com/cas_trans+1.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1

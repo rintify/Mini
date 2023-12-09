@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 275969068}
   - component: {fileID: 275969067}
   - component: {fileID: 275969066}
+  - component: {fileID: 275969069}
   m_Layer: 5
   m_Name: Videoimage
   m_TagString: Untagged
@@ -498,7 +499,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: https://cas-ru.com/share/cas_background.mp4
+  m_Url: https://cas-mini.s3.ap-northeast-1.amazonaws.com/cas_background.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -543,6 +544,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275969064}
   m_CullTransparentMesh: 1
+--- !u!114 &275969069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275969064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1f359673ec27a4290b02fa4b93048d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  video: {fileID: 275969066}
 --- !u!1 &313270992
 GameObject:
   m_ObjectHideFlags: 0
