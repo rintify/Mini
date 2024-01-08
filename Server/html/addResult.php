@@ -42,6 +42,10 @@ function addScore($name, $score) {
     return "ok";
 }
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+
 if (isset($_POST['key']) && $_POST['key'] === 'sq9YZY0ZfQA7vI9zK3QIsHawIb') {
     
     $name = $_POST['name'];

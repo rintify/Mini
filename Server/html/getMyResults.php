@@ -19,6 +19,11 @@ function getMyScores($name,$limit) {
     return $scores;
 }
 
+header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
+
 $name = $_POST['name'];
 if (isValidName($name)) {
     $scores = getMyScores($name,100);
