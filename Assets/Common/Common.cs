@@ -12,6 +12,7 @@ using TMPro;
 public class Common : MonoBehaviour
 {
 
+
 //*** 各ゲームが実行してほしい ***
 
     ///<summary>ゲームに要求される難易度</summary>

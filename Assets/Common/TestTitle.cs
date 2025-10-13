@@ -17,11 +17,10 @@ public class TestTitle : MonoBehaviour
 
     private void Start()
     {
-        
         //allow_startを3.5秒後に呼び出す
         Invoke(nameof(allow_start), 4.5f);
-
         foreach (var o in inVisibleObjects) o.SetActive(false);
+
 
         Debug.Log("transparent");
         Invoke(nameof(non_transparent), 4.5f);

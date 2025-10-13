@@ -17,7 +17,6 @@ public class Gototitle : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("escape"))
         {
             Common.ToTitle();
-
         }
 
     }

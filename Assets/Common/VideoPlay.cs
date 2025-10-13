@@ -9,7 +9,7 @@ public class VideoPlay : MonoBehaviour
 
     void Start()
     {
-        video.url = "https://cas-mini.s3.ap-northeast-1.amazonaws.com/cas_background.mp4";
+        video.url = "https://cas-ru.com/share/cas_background.mp4";
         video.prepareCompleted += PrepareCompleted;
         video.errorReceived += ErrorReceived;
     }
