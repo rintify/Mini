@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 
 public class InputFieldManager : MonoBehaviour
 {
-    private string postUrl = "https://cas-ru.com/DOdbhfRG9ze37XoF/existName.php";
     private WWWForm formData;
     //出力用のテキスト
     public TMP_InputField Field;
@@ -58,7 +57,7 @@ public class InputFieldManager : MonoBehaviour
 
     IEnumerator SendPostRequest()
     {
-        using (UnityWebRequest www = UnityWebRequest.Post(postUrl, formData))
+        using (UnityWebRequest www = UnityWebRequest.Post(Common.ExistNameUrl, formData))
         {
             yield return www.SendWebRequest();
 

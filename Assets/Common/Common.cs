@@ -231,6 +231,39 @@ public class Common : MonoBehaviour
 
 
     static Common instance;
+
+    [SerializeField]
+    ApiEndpointConfig apiEndpoints = new();
+
+    [Serializable]
+    public class ApiEndpointConfig
+    {
+        [SerializeField] string apiBaseUrl = "https://rintify.sakura.ne.jp/Mini/html";
+        [SerializeField] string addResultPath = "addResult.php";
+        [SerializeField] string getTopPlayersPath = "getTopPlayers.php";
+        [SerializeField] string existNamePath = "existName.php";
+        [SerializeField] string getMyResultPath = "getMyResult.php";
+
+        static string JoinBasePath(string baseUrl, string path)
+        {
+            var b = (baseUrl ?? "").TrimEnd('/');
+            var p = (path ?? "").TrimStart('/');
+            if (string.IsNullOrEmpty(b)) return p;
+            if (string.IsNullOrEmpty(p)) return b;
+            return $"{b}/{p}";
+        }
+
+        public string AddResultUrl => JoinBasePath(apiBaseUrl, addResultPath);
+        public string GetTopPlayersUrl => JoinBasePath(apiBaseUrl, getTopPlayersPath);
+        public string ExistNameUrl => JoinBasePath(apiBaseUrl, existNamePath);
+        public string GetMyResultUrl => JoinBasePath(apiBaseUrl, getMyResultPath);
+    }
+
+    public static string AddResultUrl => instance.apiEndpoints.AddResultUrl;
+    public static string GetTopPlayersUrl => instance.apiEndpoints.GetTopPlayersUrl;
+    public static string ExistNameUrl => instance.apiEndpoints.ExistNameUrl;
+    public static string GetMyResultUrl => instance.apiEndpoints.GetMyResultUrl;
+
     [SerializeField]
     TextAsset gamesData;
     Game[] games;
@@ -416,11 +449,10 @@ public class Common : MonoBehaviour
 
 
     //データベース
-    private string postUrladd = "https://cas-ru.com/DOdbhfRG9ze37XoF/addResult.php";
     private WWWForm formDataadd;
     IEnumerator SendPostRequestadd(TaskCompletionSource<bool> tcs)
     {
-        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDataadd))
+        using (UnityWebRequest www = UnityWebRequest.Post(apiEndpoints.AddResultUrl, formDataadd))
         {
             www.redirectLimit = 10;
             yield return www.SendWebRequest();
@@ -456,7 +488,7 @@ public class Common : MonoBehaviour
     async Task<PlayerScore[]> GetTopPlayers()
     {
         try{
-            using UnityWebRequest www = UnityWebRequest.Get("https://cas-ru.com/DOdbhfRG9ze37XoF/getTopPlayers.php");
+            using UnityWebRequest www = UnityWebRequest.Get(apiEndpoints.GetTopPlayersUrl);
             www.timeout = 10;
             await www.SendWebRequest();
             return JsonConvert.DeserializeObject<PlayerScore[]>(www.downloadHandler.text);

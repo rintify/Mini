@@ -14,9 +14,6 @@ private TextMeshProUGUI textframe;
     // コルーチンの開始
     //Dictionary<string, string> postData = new Dictionary<string, string>();
 
-    private string postUrladd = "https://cas-ru.com/DOdbhfRG9ze37XoF/addResult.php"; // POSTリクエストを送信するURL
-    private string postUrltop = "https://cas-ru.com/DOdbhfRG9ze37XoF/getTopPlayers.php";
-    private string postUrlmy = "https://cas-ru.com/DOdbhfRG9ze37XoF/getMyResult.php";
     // 送信するデータをキーと値のペアで作成
     private WWWForm formDataadd;
     private WWWForm formDatatop;
@@ -32,7 +29,7 @@ private TextMeshProUGUI textframe;
     
     IEnumerator SendPostRequestadd()
     {
-        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDataadd))
+        using (UnityWebRequest www = UnityWebRequest.Post(Common.AddResultUrl, formDataadd))
         {
             www.redirectLimit = 10;
             yield return www.SendWebRequest();
@@ -61,7 +58,7 @@ private TextMeshProUGUI textframe;
     }
     IEnumerator SendPostRequesttop()
     {
-        using (UnityWebRequest www = UnityWebRequest.Post(postUrltop, formDatatop))
+        using (UnityWebRequest www = UnityWebRequest.Post(Common.GetTopPlayersUrl, formDatatop))
         {
             yield return www.SendWebRequest();
 
@@ -92,7 +89,7 @@ private TextMeshProUGUI textframe;
 
     IEnumerator SendPostRequestmy()
     {
-        using (UnityWebRequest www = UnityWebRequest.Post(postUrladd, formDatamy))
+        using (UnityWebRequest www = UnityWebRequest.Post(Common.GetMyResultUrl, formDatamy))
         {
             yield return www.SendWebRequest();
 
