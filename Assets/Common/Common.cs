@@ -22,13 +22,22 @@ public class Common : MonoBehaviour
 
     ///<summary>ゲームを開始する時に実行し、カウントを開始する</summary>
     public static void StartGame(int timeLimit,Action onTimeUp){
+        Debug.Log("Request StartGame");
         //スタートされてなかったらスタートする
-        if(instance.ui == null) StartGame(); 
+        if(instance.ui == null){
+            Debug.Log("StartGame UI is null");
+            StartGame(); 
+        }else{
+            Debug.Log("StartGame UI is not null");
+        }
         //連続呼び出しを避ける
-        if(instance.onTimeUp != null) return;
-        Debug.Log("Game Start");
+        if(instance.onTimeUp != null){
+            Debug.Log("Game onTimeUp is not null");
+            return;
+        }
         instance.timeLimit = timeLimit;
         instance.onTimeUp = onTimeUp;
+        Debug.Log("StartGame TimeLimit: " + timeLimit);
         instance.ui.StartTimer();
     }
 
@@ -121,6 +130,7 @@ public class Common : MonoBehaviour
 
     ///<summary>スタート画面からゲームを開始する</summary>
     public static async void StartGames(string playerName,string langage){
+        Debug.Log("StartGames PlayerName: " + playerName + " Langage: " + langage);
         instance.playerName = SuperCommonData.PlayerName = playerName;
         instance.langage = langage;
         instance.topPlayers = await instance.GetTopPlayers();
@@ -447,6 +457,7 @@ public class Common : MonoBehaviour
     {
         try{
             using UnityWebRequest www = UnityWebRequest.Get("https://cas-ru.com/DOdbhfRG9ze37XoF/getTopPlayers.php");
+            www.timeout = 10;
             await www.SendWebRequest();
             return JsonConvert.DeserializeObject<PlayerScore[]>(www.downloadHandler.text);
         }

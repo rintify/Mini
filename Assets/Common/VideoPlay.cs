@@ -9,7 +9,6 @@ public class VideoPlay : MonoBehaviour
 
     void Start()
     {
-        video.url = "https://cas-ru.com/share/cas_background.mp4";
         video.prepareCompleted += PrepareCompleted;
         video.errorReceived += ErrorReceived;
     }
